@@ -3,13 +3,14 @@ import {
 } from "react";
 
 import { 
-    Container, MenuItem, 
+    Container,
+    MenuItem, 
 } from "./styles";
 import { AppContext } from "../../contexts/AppContext";
+import { ButtonIcon } from "../header/styles";
+import NotificationIcon from '../../assets/bell.png'
 
-const items = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
-
-
+const items = [0,0,0,]
 
 function Menu() {
     const { openMenu } = useContext(AppContext)
@@ -17,8 +18,9 @@ function Menu() {
     return (
         <Container openMenu={openMenu}>
             {items.map(() => (
-                <MenuItem>
-                    Home
+                <MenuItem openMenu={openMenu}>
+                    <ButtonIcon alt="" src={NotificationIcon}/>
+                    <span>Início</span>
                 </MenuItem>
             ))}
         </Container>
