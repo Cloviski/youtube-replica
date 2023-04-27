@@ -8,7 +8,7 @@ export const Container = styled.div<{ openMenu: boolean }>`
     display: flex;
     align-items: center;
     flex-direction: column;
-    overflow-y: auto; //if items overpass, it will create an scroll automatically
+    overflow-y: auto; //if items overlap, it will create an scroll automatically
 `;
 
 export const MenuItem = styled.div<{ openMenu: boolean }>`
@@ -19,7 +19,7 @@ export const MenuItem = styled.div<{ openMenu: boolean }>`
     padding: 2px 17px;
     box-sizing: border-box;
     display: flex;
-    flex-direction: ${({ openMenu }) => openMenu? 'row' : 'column'}; 
+    flex-direction: ${({ openMenu }) => openMenu? 'row' : 'column'};
     align-items: center;
     justify-content: ${({ openMenu }) => openMenu? 'none' : 'center'};
 

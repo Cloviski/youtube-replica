@@ -8,19 +8,26 @@ import {
 } from "./styles";
 import { AppContext } from "../../contexts/AppContext";
 import { ButtonIcon } from "../header/styles";
-import NotificationIcon from '../../assets/bell.png'
+import HomeIcon from '../../assets/homepage.png'
+import ShortsIcon from '../../assets/shorts.png'
+import SubscriptionsIcon from '../../assets/subscribe.png'
 
-const items = [0,0,0,]
+const menuItems = [
+    { label: 'Home', icon: HomeIcon },
+    { label: 'Shorts', icon: ShortsIcon },
+    { label: 'Subscriptions', icon: SubscriptionsIcon },
+];
+  
 
 function Menu() {
     const { openMenu } = useContext(AppContext)
 
     return (
         <Container openMenu={openMenu}>
-            {items.map(() => (
+            {menuItems.map((menuItem) => (
                 <MenuItem openMenu={openMenu}>
-                    <ButtonIcon alt="" src={NotificationIcon}/>
-                    <span>Início</span>
+                    <ButtonIcon alt="" src={menuItem.icon}/>
+                    <span>{menuItem.label}</span>
                 </MenuItem>
             ))}
         </Container>
@@ -28,4 +35,6 @@ function Menu() {
 }
 
 export default Menu;
+
+//I want to make all menu objects appear here as a string
 
