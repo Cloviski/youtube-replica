@@ -12,7 +12,7 @@ import {
 import HamburgerIcon from '../../assets/hamburger.png';
 import Logo from '../../assets/youtube_logo.png';
 import SearchIcon from '../../assets/search.png';
-import MicIcon from '../../assets/microphone_recorder.png';
+import MicIcon from '../../assets/microphone.png';
 import VideoIcon from '../../assets/video.png'
 import NotificationIcon from '../../assets/bell.png'
 import { useContext } from "react";
@@ -30,7 +30,7 @@ function Header() {
                     <ButtonIcon alt="" src={HamburgerIcon}/>
                 </ButtonContainer>
                 <img 
-                    style={{ cursor: 'pointer', width: '100px' }}
+                    style={{ cursor: 'pointer', width: '90px', padding: '6px' }}
                     alt=""
                     src={Logo}
                 />

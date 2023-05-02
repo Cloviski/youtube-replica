@@ -7,7 +7,7 @@ import {
     MenuItem, 
 } from "./styles";
 import { AppContext } from "../../contexts/AppContext";
-import { ButtonIcon } from "../header/styles";
+import { ButtonIcon } from "../menu/styles";
 import HomeIcon from '../../assets/homepage.png'
 import ShortsIcon from '../../assets/shorts.png'
 import SubscriptionsIcon from '../../assets/subscribe.png'
