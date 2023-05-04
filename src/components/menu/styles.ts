@@ -4,15 +4,21 @@ export const Container = styled.div<{ openMenu: boolean }>`
     width: ${({ openMenu }) => openMenu? '276px' : '76px'};
     height: 100vh;
     box-sizing: border-box;
-    padding: 65px 4px 10px 4px;
+    padding: 56px 0 10px 0;
     display: flex;
     align-items: center;
     flex-direction: column;
     overflow-y: auto; //if items overlap, it will create an scroll automatically
 `;
 
+export const InnerContainer = styled.div<{ openMenu: boolean }>`
+    padding: ${({ openMenu }) => openMenu? '12px' : '0 4px'};
+    width: ${({ openMenu }) => openMenu? '90%' : 'none'};
+    border-bottom: ${({ openMenu }) => openMenu? '1px solid rgba(0, 0, 0, 0.1)' : 'none'};
+`;
+
 export const MenuItem = styled.div<{ openMenu: boolean }>`
-    width: 90%;
+    width: ${({ openMenu }) => openMenu? '204px' : '64px'};
     min-height: ${({ openMenu }) => openMenu? '40px' : '70px'};
     border-radius: 10px;
     cursor: pointer;
@@ -37,5 +43,5 @@ export const MenuItem = styled.div<{ openMenu: boolean }>`
 `;
 
 export const ButtonIcon = styled.img`
-    width: 20px;
+    width: 22px;
 `;
