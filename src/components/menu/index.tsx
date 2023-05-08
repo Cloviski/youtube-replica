@@ -5,7 +5,10 @@ import {
 import { 
     Container,
     InnerContainer,
-    MenuItem, 
+    TextInnerContainer,
+    MenuItem,
+    TextMenuItem,
+    SignMenuContainer, 
 } from "./styles";
 import { AppContext } from "../../contexts/AppContext";
 import { ButtonIcon } from "../menu/styles";
@@ -14,14 +17,15 @@ import ShortsIcon from '../../assets/shorts.png'
 import SubscriptionsIcon from '../../assets/subscribe.png'
 import LibraryIcon from '../../assets/library.png'
 import HistoryIcon from '../../assets/history.png'
+import SignInIcon from '../../assets/profile.png'
 
-const primaryItems = [
+const firstItems = [
     { label: 'Home', icon: HomeIcon },
     { label: 'Shorts', icon: ShortsIcon },
     { label: 'Subscriptions', icon: SubscriptionsIcon },
 ];
 
-const secondaryItems = [
+const secondItems = [
     { label: 'Library', icon: LibraryIcon },
     { label: 'History', icon: HistoryIcon },
 ];
@@ -33,7 +37,7 @@ function Menu() {
     return (
         <Container openMenu={openMenu}>
             <InnerContainer openMenu={openMenu}>
-                {primaryItems.map((menuItem) => (
+                {firstItems.map((menuItem) => (
                     <MenuItem openMenu={openMenu}>
                         <ButtonIcon alt="" src={menuItem.icon}/>
                         <span>{menuItem.label}</span>
@@ -41,13 +45,22 @@ function Menu() {
                 ))}
             </InnerContainer>
             <InnerContainer openMenu={openMenu}>
-                {secondaryItems.map((menuItem) => (
+                {secondItems.map((menuItem) => (
                     <MenuItem openMenu={openMenu}>
                         <ButtonIcon alt="" src={menuItem.icon}/>
                         <span>{menuItem.label}</span>
                     </MenuItem>
                 ))}
             </InnerContainer>
+            <TextInnerContainer openMenu={openMenu}>
+                <TextMenuItem openMenu={openMenu}>
+                    <span>Sign in to like videos, comment, and subscribe.</span>
+                    <SignMenuContainer>
+                        <ButtonIcon alt="" src={SignInIcon} />
+                        <span>Sign In</span>
+                    </SignMenuContainer>
+                </TextMenuItem>
+            </TextInnerContainer>
         </Container>
     )
 }

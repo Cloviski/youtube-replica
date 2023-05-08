@@ -17,6 +17,22 @@ export const InnerContainer = styled.div<{ openMenu: boolean }>`
     border-bottom: ${({ openMenu }) => openMenu? '1px solid rgba(0, 0, 0, 0.1)' : 'none'};
 `;
 
+export const TextInnerContainer = styled.div<{ openMenu: boolean }>`
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 16px 32px;
+    visibility: ${({ openMenu }) => openMenu? 'visible' : 'hidden'};
+`;
+
+export const TextMenuItem = styled.div<{ openMenu: boolean }>`
+    font-size: 14px;
+    font-weight: 400;
+
+    span {
+        line-height: 20px;
+    }
+`;
+
+
 export const MenuItem = styled.div<{ openMenu: boolean }>`
     width: ${({ openMenu }) => openMenu? '204px' : '64px'};
     min-height: ${({ openMenu }) => openMenu? '40px' : '70px'};
@@ -30,7 +46,7 @@ export const MenuItem = styled.div<{ openMenu: boolean }>`
     justify-content: ${({ openMenu }) => openMenu? 'none' : 'center'};
 
     span {
-        font-weight: ${({ openMenu }) => openMenu? '600'  : '600'};
+        font-weight: ${({ openMenu }) => openMenu? '400'  : '500'};
         margin-left: ${({ openMenu }) => openMenu? '24px' : 'none'};
         margin-top: ${({ openMenu }) => openMenu? 'none' : '6px'};
         font-size: ${({ openMenu }) => openMenu? '14px' : '10px'}
@@ -44,4 +60,25 @@ export const MenuItem = styled.div<{ openMenu: boolean }>`
 
 export const ButtonIcon = styled.img`
     width: 22px;
+`;
+
+export const SignMenuContainer = styled.div`
+    width: 67px;
+    height: 34px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+
+    & ${ButtonIcon} {
+        width: 20px;
+        margin-left: -6px;
+        margin-right: 6px;
+    }
+
+    & span {
+        font-weight: 600;
+    }
 `;
