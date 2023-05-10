@@ -13,8 +13,13 @@ export const Container = styled.div<{ openMenu: boolean }>`
 
 export const InnerContainer = styled.div<{ openMenu: boolean }>`
     padding: ${({ openMenu }) => openMenu? '12px' : '0 4px'};
-    width: ${({ openMenu }) => openMenu? '90%' : 'none'};
+    width: ${({ openMenu }) => openMenu? '89%' : 'none'};
     border-bottom: ${({ openMenu }) => openMenu? '1px solid rgba(0, 0, 0, 0.1)' : 'none'};
+`;
+
+export const SpanMenuItem = styled.div<{ openMenu: boolean }>`
+    visibility: ${({ openMenu }) => openMenu? 'visible' : 'hidden'};
+    padding: 6px 12px 4px 12px;
 `;
 
 export const TextInnerContainer = styled.div<{ openMenu: boolean }>`
@@ -33,7 +38,7 @@ export const TextMenuItem = styled.div<{ openMenu: boolean }>`
 `;
 
 
-export const MenuItem = styled.div<{ openMenu: boolean }>`
+export const MenuItem = styled.div<{ openMenu: boolean, visibility?: string}>`
     width: ${({ openMenu }) => openMenu? '204px' : '64px'};
     min-height: ${({ openMenu }) => openMenu? '40px' : '70px'};
     border-radius: 10px;
@@ -44,22 +49,23 @@ export const MenuItem = styled.div<{ openMenu: boolean }>`
     flex-direction: ${({ openMenu }) => openMenu? 'row' : 'column'};
     align-items: center;
     justify-content: ${({ openMenu }) => openMenu? 'none' : 'center'};
+    visibility: ${({ openMenu, visibility }) => openMenu ? 'visible' : visibility || 'hidden'};
 
     span {
+        width: ${({ openMenu }) => openMenu? '100%' : 'none'};
         font-weight: ${({ openMenu }) => openMenu? '400'  : '500'};
         margin-left: ${({ openMenu }) => openMenu? '24px' : 'none'};
         margin-top: ${({ openMenu }) => openMenu? 'none' : '6px'};
         font-size: ${({ openMenu }) => openMenu? '14px' : '10px'}
     }
 
-// first one is open and second is closed
     :hover {
         background-color: #f2f2f2;
     }
 `;
 
 export const ButtonIcon = styled.img`
-    width: 22px;
+    width: 20px;
 `;
 
 export const SignMenuContainer = styled.div`
@@ -82,3 +88,9 @@ export const SignMenuContainer = styled.div`
         font-weight: 600;
     }
 `;
+
+// first one is open and second is closed
+
+//first and second always open
+
+//third, forth and fifth disapear when closed

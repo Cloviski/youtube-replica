@@ -8,7 +8,8 @@ import {
     TextInnerContainer,
     MenuItem,
     TextMenuItem,
-    SignMenuContainer, 
+    SignMenuContainer,
+    SpanMenuItem, 
 } from "./styles";
 import { AppContext } from "../../contexts/AppContext";
 import { ButtonIcon } from "../menu/styles";
@@ -18,6 +19,22 @@ import SubscriptionsIcon from '../../assets/subscribe.png'
 import LibraryIcon from '../../assets/library.png'
 import HistoryIcon from '../../assets/history.png'
 import SignInIcon from '../../assets/profile.png'
+import TrendingIcon from '../../assets/fire (1).png'
+import MusicIcon from '../../assets/music.png'
+import MoviesIcon from '../../assets/clapperboard.png'
+import LiveIcon from '../../assets/live (1).png'
+import GamingIcon from '../../assets/gaming.png'
+import NewsIcon from '../../assets/news.png'
+import SportsIcon from '../../assets/trophy.png'
+import LearningIcon from '../../assets/lightbulb.png'
+import YTPremiumIcon from '../../assets/youtube_pure_logo.png'
+import YTMusicIcon from '../../assets/youtube_music.png'
+import YTKidsIcon from '../../assets/youtube_kids.png'
+import SettingsIcon from '../../assets/setting.png'
+import ReportIcon from '../../assets/flag.png'
+import HelpIcon from '../../assets/help.png'
+import FeedbackIcon from '../../assets/chat.png'
+import BrowseIcon from '../../assets/plus.png'
 
 const firstItems = [
     { label: 'Home', icon: HomeIcon },
@@ -29,7 +46,30 @@ const secondItems = [
     { label: 'Library', icon: LibraryIcon },
     { label: 'History', icon: HistoryIcon },
 ];
-  
+
+const thirdItems = [
+    { label: 'Trending', icon: TrendingIcon },
+    { label: 'Music', icon: MusicIcon },
+    { label: 'Movies & Shows', icon: MoviesIcon },
+    { label: 'Live', icon: LiveIcon },
+    { label: 'Gaming', icon: GamingIcon },
+    { label: 'News', icon: NewsIcon },
+    { label: 'Sports', icon: SportsIcon },
+    { label: 'Learning', icon: LearningIcon },
+];
+
+const forthItems = [
+    { label: 'Youtube Premium', icon: YTPremiumIcon },
+    { label: 'Youtube Music', icon: YTMusicIcon },
+    { label: 'Youtube Kids', icon: YTKidsIcon },
+];
+
+const fifthItems = [
+    { label: 'Settings', icon: SettingsIcon },
+    { label: 'Report history', icon: ReportIcon },
+    { label: 'Help', icon: HelpIcon },
+    { label: 'Send feedback', icon: FeedbackIcon },
+];
 
 function Menu() {
     const { openMenu } = useContext(AppContext)
@@ -38,7 +78,7 @@ function Menu() {
         <Container openMenu={openMenu}>
             <InnerContainer openMenu={openMenu}>
                 {firstItems.map((menuItem) => (
-                    <MenuItem openMenu={openMenu}>
+                    <MenuItem openMenu={openMenu} visibility="visible">
                         <ButtonIcon alt="" src={menuItem.icon}/>
                         <span>{menuItem.label}</span>
                     </MenuItem>
@@ -46,7 +86,7 @@ function Menu() {
             </InnerContainer>
             <InnerContainer openMenu={openMenu}>
                 {secondItems.map((menuItem) => (
-                    <MenuItem openMenu={openMenu}>
+                    <MenuItem openMenu={openMenu} visibility="visible">
                         <ButtonIcon alt="" src={menuItem.icon}/>
                         <span>{menuItem.label}</span>
                     </MenuItem>
@@ -57,10 +97,42 @@ function Menu() {
                     <span>Sign in to like videos, comment, and subscribe.</span>
                     <SignMenuContainer>
                         <ButtonIcon alt="" src={SignInIcon} />
-                        <span>Sign In</span>
+                        <span>Sign in</span>
                     </SignMenuContainer>
                 </TextMenuItem>
             </TextInnerContainer>
+            <InnerContainer openMenu={openMenu}>
+                <SpanMenuItem openMenu={openMenu}>Explore</SpanMenuItem>
+                {thirdItems.map((menuItem) => (
+                    <MenuItem openMenu={openMenu}>
+                        <ButtonIcon alt="" src={menuItem.icon}/>
+                        <span>{menuItem.label}</span>
+                    </MenuItem>
+                ))}
+            </InnerContainer>
+            <InnerContainer openMenu={openMenu}>
+                    <MenuItem openMenu={openMenu}>
+                        <ButtonIcon alt="" src={BrowseIcon}/>
+                        <span>Browse channels</span>
+                    </MenuItem>
+            </InnerContainer>
+            <InnerContainer openMenu={openMenu}>
+                <SpanMenuItem openMenu={openMenu}>More from YouTube</SpanMenuItem>
+                {forthItems.map((menuItem) => (
+                    <MenuItem openMenu={openMenu}>
+                        <ButtonIcon alt="" src={menuItem.icon}/>
+                        <span>{menuItem.label}</span>
+                    </MenuItem>
+                ))}
+            </InnerContainer>
+            <InnerContainer openMenu={openMenu}>
+                {fifthItems.map((menuItem) => (
+                    <MenuItem openMenu={openMenu}>
+                        <ButtonIcon alt="" src={menuItem.icon}/>
+                        <span>{menuItem.label}</span>
+                    </MenuItem>
+                ))}
+            </InnerContainer>
         </Container>
     )
 }
