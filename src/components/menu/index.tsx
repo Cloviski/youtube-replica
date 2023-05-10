@@ -9,7 +9,10 @@ import {
     MenuItem,
     TextMenuItem,
     SignMenuContainer,
-    SpanMenuItem, 
+    SpanMenuItem,
+    PrimaryFooterMenu,
+    SecondaryFooterMenu,
+    Copyright, 
 } from "./styles";
 import { AppContext } from "../../contexts/AppContext";
 import { ButtonIcon } from "../menu/styles";
@@ -70,6 +73,24 @@ const fifthItems = [
     { label: 'Help', icon: HelpIcon },
     { label: 'Send feedback', icon: FeedbackIcon },
 ];
+
+const firstSpanItems = [
+    { label: 'About' },
+    { label: 'Press' },
+    { label: 'Copyright' },
+    { label: 'Contact us' },
+    { label: 'Creators' },
+    { label: 'Advertise' },
+    { label: 'Developers' },
+]
+
+const secondSpanItems = [
+    { label: 'Terms' },
+    { label: 'Privacy' },
+    { label: 'Policy & Safety' },
+    { label: 'How YouTube works' },
+    { label: 'Test new features' },
+]
 
 function Menu() {
     const { openMenu } = useContext(AppContext)
@@ -133,6 +154,19 @@ function Menu() {
                     </MenuItem>
                 ))}
             </InnerContainer>
+            <PrimaryFooterMenu openMenu={openMenu}>
+                {firstSpanItems.map((spanItem) => (
+                    <span>{spanItem.label}</span>
+                ))}
+            </PrimaryFooterMenu>
+            <SecondaryFooterMenu openMenu={openMenu}>
+                {secondSpanItems.map((spanItem) => (
+                    <span>{spanItem.label}</span>
+                ))}
+            </SecondaryFooterMenu>
+            <Copyright openMenu={openMenu}>
+                <span>© 2023 Google LLC</span>
+            </Copyright>
         </Container>
     )
 }

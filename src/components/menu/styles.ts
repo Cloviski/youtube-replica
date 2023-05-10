@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div<{ openMenu: boolean }>`
-    width: ${({ openMenu }) => openMenu? '276px' : '76px'};
+    width: ${({ openMenu }) => openMenu? '292px' : '76px'};
     height: 100vh;
     box-sizing: border-box;
     padding: 56px 0 10px 0;
@@ -73,6 +73,7 @@ export const SignMenuContainer = styled.div`
     height: 34px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 30px;
+    cursor: pointer;
     margin-top: 12px;
     display: flex;
     align-items: center;
@@ -86,6 +87,43 @@ export const SignMenuContainer = styled.div`
 
     & span {
         font-weight: 600;
+    }
+`;
+
+export const PrimaryFooterMenu = styled.footer<{ openMenu: boolean }>`
+    padding: 16px 24px 0;
+    visibility: ${({ openMenu }) => openMenu? 'visible' : 'hidden'};
+
+    & span {
+        display: inline-block;
+        margin-right: 8px;    
+        color: #606060;   
+        font-size: 12px;
+        font-weight: 600; 
+    }
+`;
+
+export const SecondaryFooterMenu = styled.footer<{ openMenu: boolean }>`
+    padding: 12px 24px 0;
+    visibility: ${({ openMenu }) => openMenu? 'visible' : 'hidden'};
+
+    & span {
+        display: inline-block;
+        margin-right: 8px;    
+        color: #606060;   
+        font-size: 12px;
+        font-weight: 600; 
+    }
+`;
+
+export const Copyright = styled.div<{ openMenu: boolean }>`
+    width: 78%;
+    font-size: 12px;
+    color: #909090;
+    padding: 16px 24px;
+
+    span {
+        display: block;
     }
 `;
 
