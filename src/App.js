@@ -1,17 +1,28 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/header";
 import Menu from "./components/menu";
-
+import Home from "./pages/home";
+import History from "./pages/history";
+import Library from "./pages/library";
 
 function App() {
 
   return (
+    <BrowserRouter>
     <div className="App">
       <Header />
       <div style={{ width: '100%', display: 'flex' }}>
         <Menu />
-        <div style={{ background: 'blue', width: '100%' }}></div>
+        <div style={{ width: '100%' }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/library" element={<Library />} />
+          </Routes>
+        </div>
       </div>
     </div>
+    </BrowserRouter>
   );
 }
 

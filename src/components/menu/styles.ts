@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div<{ openMenu: boolean }>`
-    width: ${({ openMenu }) => openMenu? '292px' : '76px'};
-    height: 100vh;
+    width: ${({ openMenu }) => openMenu? '266px' : '76px'};
+    height: calc(100vh - 55px);
     box-sizing: border-box;
-    padding: 56px 0 10px 0;
+    padding: 0 0 10px 0;
     display: flex;
     align-items: center;
     flex-direction: column;
-    overflow-y: auto; //if items overlap, it will create an scroll automatically
+    overflow-y: auto; 
 `;
 
 export const InnerContainer = styled.div<{ openMenu: boolean }>`
@@ -109,10 +109,10 @@ export const SecondaryFooterMenu = styled.footer<{ openMenu: boolean }>`
 
     & span {
         display: inline-block;
-        margin-right: 8px;    
-        color: #606060;   
+        margin-right: 8px;
+        color: #606060;
         font-size: 12px;
-        font-weight: 600; 
+        font-weight: 600;
     }
 `;
 
@@ -121,6 +121,7 @@ export const Copyright = styled.div<{ openMenu: boolean }>`
     font-size: 12px;
     color: #909090;
     padding: 16px 24px;
+    visibility: ${({ openMenu }) => openMenu? 'visible' : 'hidden'};
 
     span {
         display: block;

@@ -38,16 +38,17 @@ import ReportIcon from '../../assets/flag.png'
 import HelpIcon from '../../assets/help.png'
 import FeedbackIcon from '../../assets/chat.png'
 import BrowseIcon from '../../assets/plus.png'
+import { useNavigate } from "react-router-dom";
 
 const firstItems = [
-    { label: 'Home', icon: HomeIcon },
-    { label: 'Shorts', icon: ShortsIcon },
-    { label: 'Subscriptions', icon: SubscriptionsIcon },
+    { label: 'Home', icon: HomeIcon, link: '/' },
+    { label: 'Shorts', icon: ShortsIcon, link: '/' },
+    { label: 'Subscriptions', icon: SubscriptionsIcon, link: '/' },
 ];
 
 const secondItems = [
-    { label: 'Library', icon: LibraryIcon },
-    { label: 'History', icon: HistoryIcon },
+    { label: 'Library', icon: LibraryIcon, link: '/library' },
+    { label: 'History', icon: HistoryIcon, link: '/history' },
 ];
 
 const thirdItems = [
@@ -93,13 +94,14 @@ const secondSpanItems = [
 ]
 
 function Menu() {
-    const { openMenu } = useContext(AppContext)
+    const navigate = useNavigate();
+    const { openMenu } = useContext(AppContext);
 
     return (
         <Container openMenu={openMenu}>
             <InnerContainer openMenu={openMenu}>
                 {firstItems.map((menuItem) => (
-                    <MenuItem openMenu={openMenu} visibility="visible">
+                    <MenuItem openMenu={openMenu} visibility="visible" onClick={() => navigate(menuItem.link)}>
                         <ButtonIcon alt="" src={menuItem.icon}/>
                         <span>{menuItem.label}</span>
                     </MenuItem>
@@ -107,7 +109,7 @@ function Menu() {
             </InnerContainer>
             <InnerContainer openMenu={openMenu}>
                 {secondItems.map((menuItem) => (
-                    <MenuItem openMenu={openMenu} visibility="visible">
+                    <MenuItem openMenu={openMenu} visibility="visible" onClick={() => navigate(menuItem.link)}>
                         <ButtonIcon alt="" src={menuItem.icon}/>
                         <span>{menuItem.label}</span>
                     </MenuItem>
