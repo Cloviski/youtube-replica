@@ -1,8 +1,27 @@
+import { useContext } from "react";
+
+import VideoComponent from "../../components/videoComponent";
+import { Container } from "./styles";
+import { AppContext } from "../../contexts/AppContext";
+
 function Home() {
+    const { openMenu } = useContext(AppContext);
+
     return (
-        <div>
-            Home
-        </div>
+        <Container openMenu={openMenu}>
+            <VideoComponent />
+            <VideoComponent />
+            <VideoComponent />
+            <VideoComponent />
+            <VideoComponent />
+            <VideoComponent />
+            <VideoComponent />
+            <VideoComponent />
+            <VideoComponent />
+            <VideoComponent />
+            <VideoComponent />
+            <VideoComponent />
+        </Container>
     )
 }
 

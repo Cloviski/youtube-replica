@@ -13,7 +13,7 @@ function App() {
       <Header />
       <div style={{ width: '100%', display: 'flex' }}>
         <Menu />
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '100%', padding: '80px 106px', boxSizing: 'border-box', display: 'flex', justifyContent: 'center' }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/history" element={<History />} />

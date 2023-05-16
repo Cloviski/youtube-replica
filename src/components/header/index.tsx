@@ -15,7 +15,7 @@ import SearchIcon from '../../assets/search.png';
 import MicIcon from '../../assets/microphone.png';
 import VideoIcon from '../../assets/video.png'
 import NotificationIcon from '../../assets/bell.png'
-import { useContext } from "react";
+import { useContext } from 'react';
 import { AppContext } from "../../contexts/AppContext";
 
 
@@ -42,7 +42,7 @@ function Header() {
                 <SearchButton>
                     <ButtonIcon alt="" src={SearchIcon} />
                 </SearchButton>
-                <ButtonContainer margin='0 0 0 10px'>
+                <ButtonContainer margin='0 0 0 8px'>
                     <ButtonIcon alt="" src={MicIcon} />
                 </ButtonContainer>
             </SearchContainer>

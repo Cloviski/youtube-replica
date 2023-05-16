@@ -9,6 +9,8 @@ export const Container = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
 `;
 
 export const LogoContainer = styled.div`
@@ -31,7 +33,7 @@ export const ButtonContainer = styled.div<{ margin?: string }>`
 `;
 
 export const ButtonIcon = styled.img`
-    width: 16px;
+    width: 18px;
 `;
 
 export const SearchContainer = styled.div`
@@ -41,13 +43,13 @@ export const SearchContainer = styled.div`
 export const SearchInputContainer = styled.div`
     width: 519px;
     height: 38px;
-    margin-left: 60px;
+    margin-left: 67px;
     border: 1px solid #d3d3d3;
     border-right: 0;
     border-radius: 40px 0 0 40px;
     display: flex;
     align-items: center;
-    padding: 0 4px 0 16px;
+    padding: 0 6px 0 14px;
 `;
 
 export const SearchInput = styled.input`

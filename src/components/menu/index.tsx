@@ -101,7 +101,7 @@ function Menu() {
         <Container openMenu={openMenu}>
             <InnerContainer openMenu={openMenu}>
                 {firstItems.map((menuItem) => (
-                    <MenuItem openMenu={openMenu} visibility="visible" onClick={() => navigate(menuItem.link)}>
+                    <MenuItem openMenu={openMenu} display="flex" onClick={() => navigate(menuItem.link)}>
                         <ButtonIcon alt="" src={menuItem.icon}/>
                         <span>{menuItem.label}</span>
                     </MenuItem>
@@ -109,7 +109,7 @@ function Menu() {
             </InnerContainer>
             <InnerContainer openMenu={openMenu}>
                 {secondItems.map((menuItem) => (
-                    <MenuItem openMenu={openMenu} visibility="visible" onClick={() => navigate(menuItem.link)}>
+                    <MenuItem openMenu={openMenu} display="flex" onClick={() => navigate(menuItem.link)}>
                         <ButtonIcon alt="" src={menuItem.icon}/>
                         <span>{menuItem.label}</span>
                     </MenuItem>

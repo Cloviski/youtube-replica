@@ -9,6 +9,8 @@ export const Container = styled.div<{ openMenu: boolean }>`
     align-items: center;
     flex-direction: column;
     overflow-y: auto; 
+    position: sticky;
+    top: 56px;
 `;
 
 export const InnerContainer = styled.div<{ openMenu: boolean }>`
@@ -18,14 +20,14 @@ export const InnerContainer = styled.div<{ openMenu: boolean }>`
 `;
 
 export const SpanMenuItem = styled.div<{ openMenu: boolean }>`
-    visibility: ${({ openMenu }) => openMenu? 'visible' : 'hidden'};
+    display: ${({ openMenu }) => openMenu? 'block' : 'none'};
     padding: 6px 12px 4px 12px;
 `;
 
 export const TextInnerContainer = styled.div<{ openMenu: boolean }>`
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 16px 32px;
-    visibility: ${({ openMenu }) => openMenu? 'visible' : 'hidden'};
+    display: ${({ openMenu }) => openMenu? 'block' : 'none'};
 `;
 
 export const TextMenuItem = styled.div<{ openMenu: boolean }>`
@@ -38,18 +40,17 @@ export const TextMenuItem = styled.div<{ openMenu: boolean }>`
 `;
 
 
-export const MenuItem = styled.div<{ openMenu: boolean, visibility?: string}>`
+export const MenuItem = styled.div<{ openMenu: boolean, display?: string}>`
     width: ${({ openMenu }) => openMenu? '204px' : '64px'};
     min-height: ${({ openMenu }) => openMenu? '40px' : '70px'};
     border-radius: 10px;
     cursor: pointer;
     padding: ${({ openMenu }) => openMenu? '0 12px' : '16px 0 14px 0'};
     box-sizing: border-box;
-    display: flex;
+    display: ${({ openMenu, display }) => openMenu ? 'flex' : display || 'none'};
     flex-direction: ${({ openMenu }) => openMenu? 'row' : 'column'};
     align-items: center;
     justify-content: ${({ openMenu }) => openMenu? 'none' : 'center'};
-    visibility: ${({ openMenu, visibility }) => openMenu ? 'visible' : visibility || 'hidden'};
 
     span {
         width: ${({ openMenu }) => openMenu? '100%' : 'none'};
@@ -92,7 +93,7 @@ export const SignMenuContainer = styled.div`
 
 export const PrimaryFooterMenu = styled.footer<{ openMenu: boolean }>`
     padding: 16px 24px 0;
-    visibility: ${({ openMenu }) => openMenu? 'visible' : 'hidden'};
+    display: ${({ openMenu }) => openMenu? 'block' : 'none'};
 
     & span {
         display: inline-block;
@@ -105,7 +106,7 @@ export const PrimaryFooterMenu = styled.footer<{ openMenu: boolean }>`
 
 export const SecondaryFooterMenu = styled.footer<{ openMenu: boolean }>`
     padding: 12px 24px 0;
-    visibility: ${({ openMenu }) => openMenu? 'visible' : 'hidden'};
+    display: ${({ openMenu }) => openMenu? 'block' : 'none'};
 
     & span {
         display: inline-block;
@@ -117,19 +118,14 @@ export const SecondaryFooterMenu = styled.footer<{ openMenu: boolean }>`
 `;
 
 export const Copyright = styled.div<{ openMenu: boolean }>`
+    display: ${({ openMenu }) => openMenu? 'block' : 'none'};
     width: 78%;
     font-size: 12px;
     color: #909090;
     padding: 16px 24px;
-    visibility: ${({ openMenu }) => openMenu? 'visible' : 'hidden'};
 
     span {
         display: block;
     }
 `;
 
-// first one is open and second is closed
-
-//first and second always open
-
-//third, forth and fifth disapear when closed
