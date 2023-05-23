@@ -4,8 +4,10 @@ import Menu from "./components/menu";
 import Home from "./pages/home";
 import History from "./pages/history";
 import Library from "./pages/library";
+import Category from "./components/category";
 
 function App() {
+
 
   return (
     <BrowserRouter>
@@ -13,7 +15,7 @@ function App() {
       <Header />
       <div style={{ width: '100%', display: 'flex' }}>
         <Menu />
-        <div style={{ width: '100%', padding: '80px 106px', boxSizing: 'border-box', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ width: '100%', display: 'block', boxSizing: 'border-box', justifyContent: 'center' }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/history" element={<History />} />

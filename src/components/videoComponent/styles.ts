@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const ImageBanner = styled.img`
     width: 100%;
-    height: 210px;
+    height: 202px;
     border-radius: 12px;
 `;
 
@@ -17,13 +17,14 @@ export const TitleContainer = styled.div`
 
 export const ChannelImage = styled.div`
     background-color: #f2f2f2;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-top: 12px;
+    margin-right: 14px;
 `;
 
 export const TextContainer = styled.div`
@@ -32,11 +33,13 @@ export const TextContainer = styled.div`
 `;
 
 export const Title = styled.span`
+    margin: 10px 0 6px 0;
     font-weight: 600;
     color: #0f0f0f;
 `;
 
 export const TextCard = styled.span`
+    margin-bottom: 4px;
     color: #8c8c8c;
     font-size: 14px;
 `;

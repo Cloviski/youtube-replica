@@ -1,4 +1,12 @@
-import { Container, ImageBanner, ChannelImage, Title, TextContainer, TitleContainer, TextCard } from "./styles";
+import {
+    Container,
+    ImageBanner,
+    ChannelImage,
+    Title,
+    TextContainer,
+    TitleContainer,
+    TextCard
+} from "./styles";
 
 function VideoComponent() {
 
@@ -12,7 +20,7 @@ function VideoComponent() {
                 <TextContainer>
                     <Title>How I lost my sanity in Dubai...</Title>
                     <TextCard>Martin Walker</TextCard>
-                    <TextCard>33 mi views • 2 weeks ago</TextCard>
+                    <TextCard>33M views • 2 weeks ago</TextCard>
                 </TextContainer>
             </TitleContainer>
        </Container>
