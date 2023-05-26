@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { 
     Container,
     InnerContainer
@@ -24,7 +26,14 @@ const categoryItems = [
     { label: 'New to you' },
 ];
 
+interface ICategoryProps {
+    expanded: boolean;
+    setExpanded: (value: boolean) => void;
+}
+
 function Category() {
+    const [expanded, setExpanded] = useState(false);
+
     return (
         <Container>
             <InnerContainer>

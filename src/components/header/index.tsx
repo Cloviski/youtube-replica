@@ -21,7 +21,7 @@ import { AppContext } from "../../contexts/AppContext";
 
 
 function Header() {
-    const {openMenu ,setOpenMenu} = useContext(AppContext)
+    const {openMenu, setOpenMenu} = useContext(AppContext)
 
     return (
         <Container>

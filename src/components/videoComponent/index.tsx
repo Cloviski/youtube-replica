@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
     Container,
     ImageBanner,
@@ -7,12 +8,14 @@ import {
     TitleContainer,
     TextCard
 } from "./styles";
+import { AppContext } from "../../contexts/AppContext";
 
 function VideoComponent() {
+    const { openMenu } = useContext(AppContext);
 
     return (
        <Container>
-            <ImageBanner src="https://images3.alphacoders.com/567/567308.jpg" />
+            <ImageBanner src="https://images3.alphacoders.com/567/567308.jpg" openMenu={openMenu}/>
             <TitleContainer>
                 <ChannelImage>
                     MW

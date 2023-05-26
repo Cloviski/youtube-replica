@@ -4,9 +4,9 @@ export const Container = styled.div`
     width: 100%;
 `;
 
-export const ImageBanner = styled.img`
+export const ImageBanner = styled.img<{ openMenu: boolean }>`
     width: 100%;
-    height: 202px;
+    height: ${({ openMenu }) => openMenu? '202px' : '193px'};
     border-radius: 12px;
 `;
 

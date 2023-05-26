@@ -10,7 +10,6 @@ export const Container = styled.div`
 export const InnerContainer = styled.div`
     display: flex;
     flex-direction: row;
-    min-width: 12px;
 
     span {
         display: flex;
@@ -21,6 +20,7 @@ export const InnerContainer = styled.div`
         height: 32px;
         padding: 0 12px;
         font-size: 14px;
+        flex-shrink: 0;
     }
 `;
 
