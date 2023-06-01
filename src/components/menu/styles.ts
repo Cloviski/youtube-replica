@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div<{ openMenu: boolean }>`
     width: ${({ openMenu }) => openMenu? '266px' : '76px'};
-    height: calc(100vh - 55px);
+    height: calc(100vh - 56px);
     box-sizing: border-box;
     padding: 0 0 10px 0;
     display: flex;

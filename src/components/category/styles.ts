@@ -21,6 +21,12 @@ export const InnerContainer = styled.div`
         padding: 0 12px;
         font-size: 14px;
         flex-shrink: 0;
+
+        :hover {
+            cursor: pointer;
+            background-color: #e8e8e8;
+            transition: 0.4s;
+        }
     }
 `;
 

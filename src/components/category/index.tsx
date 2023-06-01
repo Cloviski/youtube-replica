@@ -26,13 +26,10 @@ const categoryItems = [
     { label: 'New to you' },
 ];
 
-interface ICategoryProps {
-    expanded: boolean;
-    setExpanded: (value: boolean) => void;
-}
+
 
 function Category() {
-    const [expanded, setExpanded] = useState(false);
+    const [arrowShown, setArrowShown] = useState(0)
 
     return (
         <Container>
@@ -40,9 +37,7 @@ function Category() {
                 {categoryItems.map((menuItem, index) => (
                     <span
                         key={index}
-                        style={{
-                            margin: index === 0 ? '12px 12px 12px 24px' : index === categoryItems.length - 1 ? '12px 24px 12px 0' : '12px 12px 12px 0',
-                        }}
+                        style={{ margin: index === 0 ? '12px 12px 12px 24px' : index === categoryItems.length - 1 ? '12px 24px 12px 0' : '12px 12px 12px 0' }}
                     >
                         {menuItem.label}
                     </span>

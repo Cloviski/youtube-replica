@@ -5,9 +5,11 @@ export const Container = styled.div`
 `;
 
 export const ImageBanner = styled.img<{ openMenu: boolean }>`
+    max-width: 360px;
+    min-width: 343px;
     width: 100%;
-    height: ${({ openMenu }) => openMenu? '202px' : '193px'};
     border-radius: 12px;
+    min-height: ${({ openMenu }) => openMenu? '202px' : 'none'};
 `;
 
 export const TitleContainer = styled.div`

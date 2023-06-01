@@ -4,7 +4,7 @@ import Menu from "./components/menu";
 import Home from "./pages/home";
 import History from "./pages/history";
 import Library from "./pages/library";
-import Category from "./components/category";
+import { MainContainer } from "./AppStyles";
 
 function App() {
 
@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
     <div className="App">
       <Header />
-      <div style={{ width: '100%', display: 'flex' }}>
+      <MainContainer>
         <Menu />
         <div style={{ width: '100%', display: 'block', boxSizing: 'border-box', justifyContent: 'center' }}>
           <Routes>
@@ -22,7 +22,7 @@ function App() {
             <Route path="/library" element={<Library />} />
           </Routes>
         </div>
-      </div>
+      </MainContainer>
     </div>
     </BrowserRouter>
   );
