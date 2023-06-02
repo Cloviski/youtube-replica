@@ -17,16 +17,10 @@ const categoryItems = [
     { label: 'Guitar solos' },
     { label: 'Podcasts' },
     { label: 'Call of Duty: Modern Warfare' },
-    { label: 'Bodybuilding' },
-    { label: 'Gadgets' },
-    { label: 'Conversation' },
-    { label: 'Action-adventure games' },
     { label: 'Recently uploaded' },
     { label: 'Watched' },
     { label: 'New to you' },
 ];
-
-
 
 function Category() {
     const [arrowShown, setArrowShown] = useState(0)

@@ -1,7 +1,10 @@
 import { useContext } from "react";
 
 import VideoComponent from "../../components/videoComponent";
-import { Container } from "./styles";
+import { 
+    VideoContainer,
+    ShortsContainer
+} from "./styles";
 import { AppContext } from "../../contexts/AppContext";
 import Category from "../../components/category";
 
@@ -11,21 +14,24 @@ function Home() {
 
     return (
         <>
-        <Category />
-        <Container openMenu={openMenu}>
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
-        </Container>
+            <Category />
+            <VideoContainer openMenu={openMenu}>
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+                <VideoComponent />
+            </VideoContainer>
+            <ShortsContainer openMenu={openMenu}>
+
+            </ShortsContainer>
         </>
     )
 }
