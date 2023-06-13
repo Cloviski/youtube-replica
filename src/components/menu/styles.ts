@@ -82,12 +82,15 @@ export const SignMenuContainer = styled.div`
 
     & ${ButtonIcon} {
         width: 20px;
-        margin-left: -6px;
-        margin-right: 6px;
+        margin-left: -4px;
+        margin-right: 8px;
     }
 
     & span {
+        white-space: nowrap;
         font-weight: 600;
+        font-size: 13px;
+        color: #065FD4;
     }
 `;
 

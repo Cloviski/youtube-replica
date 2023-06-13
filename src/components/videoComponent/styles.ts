@@ -10,11 +10,18 @@ export const ImageBanner = styled.img<{ openMenu: boolean }>`
     width: 100%;
     border-radius: 12px;
     min-height: ${({ openMenu }) => openMenu? '202px' : 'none'};
+    cursor: pointer;
+
+    :hover {
+        border-radius: 0;
+        transition: 0.5s;
+    }
 `;
 
 export const TitleContainer = styled.div`
     width: 100%;
     display: flex;
+    cursor: pointer;
 `;
 
 export const ChannelImage = styled.div`
@@ -44,4 +51,14 @@ export const TextCard = styled.span`
     margin-bottom: 4px;
     color: #8c8c8c;
     font-size: 14px;
+`;
+
+export const ChannelName = styled.span`
+    margin-bottom: 4px;
+    color: #8c8c8c;
+    font-size: 14px;
+
+    :hover {
+        color: #0f0f0f;
+    }
 `;

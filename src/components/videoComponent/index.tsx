@@ -6,23 +6,24 @@ import {
     Title,
     TextContainer,
     TitleContainer,
-    TextCard
+    TextCard,
+    ChannelName
 } from "./styles";
 import { AppContext } from "../../contexts/AppContext";
 
-function VideoComponent() {
+function VideoComponent({ video }: any) {
     const { openMenu } = useContext(AppContext);
 
     return (
        <Container>
-            <ImageBanner src="https://images3.alphacoders.com/567/567308.jpg" openMenu={openMenu}/>
+            <ImageBanner alt="" src="https://images3.alphacoders.com/567/567308.jpg" openMenu={openMenu}/>
             <TitleContainer>
                 <ChannelImage>
                     MW
                 </ChannelImage>
                 <TextContainer>
                     <Title>How I lost my sanity in Dubai...</Title>
-                    <TextCard>Martin Walker</TextCard>
+                    <ChannelName>Martin Walker</ChannelName>
                     <TextCard>33M views • 2 weeks ago</TextCard>
                 </TextContainer>
             </TitleContainer>

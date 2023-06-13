@@ -15,13 +15,19 @@ import SearchIcon from '../../assets/search.png';
 import MicIcon from '../../assets/microphone.png';
 import VideoIcon from '../../assets/video.png'
 import NotificationIcon from '../../assets/bell.png'
+import SignInIcon from '../../assets/profile.png'
 import { useContext } from 'react';
 import { AppContext } from "../../contexts/AppContext";
+import { SignMenuContainer } from "./styles";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/userContext";
 
 
 
 function Header() {
     const {openMenu, setOpenMenu} = useContext(AppContext)
+    const { login, logOut } = useContext(UserContext);
+    const navigate = useNavigate();
 
     return (
         <Container>
@@ -47,12 +53,25 @@ function Header() {
                 </ButtonContainer>
             </SearchContainer>
                 <HeaderButton>
-                <ButtonContainer margin='0 10px 0 0'>
-                    <ButtonIcon alt="" src={VideoIcon}/>
-                </ButtonContainer>
-                <ButtonContainer margin='0 10px 0 0'>
-                    <ButtonIcon alt="" src={NotificationIcon}/>
-                </ButtonContainer>
+                    <ButtonContainer margin='0 10px 0 0'>
+                        <ButtonIcon alt="" src={VideoIcon}/>
+                    </ButtonContainer>
+                    <ButtonContainer margin='0 10px 0 0'>
+                        <ButtonIcon alt="" src={NotificationIcon}/>
+                    </ButtonContainer>
+                    {login?
+                    <>
+                        <ButtonContainer margin='0 0 0 10px'>
+                            MW 
+                        </ButtonContainer>
+                        <span onClick={() => logOut()}>Sair</span>
+                    </>
+                    :
+                    <SignMenuContainer onClick={() => navigate('/login')}>
+                        <ButtonIcon alt="" src={SignInIcon} />
+                        <span>Sign in</span>
+                    </SignMenuContainer>
+                    }
                 </HeaderButton>
         </Container>
     )
@@ -60,3 +79,4 @@ function Header() {
 
 export default Header;
 
+// line 63 make this part dinamic

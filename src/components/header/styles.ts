@@ -77,3 +77,27 @@ export const HeaderButton = styled.div`
     width: 200px;
     display: flex;
 `;
+
+export const SignMenuContainer = styled.div`
+    width: 67px;
+    height: 34px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+
+    & ${ButtonIcon} {
+        width: 20px;
+        margin-left: -4px;
+        margin-right: 8px;
+    }
+
+    & span {
+        white-space: nowrap;
+        font-weight: 600;
+        font-size: 13px;
+        color: #065FD4;
+    }
+`;
