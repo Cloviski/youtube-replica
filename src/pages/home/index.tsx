@@ -15,6 +15,9 @@ import Category from "../../components/category";
 import Shorts from "../../components/shorts";
 import ShortsColored from "../../assets/youtube-shorts-colored.png"
 import DownArrowShorts from "../../assets/down-arrow.png";
+import Header from "../../components/header";
+import { MainContainer, RoutesContainer } from "../../AppStyles";
+import Menu from "../../components/menu";
 
 const video = [
     { 
@@ -31,41 +34,47 @@ function Home() {
 
     return (
         <>
-            <Category />
-            <VideoContainer openMenu={openMenu}>
-                <VideoComponent video={video} />
-                <VideoComponent video={video} />
-                <VideoComponent video={video} />
-                <VideoComponent video={video} />
-                <VideoComponent video={video} />
-                <VideoComponent video={video} />
-                <VideoComponent video={video} />
-                <VideoComponent video={video} />
-                <VideoComponent video={video} />
-                <VideoComponent video={video} />
+            <Header />
+            <MainContainer>
+                <Menu />
+                <RoutesContainer>
+                    <Category />
+                    <VideoContainer openMenu={openMenu}>
+                        <VideoComponent video={video} />
+                        <VideoComponent video={video} />
+                        <VideoComponent video={video} />
+                        <VideoComponent video={video} />
+                        <VideoComponent video={video} />
+                        <VideoComponent video={video} />
+                        <VideoComponent video={video} />
+                        <VideoComponent video={video} />
+                        <VideoComponent video={video} />
+                        <VideoComponent video={video} />
 
-            </VideoContainer>
-            <ShortsContainer openMenu={openMenu}>
-                <ShortsIconContainer>
-                    <ShortsIcon alt="" src={ShortsColored}/>
-                    <span>Shorts</span>
-                </ShortsIconContainer>
-                <ShortsInnerContainer openMenu={openMenu}>
-                    <Shorts />
-                    <Shorts />
-                    <Shorts />
-                    <Shorts />
-                    <Shorts />
-                    <Shorts />
-                    <Shorts />
-                    <Shorts />
-                    <Shorts />
-                    <Shorts />
-                </ShortsInnerContainer>
-                <DownArrowContainer>
-                    <DownArrow alt="" src={DownArrowShorts} />
-                </DownArrowContainer>
-            </ShortsContainer>
+                    </VideoContainer>
+                    <ShortsContainer openMenu={openMenu}>
+                        <ShortsIconContainer>
+                            <ShortsIcon alt="" src={ShortsColored}/>
+                            <span>Shorts</span>
+                        </ShortsIconContainer>
+                        <ShortsInnerContainer openMenu={openMenu}>
+                            <Shorts />
+                            <Shorts />
+                            <Shorts />
+                            <Shorts />
+                            <Shorts />
+                            <Shorts />
+                            <Shorts />
+                            <Shorts />
+                            <Shorts />
+                            <Shorts />
+                        </ShortsInnerContainer>
+                        <DownArrowContainer>
+                            <DownArrow alt="" src={DownArrowShorts} />
+                        </DownArrowContainer>
+                    </ShortsContainer>
+                </RoutesContainer>
+            </MainContainer>
         </>
     )
 }
