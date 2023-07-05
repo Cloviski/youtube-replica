@@ -25,7 +25,7 @@ import { UserContext } from "../../contexts/userContext";
 
 
 function Header() {
-    const {openMenu, setOpenMenu} = useContext(AppContext)
+    const { openMenu, setOpenMenu } = useContext(AppContext)
     const { login, logOut } = useContext(UserContext);
     const navigate = useNavigate();
 
@@ -79,4 +79,4 @@ function Header() {
 
 export default Header;
 
-// line 63 make this part dinamic
+// line 63 make this part dynamic

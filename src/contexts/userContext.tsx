@@ -1,19 +1,24 @@
 import { createContext, useEffect, useState } from 'react';
+
 import api from '../api';
+
+interface UserStoreProps {
+    children: React.ReactNode;
+}
 
 export const UserContext = createContext({} as any);
 
-export const UserStorage = ({ children }: any) => {
+export const UserStorage = ({ children }: UserStoreProps) => {
     const [login, setLogin] = useState(false);
     const [user, setUser] = useState({});
     const [token, setToken] = useState(localStorage.getItem('token') as string);
 
     const getUser = (token: string) => {
         api.get('/user/get-user', {headers:{Authorization: token}}).then(({ data }) => {
-            setUser(data.user)
+            setUser(data.user);
             setLogin(true);
         }).catch((error) => {
-            console.log("User isn't authenticated", error)
+            console.log("User isn't authenticated", error);
         })
     }
 
@@ -27,24 +32,32 @@ export const UserStorage = ({ children }: any) => {
         setUser({});
     }
 
-
     const handleLogin = (email: string, password: string) => {
         api.post('/user/sign-in', {email, password}).then(({ data }) => {
             setLogin(true);
-            localStorage.SetItem('token', data.token);
+            localStorage.setItem('token', data.token);
             setToken(data.token);
-
             getUser(data.token);
         }).catch ((error) => {
-            console.log("It wasn't possible to login", error)
+            console.log("It wasn't possible to login", error);
         })
     }
+
+    const createUser = (name: string ,email: string, password: string) => {
+        api.post('/user/sign-un', {name ,email, password}).then(({ data }) => {
+            handleLogin(email, password);
+        }).catch ((error) => {
+            console.log("It wasn't possible to create a user", error);
+        })
+    }
+
 
     return (
         <UserContext.Provider value={{
             login,
             user,
             handleLogin,
+            createUser,
             logOut
         }}>
             {children}

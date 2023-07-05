@@ -39,6 +39,7 @@ import HelpIcon from '../../assets/help.png'
 import FeedbackIcon from '../../assets/chat.png'
 import BrowseIcon from '../../assets/plus.png'
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/userContext";
 
 const firstItems = [
     { label: 'Home', icon: HomeIcon, link: '/' },
@@ -96,6 +97,7 @@ const secondSpanItems = [
 function Menu() {
     const navigate = useNavigate();
     const { openMenu } = useContext(AppContext);
+    const { login } = useContext(UserContext);
 
     return (
         <Container openMenu={openMenu}>
@@ -115,6 +117,9 @@ function Menu() {
                     </MenuItem>
                 ))}
             </InnerContainer>
+            {login?
+            null
+            : 
             <TextInnerContainer openMenu={openMenu}>
                 <TextMenuItem openMenu={openMenu}>
                     <span>Sign in to like videos, comment, and subscribe.</span>
@@ -124,6 +129,7 @@ function Menu() {
                     </SignMenuContainer>
                 </TextMenuItem>
             </TextInnerContainer>
+            }
             <InnerContainer openMenu={openMenu}>
                 <SpanMenuItem openMenu={openMenu}>Explore</SpanMenuItem>
                 {thirdItems.map((menuItem) => (

@@ -118,10 +118,12 @@ export const SignUpButton = styled.div`
     box-sizing: border-box;
     cursor: pointer;
     height: 36px;
+    visibility: hidden;
+    
 
     span {
         color: #1A73E8;
-        font-family: 'Google Sans', roboto, Arial, sans-serif;
+        font-family: 'Google Sans', sans-serif;
         letter-spacing: .0107142857em;
         font-weight: 600;
         font-size: 14px;
@@ -144,6 +146,8 @@ export const NextButton = styled.button`
         background-color: #1A5EEA;
     }
 `;
+
+
 
 
 

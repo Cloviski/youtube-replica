@@ -6,21 +6,19 @@ import {
 
 import { UserStorage } from "./contexts/userContext";
 import Home from "./pages/home";
-import History from "./pages/history";
-import Library from "./pages/library";
 import Login from "./pages/login";
+import SignUp from "./pages/signup";
 
 function App() {
 
   return (
     <UserStorage>
       <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/library" element={<Library />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Routes>
       </BrowserRouter>
     </UserStorage>
   );

@@ -2,28 +2,28 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/userContext";
 import { 
     AccountContainer,
-    ButtonIcon,
-    EmailInput, 
     EmailLoginContainer, 
-    FooterContainer, 
     FormContainer, 
+    FormInput, 
     GoogleContainer, 
     GoogleLogo, 
     InnerLoginContainer, 
-    LanguageContainer, 
     MainLoginContainer, 
     NextButton, 
     SignUpButton, 
     SpanContainer,
     Spancing,
-    TermsContainer, 
 } from "./styles";
+
 import GoogleLogoIcon from "../../assets/google.png"
-import DownArrow from "../../assets/down-filled-triangular-arrow.png"
+import { useNavigate } from "react-router-dom";
+import Footer from "../../components/footer";
+import { Link } from "react-router-dom";
 
 
 function Login() {
     const { handleLogin } = useContext(UserContext)
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -39,11 +39,9 @@ function Login() {
                 <span>to continue to YouTube</span>
                 <EmailLoginContainer>
                     <FormContainer>
-                        <EmailInput placeholder="Email or phone"/>
+                        <FormInput type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <FormInput type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </FormContainer>
-                    <SpanContainer>
-                        <span>Forgot email?</span>
-                    </SpanContainer>
                 </EmailLoginContainer>
                 <SpanContainer>
                     <span className="guest-span">Not your computer? Use Guest mode to sign in privately.</span>
@@ -51,22 +49,14 @@ function Login() {
                 </SpanContainer>
                 <AccountContainer>
                     <SignUpButton>
-                        <span>Create account</span>
+                        <span onClick={() => navigate('/sign-up')}>Create account</span>
                     </SignUpButton>
-                    <NextButton>Next</NextButton>
+                    <Link to='..'>
+                        <NextButton onClick={() => handleLogin(email, password)}>Next</NextButton>
+                    </Link>
                 </AccountContainer>
             </InnerLoginContainer>
-            <FooterContainer>
-                <LanguageContainer>
-                    <span>English (United States)</span>
-                    <ButtonIcon alt="" src={DownArrow} />
-                </LanguageContainer>
-                <TermsContainer>
-                    <span>Help</span>
-                    <span>Privacy</span>
-                    <span>Terms</span>
-                </TermsContainer>
-            </FooterContainer>
+            <Footer />
         </MainLoginContainer>
     )
 }

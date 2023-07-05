@@ -50,7 +50,6 @@ function Home() {
                         <VideoComponent video={video} />
                         <VideoComponent video={video} />
                         <VideoComponent video={video} />
-
                     </VideoContainer>
                     <ShortsContainer openMenu={openMenu}>
                         <ShortsIconContainer>
