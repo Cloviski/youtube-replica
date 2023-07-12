@@ -43,8 +43,9 @@ export const UserStorage = ({ children }: UserStoreProps) => {
         })
     }
 
-    const createUser = (name: string ,email: string, password: string) => {
-        api.post('/user/sign-un', {name ,email, password}).then(({ data }) => {
+    const createUser = (name: string, email: string, password: string) => {
+        api.post('/user/sign-up', {name ,email, password}).then(() => {
+            alert('User was created!')
             handleLogin(email, password);
         }).catch ((error) => {
             console.log("It wasn't possible to create a user", error);

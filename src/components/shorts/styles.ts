@@ -7,8 +7,9 @@ export const Container = styled.div`
 
 export const ImageBanner = styled.img<{ openMenu: boolean }>`
     width: 100%;
+    min-width: 14.625rem;
     border-radius: 12px;
-    min-height: 305px;
+    min-height: 26rem;
     object-fit: cover;
 `;
 

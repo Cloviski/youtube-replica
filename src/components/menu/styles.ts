@@ -104,6 +104,7 @@ export const PrimaryFooterMenu = styled.footer<{ openMenu: boolean }>`
         color: #606060;   
         font-size: 12px;
         font-weight: 600; 
+        cursor: pointer;
     }
 `;
 
@@ -117,6 +118,7 @@ export const SecondaryFooterMenu = styled.footer<{ openMenu: boolean }>`
         color: #606060;
         font-size: 12px;
         font-weight: 600;
+        cursor: pointer;
     }
 `;
 

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { MenuContext } from "../../contexts/menuContext";
 import {
     Container,
     ImageBanner,
@@ -9,14 +10,40 @@ import {
     TextCard,
     ChannelName
 } from "./styles";
-import { AppContext } from "../../contexts/AppContext";
 
-function VideoComponent({ video }: any) {
-    const { openMenu } = useContext(AppContext);
+interface Props {
+    title: string
+    thumbnail: string
+    channelImage: string
+    channelName: string
+    details: string
+}
+
+function VideoComponent( props : Props ) {
+    const { openMenu } = useContext(MenuContext);
 
     return (
        <Container>
-            <ImageBanner alt="" src="https://images3.alphacoders.com/567/567308.jpg" openMenu={openMenu}/>
+            <ImageBanner alt="" src={props.thumbnail} openMenu={openMenu}/>
+            <TitleContainer>
+                <ChannelImage>
+                    {props.channelImage}
+                </ChannelImage>
+                <TextContainer>
+                    <Title>{props.title}</Title>
+                    <ChannelName>{props.channelName}</ChannelName>
+                    <TextCard>{props.details}</TextCard>
+                </TextContainer>
+            </TitleContainer>
+       </Container>
+    )
+}
+
+export default VideoComponent;
+
+/*
+<Container>
+            <ImageBanner alt="thumbnail" src="https://images3.alphacoders.com/567/567308.jpg" openMenu={openMenu}/>
             <TitleContainer>
                 <ChannelImage>
                     MW
@@ -28,7 +55,4 @@ function VideoComponent({ video }: any) {
                 </TextContainer>
             </TitleContainer>
        </Container>
-    )
-}
-
-export default VideoComponent;
+*/

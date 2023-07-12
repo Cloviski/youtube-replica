@@ -18,6 +18,14 @@ export const LogoContainer = styled.div`
     align-items: center;
 `;
 
+export const YoutubeLogo = styled.img`
+    cursor: pointer;
+    width: 90px;
+    padding: 6px;
+`;
+
+//style={{ cursor: 'pointer', width: '90px', padding: '6px' }}
+
 export const ButtonContainer = styled.div<{ margin?: string }>`
     width: 40px;
     height: 40px;

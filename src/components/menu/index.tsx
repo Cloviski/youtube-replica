@@ -14,7 +14,7 @@ import {
     SecondaryFooterMenu,
     Copyright, 
 } from "./styles";
-import { AppContext } from "../../contexts/AppContext";
+import { MenuContext } from "../../contexts/menuContext";
 import { ButtonIcon } from "../menu/styles";
 import HomeIcon from '../../assets/house.png'
 import ShortsIcon from '../../assets/shorts.png'
@@ -96,7 +96,7 @@ const secondSpanItems = [
 
 function Menu() {
     const navigate = useNavigate();
-    const { openMenu } = useContext(AppContext);
+    const { openMenu } = useContext(MenuContext);
     const { login } = useContext(UserContext);
 
     return (
@@ -181,5 +181,4 @@ function Menu() {
 
 export default Menu;
 
-//I want to make all menu objects appear here as a string
 

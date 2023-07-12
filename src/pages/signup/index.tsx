@@ -16,12 +16,18 @@ import GoogleLogoIcon from "../../assets/google.png"
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/footer";
 import { UserContext } from "../../contexts/userContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function SignUp() {
-    const createUser = useContext(UserContext)
+    const { createUser } = useContext(UserContext)
+
     const navigate = useNavigate();
+    
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     return (
         <MainLoginContainer>
@@ -34,16 +40,18 @@ function SignUp() {
                 <span>Enter your email, name and password</span>
                 <EmailLoginContainer>
                     <FormContainer>
-                        <FormInput type="text" placeholder="Name" />
-                        <FormInput type="email" placeholder="Email address" />
-                        <FormInput type="password" placeholder="Password" />
+                        <FormInput type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+                        <FormInput type="email" placeholder="Email address"  value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <FormInput type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </FormContainer>
                 </EmailLoginContainer>
                 <AccountContainer>
                     <SignUpButton>
                         <span onClick={() => navigate('/sign-up')}>Create account</span>
                     </SignUpButton>
-                    <NextButton>Next</NextButton>
+                    <Link to='..'>
+                        <NextButton onClick={() => createUser(name, email, password)}>Next</NextButton>
+                    </Link>
                 </AccountContainer>
             </InnerLoginContainer>
             <Footer />

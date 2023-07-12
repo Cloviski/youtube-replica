@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled  from 'styled-components';
 
 export const VideoContainer = styled.div<{ openMenu: boolean }>`
     display: grid;
     grid-template-columns: ${({ openMenu }) => openMenu?  'repeat(4, 1fr)' : 'repeat(5, 1fr)'};
     column-gap: 16px;
-    row-gap: 60px;
+    row-gap: 40px;
     padding: ${({ openMenu }) => openMenu? '24px 106px 40px 106px' : '24px 24px 40px 24px'};
 `;
 
@@ -16,14 +16,14 @@ export const ShortsContainer = styled.div<{ openMenu: boolean }>`
 
 export const ShortsInnerContainer = styled.div<{ openMenu: boolean }>`
     display: grid;
-    grid-template-columns: ${({ openMenu }) => openMenu?  'repeat(8, 1fr)' : 'repeat(10, 1fr)'};
+    grid-template-columns: ${({ openMenu }) => openMenu?  'repeat(6, 1fr)' : 'repeat(7, 1fr)'};
     column-gap: 16px;
     row-gap: 16px;
 `;
 
 export const ShortsIconContainer = styled.div`
     border-top: 4px solid rgba(0, 0, 0, 0.1);
-    padding: 24px 0 24px 8px;
+    padding: 24px 0;
     width: 100%;
     display: flex;
     align-items: center;
@@ -60,5 +60,6 @@ export const DownArrow = styled.img`
     width: 16px;
     height: 16px;
 `;
+
 
 

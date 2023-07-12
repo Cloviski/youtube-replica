@@ -1,3 +1,7 @@
+import { createGlobalStyle } from "styled-components";
+
+export const IndexStyle = createGlobalStyle`
+
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap');
 
 body {
@@ -17,7 +21,6 @@ code {
 * {
   scrollbar-width: 10px;
   scrollbar-color: #8c8c8c;
-
 }
 
 *::-webkit-scrollbar {
@@ -28,5 +31,6 @@ code {
   background-color: #8c8c8c;
   border-radius: 20px;
 }
+`;
 
 

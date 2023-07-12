@@ -7,10 +7,10 @@ import {
     TitleContainer,
     TextCard,
 } from "./styles";
-import { AppContext } from "../../contexts/AppContext";
+import { MenuContext } from "../../contexts/menuContext";
 
 function Shorts() {
-    const { openMenu } = useContext(AppContext);
+    const { openMenu } = useContext(MenuContext);
 
     return (
        <Container>

@@ -7,7 +7,8 @@ import {
     SearchInputContainer,
     SearchInput,
     SearchButton,
-    HeaderButton
+    HeaderButton,
+    YoutubeLogo
 } from "./styles";
 import HamburgerIcon from '../../assets/hamburger.png';
 import Logo from '../../assets/youtube_logo.png';
@@ -17,7 +18,7 @@ import VideoIcon from '../../assets/video.png'
 import NotificationIcon from '../../assets/bell.png'
 import SignInIcon from '../../assets/profile.png'
 import { useContext } from 'react';
-import { AppContext } from "../../contexts/AppContext";
+import { MenuContext } from "../../contexts/menuContext";
 import { SignMenuContainer } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
@@ -25,7 +26,7 @@ import { UserContext } from "../../contexts/userContext";
 
 
 function Header() {
-    const { openMenu, setOpenMenu } = useContext(AppContext)
+    const { openMenu, setOpenMenu } = useContext(MenuContext)
     const { login, logOut } = useContext(UserContext);
     const navigate = useNavigate();
 
@@ -35,11 +36,7 @@ function Header() {
                 <ButtonContainer onClick={() => setOpenMenu(!openMenu)} margin='0 10px 0 0'>
                     <ButtonIcon alt="" src={HamburgerIcon}/>
                 </ButtonContainer>
-                <img 
-                    style={{ cursor: 'pointer', width: '90px', padding: '6px' }}
-                    alt=""
-                    src={Logo}
-                />
+                <YoutubeLogo onClick={() => navigate('/')} src={Logo} />
             </LogoContainer>
             <SearchContainer>
                 <SearchInputContainer>
