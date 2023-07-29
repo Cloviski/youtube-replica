@@ -1,67 +1,77 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from "react";
 
-import api from '../api';
+import api from "../api";
 
 interface UserStoreProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export const UserContext = createContext({} as any);
 
 export const UserStorage = ({ children }: UserStoreProps) => {
-    const [login, setLogin] = useState(false);
-    const [user, setUser] = useState({});
-    const [token, setToken] = useState(localStorage.getItem('token') as string);
+  const [login, setLogin] = useState(false);
+  const [user, setUser] = useState({});
+  const [token, setToken] = useState(localStorage.getItem("token") as string);
 
-    const getUser = (token: string) => {
-        api.get('/user/get-user', {headers:{Authorization: token}}).then(({ data }) => {
-            setUser(data.user);
-            setLogin(true);
-        }).catch((error) => {
-            console.log("User isn't authenticated", error);
-        })
-    }
+  const getUser = (token: string) => {
+    api
+      .get("/user/get-user", { headers: { Authorization: token } })
+      .then(({ data }) => {
+        setUser(data.user);
+        setLogin(true);
+      })
+      .catch((error) => {
+        console.log("User isn't authenticated", error);
+      });
+  };
 
-    useEffect(() => {
-        getUser(token);
-    },[token]);
+  useEffect(() => {
+    getUser(token);
+  }, [token]);
 
-    const logOut = () => {
-        localStorage.removeItem('token');
-        setLogin(false);
-        setUser({});
-    }
+  const logOut = () => {
+    localStorage.removeItem("token");
+    setLogin(false);
+    setUser({});
+  };
 
-    const handleLogin = (email: string, password: string) => {
-        api.post('/user/sign-in', {email, password}).then(({ data }) => {
-            setLogin(true);
-            localStorage.setItem('token', data.token);
-            setToken(data.token);
-            getUser(data.token);
-        }).catch ((error) => {
-            console.log("It wasn't possible to login", error);
-        })
-    }
+  const handleLogin = (email: string, password: string) => {
+    api
+      .post("/user/sign-in", { email, password })
+      .then(({ data }) => {
+        setLogin(true);
+        localStorage.setItem("token", data.token);
+        setToken(data.token);
+        getUser(data.token);
+      })
+      .catch((error) => {
+        console.log("It wasn't possible to login", error);
+      });
+  };
 
-    const createUser = (name: string, email: string, password: string) => {
-        api.post('/user/sign-up', {name ,email, password}).then(() => {
-            alert('User was created!')
-            handleLogin(email, password);
-        }).catch ((error) => {
-            console.log("It wasn't possible to create a user", error);
-        })
-    }
+  const createUser = (name: string, email: string, password: string) => {
+    api
+      .post("/user/sign-up", { name, email, password })
+      .then(() => {
+        alert("User was created!");
+        handleLogin(email, password);
+      })
+      .catch((error) => {
+        console.log("It wasn't possible to create a user", error);
+      });
+  };
 
-
-    return (
-        <UserContext.Provider value={{
-            login,
-            user,
-            handleLogin,
-            createUser,
-            logOut
-        }}>
-            {children}
-        </UserContext.Provider>
-    )
-}
+  return (
+    <UserContext.Provider
+      value={{
+        login,
+        user,
+        handleLogin,
+        createUser,
+        logOut,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
+};

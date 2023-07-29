@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 interface IMenuContext {
   openMenu: boolean;
@@ -14,8 +14,8 @@ export const MenuContext = createContext<IMenuContext>({
   setOpenMenu: () => {},
 });
 
-export const AppStore = ({ children }: UserStoreProps) => {
-  const [openMenu, setOpenMenu] = useState(false);
+export const MenuProvider = ({ children }: UserStoreProps) => {
+  const [openMenu, setOpenMenu] = useState(true);
 
   return (
     <MenuContext.Provider value={{ openMenu, setOpenMenu }}>
@@ -23,7 +23,3 @@ export const AppStore = ({ children }: UserStoreProps) => {
     </MenuContext.Provider>
   );
 };
-
-
-
-

@@ -1,16 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { IndexStyle } from './IndexStyle';
-import App from './App';
-import { AppStore } from './contexts/menuContext';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { IndexStyle } from "./IndexStyle";
+import { MenuProvider } from "./contexts/menuContext";
+import { CategoryProvider } from "./contexts/categoryContext";
+import { SearchProvider } from "./contexts/searchContext";
+import App from "./App";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
   <React.StrictMode>
     <IndexStyle />
-    <AppStore>
-      <App />
-    </AppStore>
+    <MenuProvider>
+      <SearchProvider>
+        <CategoryProvider>
+          <App />
+        </CategoryProvider>
+      </SearchProvider>
+    </MenuProvider>
   </React.StrictMode>
 );
