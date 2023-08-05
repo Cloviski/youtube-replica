@@ -11,6 +11,7 @@ export const Container = styled.header`
   justify-content: space-between;
   position: sticky;
   top: 0;
+  z-index: 2;
 `;
 
 export const LogoContainer = styled.div`
@@ -84,6 +85,8 @@ export const SearchButton = styled.div`
 export const HeaderButton = styled.div`
   width: 200px;
   display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
 `;
 
 export const SignMenuContainer = styled.div`
@@ -109,3 +112,81 @@ export const SignMenuContainer = styled.div`
     color: #065fd4;
   }
 `;
+
+export const DropDownContainer = styled.div<{ dropDownMenu: boolean }>`
+  display: ${({ dropDownMenu }) => (dropDownMenu ? "block" : "none")};
+  position: absolute;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px 5px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 300px;
+  max-width: 300px;
+  //max-height: 749px;
+  overflow: hidden;
+  top: 45px;
+  right: 23px;
+`;
+
+export const ProfileContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 16px;
+`;
+
+export const ProfileTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  span {
+    :first-child {
+      padding-top: 2px;
+      padding-bottom: 33px;
+    }
+
+    :last-child {
+      font-size: 14px;
+      color: #065Fd4
+    }
+  }
+`;
+
+export const InnerDropDownContainer = styled.div`
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  :last-child {
+    border-bottom: none;
+  }
+`;
+
+export const DropDownItem = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 20px;
+  padding: 10px 22px 10px 16px;
+
+  span {
+    font-size: 14px;
+    display: block;
+    width: 100%;
+  }
+
+  :hover {
+    background-color: #f2f2f2;
+  }
+
+`;
+
+export const DropDownIcon = styled.img`
+  margin-right: 16px;
+  width: 20px;
+`;
+
+export const ArrowIcon = styled.img`
+  width: 12px;
+`;
+

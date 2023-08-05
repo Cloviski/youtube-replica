@@ -11,6 +11,8 @@ interface CategoryContextProps {
 
 const CategoryContext = createContext<ICategoryContext>({} as ICategoryContext);
 
+export const useCategoryContext = () => useContext(CategoryContext);
+
 export const CategoryProvider: React.FC<CategoryContextProps> = ({
   children,
 }) => {
@@ -22,7 +24,3 @@ export const CategoryProvider: React.FC<CategoryContextProps> = ({
     </CategoryContext.Provider>
   );
 };
-
-export function useCategoryContext() {
-  return useContext(CategoryContext);
-}

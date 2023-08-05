@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 import api from "../api";
+import { useNavigate } from "react-router-dom";
 
 interface UserStoreProps {
   children: React.ReactNode;
@@ -9,9 +10,10 @@ interface UserStoreProps {
 export const UserContext = createContext({} as any);
 
 export const UserStorage = ({ children }: UserStoreProps) => {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const [user, setUser] = useState({});
   const [token, setToken] = useState(localStorage.getItem("token") as string);
+  const [dropDownMenu, setDropDownMenu] = useState(false);
 
   const getUser = (token: string) => {
     api
@@ -43,6 +45,7 @@ export const UserStorage = ({ children }: UserStoreProps) => {
         localStorage.setItem("token", data.token);
         setToken(data.token);
         getUser(data.token);
+
       })
       .catch((error) => {
         console.log("It wasn't possible to login", error);
@@ -66,6 +69,8 @@ export const UserStorage = ({ children }: UserStoreProps) => {
       value={{
         login,
         user,
+        dropDownMenu,
+        setDropDownMenu,
         handleLogin,
         createUser,
         logOut,

@@ -6,6 +6,7 @@ export const Container = styled.div`
   position: sticky;
   top: 56px;
   overflow-x: hidden;
+  z-index: 1;
 `;
 
 export const InnerContainer = styled.div`

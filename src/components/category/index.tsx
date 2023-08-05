@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import {
-  ButtonIcon,
-  CarouselContainer,
   Container,
   InnerContainer,
 } from "./styles";
@@ -42,22 +40,6 @@ function Category() {
       );
     }
   }, []);
-
-  const handleLeftClick = () => {
-    const currentScroll = carousel.current?.scrollLeft;
-    carousel.current?.scrollTo({
-      left: currentScroll! - carouselWidth,
-      behavior: "smooth",
-    });
-  };
-
-  const handleRightClick = () => {
-    const currentScroll = carousel.current?.scrollLeft;
-    carousel.current?.scrollTo({
-      left: currentScroll! + carouselWidth,
-      behavior: "smooth",
-    });
-  };
 
   const { setCategoryId } = useCategoryContext();
 

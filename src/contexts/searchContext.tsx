@@ -11,6 +11,8 @@ interface SearchContextProps {
 
 const SearchContext = createContext<ISearchContext>({} as ISearchContext);
 
+export const useSearchContext = () => useContext(SearchContext);
+
 export const SearchProvider: React.FC<SearchContextProps> = ({ children }) => {
   const [search, setSearch] = useState("");
 
@@ -21,8 +23,6 @@ export const SearchProvider: React.FC<SearchContextProps> = ({ children }) => {
   );
 };
 
-export function useSearchContext() {
-  return useContext(SearchContext);
-}
+
 
 
