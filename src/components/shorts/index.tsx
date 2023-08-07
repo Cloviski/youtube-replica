@@ -13,7 +13,7 @@ function Shorts() {
   const { openMenu } = useContext(MenuContext);
 
   return (
-    <Container>
+    <Container openMenu={openMenu}>
       <ImageBanner
         src="https://images5.alphacoders.com/408/408722.jpg"
         openMenu={openMenu}

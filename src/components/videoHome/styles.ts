@@ -1,21 +1,26 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  max-width: 360px;
+export const Container = styled.div<{ openMenu: boolean }>`
+  box-sizing: border-box;
+  max-width: ${({ openMenu }) => (openMenu ? "21.80rem" : "25.25rem")};
   width: 100%;
+
+  @media (max-width: 1366px) {
+    ${({ openMenu }) => (openMenu ? "21.80rem" : "25.25rem")};
+  }
 `;
 
 export const ImageBanner = styled.img<{ openMenu: boolean }>`
-  max-width: ${({ openMenu }) => (openMenu ? "360px" : "343px")};
-  min-width: 343px;
+  max-width: ${({ openMenu }) => (openMenu ? "19.50rem" : "21.25rem")};
   border-radius: 12px;
-  min-height: ${({ openMenu }) => (openMenu ? "12.625rem" : "none")};
+  min-height: 11rem;
   cursor: pointer;
-
+  
   :hover {
     border-radius: 0;
     transition: 0.5s;
   }
+
 `;
 
 export const TitleContainer = styled.div`

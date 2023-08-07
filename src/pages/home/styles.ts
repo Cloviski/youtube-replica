@@ -2,30 +2,40 @@ import styled from "styled-components";
 
 export const VideoContainer = styled.div<{ openMenu: boolean }>`
   display: grid;
-  max-width: ${({ openMenu }) =>
-    openMenu ? "1594px" : "none"};
-  grid-template-columns: ${({ openMenu }) =>
-    openMenu ? "repeat(4, 1fr)" : "repeat(5, 1fr)"};
+  width: ${({ openMenu }) => (openMenu ? "86vw" : "95vw")};
+  max-width: 95vw;
+  grid-template-columns: repeat(5, 1fr);
   column-gap: 16px;
   row-gap: 40px;
-  padding: ${({ openMenu }) =>
-    openMenu ? "24px 0 40px 106px" : "24px 24px 40px 24px"};
+  padding: 24px 24px 40px 24px;
   box-sizing: border-box;
+  overflow-x: hidden;
+
+  @media (max-width: 1366px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 export const ShortsContainer = styled.div<{ openMenu: boolean }>`
-  max-width: ${({ openMenu }) =>
-    openMenu ? "1484px" : "none"};
-  padding: ${({ openMenu }) => (openMenu ? "0 0 0 106px" : "0 0 0 24px")};
+  max-width: ${({ openMenu }) => (openMenu ? "85vw" : "93vw")};
+  padding: 0 0 0 24px;
   margin-bottom: 40px;
+
+  @media (max-width: 1366px) {
+    max-width: ${({ openMenu }) => (openMenu ? "79.5vw" : "95vw")};
+  }
 `;
 
 export const ShortsInnerContainer = styled.div<{ openMenu: boolean }>`
   display: grid;
   grid-template-columns: ${({ openMenu }) =>
     openMenu ? "repeat(6, 1fr)" : "repeat(7, 1fr)"};
-  column-gap: 16px;
-  row-gap: 16px;
+  column-gap: 0.7vw;
+  row-gap: 1.4vw;
+
+  @media (max-width: 1366px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
 `;
 
 export const ShortsIconContainer = styled.div`

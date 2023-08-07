@@ -23,7 +23,7 @@ function VideoHome(props: Props) {
   const { openMenu } = useContext(MenuContext);
 
   return (
-    <Container>
+    <Container openMenu={openMenu}>
       <ImageBanner alt="" src={props.thumbnail} openMenu={openMenu} />
       <TitleContainer>
         <ChannelImage>{props.channelImage}</ChannelImage>

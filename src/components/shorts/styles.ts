@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  max-width: 234px;
-  width: 100%;
+export const Container = styled.div<{ openMenu: boolean }>`
+  width: ${({ openMenu }) => (openMenu ? "13.75rem" : "14.625rem")};
   cursor: pointer;
+
+  @media (max-width: 1366px) {
+    width: ${({ openMenu }) => (openMenu ? "13.75rem" : "14.625rem")};
+  }
 `;
 
 export const ImageBanner = styled.img<{ openMenu: boolean }>`
   width: 100%;
-  min-width: 14.625rem;
   border-radius: 12px;
   min-height: 26rem;
   object-fit: cover;
