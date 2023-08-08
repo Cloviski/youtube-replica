@@ -12,17 +12,18 @@ export const VideoContainer = styled.div<{ openMenu: boolean }>`
   overflow-x: hidden;
 
   @media (max-width: 1366px) {
+    width: ${({ openMenu }) => (openMenu ? "83vw" : "95vw")};
     grid-template-columns: repeat(3, 1fr);
   }
 `;
 
 export const ShortsContainer = styled.div<{ openMenu: boolean }>`
-  max-width: ${({ openMenu }) => (openMenu ? "85vw" : "93vw")};
+  max-width: ${({ openMenu }) => (openMenu ? "85vw" : "95vw")};
   padding: 0 0 0 24px;
   margin-bottom: 40px;
 
   @media (max-width: 1366px) {
-    max-width: ${({ openMenu }) => (openMenu ? "79.5vw" : "95vw")};
+    max-width: ${({ openMenu }) => (openMenu ? "79.5vw" : "90vw")};
   }
 `;
 

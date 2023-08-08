@@ -5,7 +5,7 @@ export const Container = styled.div<{ openMenu: boolean }>`
   cursor: pointer;
 
   @media (max-width: 1366px) {
-    width: ${({ openMenu }) => (openMenu ? "13.75rem" : "14.625rem")};
+    width: ${({ openMenu }) => (openMenu ? "12.75rem" : "14.625rem")};
   }
 `;
 

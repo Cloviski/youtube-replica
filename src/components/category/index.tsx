@@ -1,12 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import {
-  Container,
-  InnerContainer,
-} from "./styles";
+import { Container, InnerContainer } from "./styles";
 import { useCategoryContext } from "../../contexts/categoryContext";
 import { motion } from "framer-motion";
-import LeftArrow from "../../assets/left-arrow (1).png";
-import RightArrow from "../../assets/right-chevron.png";
 
 const categoryItems = [
   { label: "All", id: "0" },
@@ -24,8 +19,6 @@ const categoryItems = [
   { label: "Sports", id: "17" },
   { label: "Science & Technology", id: "28" },
   { label: "Recently uploaded", id: "0" },
-  { label: "Watched", id: "0" },
-  { label: "New to you", id: "0" },
 ];
 
 function Category() {

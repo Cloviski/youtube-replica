@@ -6,21 +6,23 @@ export const Container = styled.div<{ openMenu: boolean }>`
   width: 100%;
 
   @media (max-width: 1366px) {
-    ${({ openMenu }) => (openMenu ? "21.80rem" : "25.25rem")};
+    max-width: ${({ openMenu }) => (openMenu ? "21.80rem" : "25.25rem")};
   }
 `;
 
 export const ImageBanner = styled.img<{ openMenu: boolean }>`
-  max-width: ${({ openMenu }) => (openMenu ? "19.50rem" : "21.25rem")};
   border-radius: 12px;
   min-height: 11rem;
   cursor: pointer;
-  
+
   :hover {
     border-radius: 0;
     transition: 0.5s;
   }
 
+  @media (max-width: 1366px) {
+    max-width: ${({ openMenu }) => (openMenu ? "21.80rem" : "25.25rem")};
+  }
 `;
 
 export const TitleContainer = styled.div`
