@@ -9,7 +9,6 @@ import {
   MainLoginContainer,
   NextButton,
   SignUpButton,
-  Spancing,
 } from "./styles";
 
 import GoogleLogoIcon from "../../assets/google.png";
@@ -30,7 +29,6 @@ function SignUp() {
 
   return (
     <MainLoginContainer>
-      <Spancing />
       <InnerLoginContainer>
         <GoogleContainer>
           <GoogleLogo src={GoogleLogoIcon} />
