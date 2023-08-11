@@ -148,7 +148,8 @@ export const ProfileTextContainer = styled.div`
 
     :last-child {
       font-size: 14px;
-      color: #065Fd4
+      color: #065Fd4;
+      cursor: pointer;
     }
   }
 `;
@@ -168,6 +169,7 @@ export const DropDownItem = styled.div`
   flex-direction: row;
   height: 20px;
   padding: 10px 22px 10px 16px;
+  cursor: pointer;
 
   span {
     font-size: 14px;

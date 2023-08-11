@@ -1,3 +1,4 @@
+import { invalid } from "moment";
 import styled from "styled-components";
 
 export const MainLoginContainer = styled.div`
@@ -78,6 +79,18 @@ export const FormInput = styled.input`
   box-sizing: border-box;
 `;
 
+export const CheckBoxContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+
+  label {
+    font-size: 14px;
+    margin-left: 16px;
+  }
+`;
+
 export const SpanContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -96,6 +109,23 @@ export const SpanContainer = styled.div`
     font-weight: 500;
     letter-spacing: 0;
   }
+`;
+
+export const MessageContainer = styled.div<{valid: boolean}>`
+  display: ${({valid}) => (valid? "none" : "flex" ) };
+  width: 100%;
+  align-items: center;
+
+  span {
+    font-size: 12px;
+    color: #F7053E
+  }
+`;
+
+export const ButtonIcon = styled.img`
+  width: 13px;
+  height: 13px;
+  margin: 0 10px 0 4px;
 `;
 
 export const AccountContainer = styled.div`

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const VideoContainer = styled.div<{ openMenu: boolean }>`
   display: grid;
-  width: ${({ openMenu }) => (openMenu ? "86vw" : "95vw")};
+  width: ${({ openMenu }) => (openMenu ? "87vw" : "95vw")};
   max-width: 95vw;
   grid-template-columns: repeat(5, 1fr);
   column-gap: 16px;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div<{ openMenu: boolean }>`
   box-sizing: border-box;
-  max-width: ${({ openMenu }) => (openMenu ? "21.80rem" : "25.25rem")};
+  max-width: ${({ openMenu }) => (openMenu ? "21.50rem" : "25.25rem")};
   width: 100%;
 
   @media (max-width: 1366px) {
@@ -11,6 +11,7 @@ export const Container = styled.div<{ openMenu: boolean }>`
 `;
 
 export const ImageBanner = styled.img<{ openMenu: boolean }>`
+  width: 100%;
   border-radius: 12px;
   min-height: 11rem;
   cursor: pointer;
@@ -18,10 +19,6 @@ export const ImageBanner = styled.img<{ openMenu: boolean }>`
   :hover {
     border-radius: 0;
     transition: 0.5s;
-  }
-
-  @media (max-width: 1366px) {
-    max-width: ${({ openMenu }) => (openMenu ? "21.80rem" : "25.25rem")};
   }
 `;
 

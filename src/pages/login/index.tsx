@@ -1,5 +1,7 @@
 import {
   AccountContainer,
+  ButtonIcon,
+  CheckBoxContainer,
   EmailLoginContainer,
   FormContainer,
   FormInput,
@@ -7,15 +9,17 @@ import {
   GoogleLogo,
   InnerLoginContainer,
   MainLoginContainer,
+  MessageContainer,
   NextButton,
   SignUpButton,
   SpanContainer,
 } from "./styles";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../contexts/userContext";
 import { useNavigate, Link } from "react-router-dom";
 import GoogleLogoIcon from "../../assets/google.png";
 import Footer from "../../components/footer";
+import WarningIcon from "../../assets/exclamation.png";
 
 function Login() {
   const { handleLogin } = useContext(UserContext);
@@ -23,6 +27,53 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [validEmail, setValidEmail] = useState(true);
+  const [validPassword, setValidPassword] = useState(true);
+  const [formatEmailValid, setFormatEmailValid] = useState(true);
+
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (emailRef.current !== null) {
+      emailRef.current.focus();
+    }
+  }, []);
+
+  const userLogin = () => {
+    if (email.trim() !== "") {
+      setValidEmail(true);
+    }
+    if (password.trim() !== "") {
+      setValidPassword(true);
+    }
+    if (email.trim() === "" && password.trim() === "") {
+      setValidEmail(false);
+      setValidPassword(false);
+      if (emailRef.current) {
+        emailRef.current.focus();
+      }
+    } else if (email.trim() === "") {
+      setValidEmail(false);
+      if (emailRef.current) {
+        emailRef.current.focus();
+      }
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      setFormatEmailValid(false);
+      setValidEmail(false);
+      if (emailRef.current) {
+        emailRef.current.focus();
+      }
+    } else if (password.trim() === "" || password.length < 8) {
+      setValidPassword(false);
+      if (passwordRef.current) {
+        passwordRef.current.focus();
+      }
+    } else {
+      handleLogin(email, password);
+    }
+  };
 
   return (
     <MainLoginContainer>
@@ -36,17 +87,37 @@ function Login() {
           <FormContainer>
             <FormInput
               type="email"
+              ref={emailRef}
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  userLogin();
+                }
+              }}
             />
+            <MessageContainer valid={validEmail}>
+              <ButtonIcon alt="" src={WarningIcon} />
+              <span>Couldn't find your Google Account</span>
+            </MessageContainer>
             <FormInput
-              type="password"
+              type={showPassword ? "text" : "password"}
+              ref={passwordRef}
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormContainer>
+          <CheckBoxContainer>
+            <input
+              type="checkbox"
+              id="show-password"
+              checked={showPassword}
+              onClick={() => setShowPassword(!showPassword)}
+            />
+            <label htmlFor="show-password">Show password</label>
+          </CheckBoxContainer>
         </EmailLoginContainer>
         <SpanContainer>
           <span className="guest-span">
