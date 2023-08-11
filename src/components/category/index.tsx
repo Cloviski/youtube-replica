@@ -24,7 +24,6 @@ const categoryItems = [
 function Category() {
   const carousel = useRef<HTMLDivElement>(null);
   const [carouselWidth, setCarouselWidth] = useState(0);
-  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     if (carousel.current) {

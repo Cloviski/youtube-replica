@@ -4,13 +4,9 @@ export const MainLoginContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
+  justify-content: center;
   line-height: 1.4286;
-`;
-
-export const Spancing = styled.div`
-  width: 100%;
-  height: 15.813rem;
+  min-height: 100vh;
 `;
 
 export const InnerLoginContainer = styled.div`

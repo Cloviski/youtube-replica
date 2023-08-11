@@ -9,10 +9,9 @@ export const VideoContainer = styled.div<{ openMenu: boolean }>`
   row-gap: 40px;
   padding: 24px 24px 40px 24px;
   box-sizing: border-box;
-  overflow-x: hidden;
 
   @media (max-width: 1366px) {
-    width: ${({ openMenu }) => (openMenu ? "83vw" : "95vw")};
+    width: ${({ openMenu }) => (openMenu ? "82vw" : "95vw")};
     grid-template-columns: repeat(3, 1fr);
   }
 `;
