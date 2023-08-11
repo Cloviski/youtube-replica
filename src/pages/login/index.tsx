@@ -2,15 +2,16 @@ import {
   AccountContainer,
   ButtonIcon,
   CheckBoxContainer,
+  EmailInput,
   EmailLoginContainer,
   FormContainer,
-  FormInput,
   GoogleContainer,
   GoogleLogo,
   InnerLoginContainer,
   MainLoginContainer,
   MessageContainer,
   NextButton,
+  PasswordInput,
   SignUpButton,
   SpanContainer,
 } from "./styles";
@@ -30,7 +31,7 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [validEmail, setValidEmail] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
-  const [formatEmailValid, setFormatEmailValid] = useState(true);
+  const [validEmailFormat, setValidEmailFormat] = useState(true);
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -60,7 +61,7 @@ function Login() {
         emailRef.current.focus();
       }
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      setFormatEmailValid(false);
+      setValidEmailFormat(false);
       setValidEmail(false);
       if (emailRef.current) {
         emailRef.current.focus();
@@ -85,7 +86,8 @@ function Login() {
         <span>to continue to YouTube</span>
         <EmailLoginContainer>
           <FormContainer>
-            <FormInput
+            <EmailInput
+              valid={validEmail}
               type="email"
               ref={emailRef}
               placeholder="Email"
@@ -101,7 +103,8 @@ function Login() {
               <ButtonIcon alt="" src={WarningIcon} />
               <span>Couldn't find your Google Account</span>
             </MessageContainer>
-            <FormInput
+            <PasswordInput
+              valid={validPassword}
               type={showPassword ? "text" : "password"}
               ref={passwordRef}
               placeholder="Enter your password"

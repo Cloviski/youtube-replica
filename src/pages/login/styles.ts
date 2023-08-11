@@ -67,7 +67,7 @@ export const FormContainer = styled.form`
   row-gap: 8px;
 `;
 
-export const FormInput = styled.input`
+export const EmailInput = styled.input<{valid: boolean}>`
   width: 100%;
   border-radius: 4px;
   border: 1px solid #dadce0;
@@ -77,6 +77,30 @@ export const FormInput = styled.input`
   margin: 1px 1px 0 1px;
   padding: 13px 15px;
   box-sizing: border-box;
+
+  :focus {
+    border-color: ${({valid}) => valid? '#1a75ff' : 'red'};
+    border-width: 2px;
+    outline: none;
+  }
+`;
+
+export const PasswordInput = styled.input<{valid: boolean}>`
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #dadce0;
+  color: #202124;
+  font-size: 16px;
+  height: 56px;
+  margin: 1px 1px 0 1px;
+  padding: 13px 15px;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: ${({valid}) => valid? '#1a75ff' : 'red'};
+    border-width: 2px;
+    outline: none;
+  }
 `;
 
 export const CheckBoxContainer = styled.div`
