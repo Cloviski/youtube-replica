@@ -1,5 +1,7 @@
 import {
   AccountContainer,
+  ButtonIcon,
+  CheckBoxContainer,
   EmailLoginContainer,
   FormContainer,
   FormInput,
@@ -7,65 +9,148 @@ import {
   GoogleLogo,
   InnerLoginContainer,
   MainLoginContainer,
+  MessageContainer,
   NextButton,
   SignUpButton,
 } from "./styles";
 
-import GoogleLogoIcon from "../../assets/google.png";
-import { useNavigate } from "react-router-dom";
-import Footer from "../../components/footer";
 import { UserContext } from "../../contexts/userContext";
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useRef, useState } from "react";
+import GoogleLogoIcon from "../../assets/google.png";
+import Footer from "../../components/footer";
+import WarningIcon from "../../assets/exclamation.png";
 
 function SignUp() {
-  const { createUser } = useContext(UserContext);
+  const { handleCreateUser } = useContext(UserContext);
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [UserNameValid, setUserValidName] = useState(true);
+  const [UserEmailValid, setUserValidEmail] = useState(true);
+  const [UserPasswordValid, setUserValidPassword] = useState(true);
+  const [formatEmailValid, setFormatEmailValid] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const navigate = useNavigate();
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  useEffect(() => {
+    if (nameRef.current !== null) {
+      nameRef.current.focus();
+    }
+  }, []);
 
+  const createUser = () => {
+    if (userName.trim() !== "") {
+      setUserValidName(true);
+    }
+    if (userEmail.trim() !== "") {
+      setUserValidEmail(true);
+    }
+    if (userPassword.trim() !== "") {
+      setUserValidPassword(true);
+    }
+    if (
+      userName.trim() === "" &&
+      userEmail.trim() === "" &&
+      userPassword.trim() === ""
+    ) {
+      setUserValidName(false);
+      setUserValidEmail(false);
+      setUserValidPassword(false);
+      if (nameRef.current) {
+        nameRef.current.focus();
+      }
+    } else if (userName.trim() === "") {
+      setUserValidName(false);
+      if (nameRef.current) {
+        nameRef.current.focus();
+      }
+    } else if (userEmail.trim() === "") {
+      setUserValidEmail(false);
+      setFormatEmailValid(true);
+      if (emailRef.current) {
+        emailRef.current.focus();
+      }
+    } else if (!/\S+@\S+\.\S+/.test(userEmail)) {
+      setFormatEmailValid(false);
+      setUserValidEmail(false);
+      if (emailRef.current) {
+        emailRef.current.focus();
+      }
+    } else if (userPassword.trim() === "") {
+      setUserValidPassword(false);
+      if (passwordRef.current) {
+        passwordRef.current.focus();
+      }
+    } else {
+      handleCreateUser(userName, userEmail, userPassword);
+    }
+  };
   return (
     <MainLoginContainer>
       <InnerLoginContainer>
         <GoogleContainer>
-          <GoogleLogo src={GoogleLogoIcon} />
+          <GoogleLogo alt="Google logo" src={GoogleLogoIcon} />
         </GoogleContainer>
         <h1>Create a Google Account</h1>
         <span>Enter your email, name and password</span>
         <EmailLoginContainer>
           <FormContainer>
             <FormInput
+              //Enter name
               type="text"
               placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={userName}
+              ref={nameRef}
+              onChange={(e) => setUserName(e.target.value)}
             />
+            <MessageContainer valid={UserNameValid}>
+              <ButtonIcon alt="" src={WarningIcon} />
+              <span>Enter name</span>
+            </MessageContainer>
             <FormInput
+              //Enter an email address
+              //Enter a valid email
               type="email"
               placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={userEmail}
+              ref={emailRef}
+              onChange={(e) => setUserEmail(e.target.value)}
             />
+            <MessageContainer valid={UserEmailValid}>
+              <ButtonIcon alt="" src={WarningIcon} />
+              <span>
+                {formatEmailValid
+                  ? "Enter an email address"
+                  : "Email format invalid"}
+              </span>
+            </MessageContainer>
             <FormInput
-              type="password"
+              //Enter password
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={userPassword}
+              ref={passwordRef}
+              onChange={(e) => setUserPassword(e.target.value)}
             />
+            <CheckBoxContainer>
+              <input
+                type="checkbox"
+                id="show-password"
+                checked={showPassword}
+                onClick={() => setShowPassword(!showPassword)}
+              />
+              <label htmlFor="show-password">Show password</label>
+            </CheckBoxContainer>
           </FormContainer>
         </EmailLoginContainer>
         <AccountContainer>
           <SignUpButton>
-            <span onClick={() => navigate("/sign-up")}>Create account</span>
+            <span>Create account</span>
           </SignUpButton>
-          <Link to="..">
-            <NextButton onClick={() => createUser(name, email, password)}>
-              Next
-            </NextButton>
-          </Link>
+          <NextButton onClick={() => createUser()}>Next</NextButton>
         </AccountContainer>
       </InnerLoginContainer>
       <Footer />

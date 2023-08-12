@@ -2,7 +2,6 @@ import {
   AccountContainer,
   ButtonIcon,
   CheckBoxContainer,
-  EmailInput,
   EmailLoginContainer,
   FormContainer,
   GoogleContainer,
@@ -11,7 +10,7 @@ import {
   MainLoginContainer,
   MessageContainer,
   NextButton,
-  PasswordInput,
+  FormInput,
   SignUpButton,
   SpanContainer,
 } from "./styles";
@@ -81,7 +80,7 @@ function Login() {
         <span>to continue to YouTube</span>
         <EmailLoginContainer>
           <FormContainer>
-            <EmailInput
+            <FormInput
               valid={validEmail}
               type="email"
               ref={emailRef}
@@ -98,7 +97,7 @@ function Login() {
               <ButtonIcon alt="" src={WarningIcon} />
               <span>Couldn't find your Google Account</span>
             </MessageContainer>
-            <PasswordInput
+            <FormInput
               valid={validPassword}
               type={showPassword ? "text" : "password"}
               ref={passwordRef}
@@ -141,10 +140,3 @@ function Login() {
 }
 
 export default Login;
-
-/*
-    <div>login</div>
-    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-    <button onClick={() => handleLogin(email, password)}>Login</button>
-*/

@@ -1,4 +1,3 @@
-import { invalid } from "moment";
 import styled from "styled-components";
 
 export const MainLoginContainer = styled.div`
@@ -86,10 +85,10 @@ export const EmailInput = styled.input<{valid: boolean}>`
   }
 `;
 
-export const PasswordInput = styled.input<{valid: boolean}>`
+export const FormInput = styled.input<{valid: boolean}>`
   width: 100%;
   border-radius: 4px;
-  border: ${({valid}) => valid? '1px solid #dadce0' : '1px solid red'};
+  border: ${({valid}) => valid ? '1px solid #dadce0' : '1px solid red'};
   color: #202124;
   font-size: 16px;
   height: 56px;

@@ -52,12 +52,13 @@ export const UserStorage = ({ children }: UserStoreProps) => {
       });
   };
 
-  const createUser = (name: string, email: string, password: string) => {
+  const handleCreateUser = (name: string, email: string, password: string) => {
     api
       .post("/user/sign-up", { name, email, password })
       .then(() => {
         alert("User was created!");
         handleLogin(email, password);
+        navigate("/");
       })
       .catch((error) => {
         console.log("It wasn't possible to create a user", error);
@@ -72,7 +73,7 @@ export const UserStorage = ({ children }: UserStoreProps) => {
         dropDownMenu,
         setDropDownMenu,
         handleLogin,
-        createUser,
+        handleCreateUser,
         logOut,
       }}
     >

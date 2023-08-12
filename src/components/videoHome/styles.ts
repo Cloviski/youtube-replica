@@ -13,7 +13,6 @@ export const Container = styled.div<{ openMenu: boolean }>`
 export const ImageBanner = styled.img<{ openMenu: boolean }>`
   width: 100%;
   border-radius: 12px;
-  min-height: 11rem;
   cursor: pointer;
 
   :hover {
