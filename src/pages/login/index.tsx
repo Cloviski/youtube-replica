@@ -17,7 +17,7 @@ import {
 } from "./styles";
 import { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../contexts/userContext";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import GoogleLogoIcon from "../../assets/google.png";
 import Footer from "../../components/footer";
 import WarningIcon from "../../assets/exclamation.png";
@@ -66,11 +66,6 @@ function Login() {
       if (emailRef.current) {
         emailRef.current.focus();
       }
-    } else if (password.trim() === "" || password.length < 8) {
-      setValidPassword(false);
-      if (passwordRef.current) {
-        passwordRef.current.focus();
-      }
     } else {
       handleLogin(email, password);
     }
@@ -110,6 +105,11 @@ function Login() {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  userLogin();
+                }
+              }}
             />
           </FormContainer>
           <CheckBoxContainer>
@@ -132,11 +132,7 @@ function Login() {
           <SignUpButton>
             <span onClick={() => navigate("/sign-up")}>Create account</span>
           </SignUpButton>
-          <Link to="..">
-            <NextButton onClick={() => handleLogin(email, password)}>
-              Next
-            </NextButton>
-          </Link>
+          <NextButton onClick={() => userLogin()}>Next</NextButton>
         </AccountContainer>
       </InnerLoginContainer>
       <Footer />

@@ -70,7 +70,8 @@ export const FormContainer = styled.form`
 export const EmailInput = styled.input<{valid: boolean}>`
   width: 100%;
   border-radius: 4px;
-  border: 1px solid #dadce0;
+  border: ${({valid}) => valid? '1px solid #dadce0' : '1px solid red'};
+  //border: 1px solid #dadce0;
   color: #202124;
   font-size: 16px;
   height: 56px;
@@ -88,7 +89,7 @@ export const EmailInput = styled.input<{valid: boolean}>`
 export const PasswordInput = styled.input<{valid: boolean}>`
   width: 100%;
   border-radius: 4px;
-  border: 1px solid #dadce0;
+  border: ${({valid}) => valid? '1px solid #dadce0' : '1px solid red'};
   color: #202124;
   font-size: 16px;
   height: 56px;

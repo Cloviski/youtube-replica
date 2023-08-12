@@ -7,16 +7,16 @@ import Search from "./pages/search";
 
 function App() {
   return (
-    <UserStorage>
-      <BrowserRouter>
+    <BrowserRouter>
+      <UserStorage>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/search" element={<Search />} />
         </Routes>
-      </BrowserRouter>
-    </UserStorage>
+      </UserStorage>
+    </BrowserRouter>
   );
 }
 

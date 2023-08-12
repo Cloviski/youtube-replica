@@ -76,6 +76,12 @@ export const FormInput = styled.input`
   margin: 1px 1px 0 1px;
   padding: 13px 15px;
   box-sizing: border-box;
+
+  :focus {
+    border-color: #1a75ff;
+    border-width: 2px;
+    outline: none;
+  }
 `;
 
 export const SpanContainer = styled.div`
