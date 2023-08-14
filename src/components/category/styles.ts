@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
   background-color: #fff;
   position: sticky;
-  top: 56px;
   overflow-x: hidden;
   z-index: 1;
 `;

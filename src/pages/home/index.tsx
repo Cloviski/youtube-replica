@@ -135,24 +135,6 @@ function Home() {
               />
             ))}
           </VideoContainer>
-          <ShortsContainer openMenu={openMenu}>
-            <ShortsIconContainer>
-              <ShortsIcon alt="" src={ShortsColored} />
-              <span>Shorts</span>
-            </ShortsIconContainer>
-            <ShortsInnerContainer openMenu={openMenu}>
-              <Shorts />
-              <Shorts />
-              <Shorts />
-              <Shorts />
-              <Shorts />
-              <Shorts />
-              {openMenu ? null : <Shorts />}
-            </ShortsInnerContainer>
-            <DownArrowContainer>
-              <DownArrow alt="" src={DownArrowShorts} />
-            </DownArrowContainer>
-          </ShortsContainer>
         </RoutesContainer>
       </MainContainer>
     </>
@@ -171,4 +153,24 @@ const video = [
         time: ' 2 weeks'
     }
 ]
+*/
+/*
+          <ShortsContainer openMenu={openMenu}>
+            <ShortsIconContainer>
+              <ShortsIcon alt="" src={ShortsColored} />
+              <span>Shorts</span>
+            </ShortsIconContainer>
+            <ShortsInnerContainer openMenu={openMenu}>
+              <Shorts />
+              <Shorts />
+              <Shorts />
+              <Shorts />
+              <Shorts />
+              <Shorts />
+              {openMenu ? null : <Shorts />}
+            </ShortsInnerContainer>
+            <DownArrowContainer>
+              <DownArrow alt="" src={DownArrowShorts} />
+            </DownArrowContainer>
+          </ShortsContainer>
 */
