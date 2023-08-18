@@ -5,7 +5,7 @@ import { MainContainer, RoutesContainer } from "../../AppStyles";
 import { VideoContainer } from "./styles";
 import Header from "../../components/header";
 import Menu from "../../components/menu";
-import VideoSearch from "../../components/videoSearch";
+import VideoSearch from "../../components/video-search";
 import axios from "axios";
 import moment from "moment";
 

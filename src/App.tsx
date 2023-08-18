@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
 import Search from "./pages/search";
+import YourVideos from "./pages/your-videos";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/your-videos" element={<YourVideos />} />
         </Routes>
       </UserStorage>
     </BrowserRouter>

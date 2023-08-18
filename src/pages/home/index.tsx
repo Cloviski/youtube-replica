@@ -19,7 +19,7 @@ import Header from "../../components/header";
 import Menu from "../../components/menu";
 import axios from "axios";
 import moment from "moment";
-import VideoHome from "../../components/videoHome";
+import VideoHome from "../../components/video-home";
 
 interface VideosProps {
   id: string;

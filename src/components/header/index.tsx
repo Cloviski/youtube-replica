@@ -120,13 +120,10 @@ function Header() {
         >
           <ButtonIcon alt="" src={SearchIcon} />
         </SearchButton>
-        <ButtonContainer margin="0 0 0 8px">
-          <ButtonIcon alt="" src={MicIcon} />
-        </ButtonContainer>
       </SearchContainer>
       <HeaderButton>
         <ButtonContainer margin="0 10px 0 0">
-          <ButtonIcon alt="" src={VideoIcon} />
+          <ButtonIcon alt="" src={VideoIcon} onClick={() => navigate("/your-videos")} />
         </ButtonContainer>
         <ButtonContainer margin="0 10px 0 0">
           <ButtonIcon alt="" src={NotificationIcon} />
