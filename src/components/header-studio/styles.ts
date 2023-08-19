@@ -26,8 +26,6 @@ export const YoutubeLogo = styled.img`
   padding: 6px;
 `;
 
-//style={{ cursor: 'pointer', width: '90px', padding: '6px' }}
-
 export const ButtonContainer = styled.div<{ margin?: string }>`
   width: 40px;
   height: 40px;
@@ -52,7 +50,7 @@ export const SearchContainer = styled.div`
 `;
 
 export const SearchInputContainer = styled.div`
-  width: 450px;
+  width: 48rem;
   height: 36px;
   border: 1px solid #d3d3d3;
   border-left: 0;

@@ -33,6 +33,7 @@ import RightArrowIcon from "../../assets/greater-than-symbol.png";
 import { UserContext } from "../../contexts/userContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { MenuContext } from "../../contexts/menuContext";
 
 const menuFirstItems = [
   { label: "Your channel", icon: ProfileIcon },
@@ -46,6 +47,7 @@ const menuSecondItems = [
 ];
 
 function HeaderStudio() {
+  const { openMenu, setOpenMenu } = useContext(MenuContext);
   const { user, userVideos, createVideos, token } = useContext(UserContext);
   const { login, logOut, dropDownMenu, setDropDownMenu } =
     useContext(UserContext);
@@ -56,7 +58,11 @@ function HeaderStudio() {
     <Container>
       <LogoContainer>
         <ButtonContainer margin="0 10px 0 0">
-          <ButtonIcon alt="" src={HamburgerIcon} />
+          <ButtonIcon
+            alt=""
+            src={HamburgerIcon}
+            onClick={() => setOpenMenu(!openMenu)}
+          />
         </ButtonContainer>
         <YoutubeLogo onClick={() => navigate("/")} src={YTStudioLogo} />
       </LogoContainer>
