@@ -39,3 +39,7 @@ export const Icon = styled.img`
   padding: 10px;
   margin: 4px 24px 4px 20px;
 `;
+
+export const TableHeader  = styled.table`
+  
+`;
