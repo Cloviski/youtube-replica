@@ -21,7 +21,7 @@ import {
 import HamburgerIcon from "../../assets/hamburger.png";
 import YTStudioLogo from "../../assets/yt_studio.png";
 import SearchIcon from "../../assets/search.png";
-import VideoIcon from "../../assets/video.png";
+import VideoCreateIcon from "../../assets/video-create.png";
 import FeedbackIcon from "../../assets/chat.png";
 import HelpIcon from "../../assets/help.png";
 import ProfileIcon from "../../assets/profile_line.png";
@@ -34,11 +34,12 @@ import { UserContext } from "../../contexts/userContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { MenuContext } from "../../contexts/menuContext";
+import { ModalContext } from "../../contexts/modalContext";
 
 const menuFirstItems = [
-  { label: "Your channel", icon: ProfileIcon },
-  { label: "YouTube", icon: YTStudioLineIcon },
-  { label: "Switch account", icon: ManageProfileIcon, arrow: RightArrowIcon },
+  { label: "Your channel", icon: ProfileIcon, link: "/your-videos"  },
+  { label: "YouTube", icon: YTStudioLineIcon, link: "/" },
+  { label: "Switch account", icon: ManageProfileIcon, arrow: RightArrowIcon, link: "/login"  },
 ];
 
 const menuSecondItems = [
@@ -51,6 +52,7 @@ function HeaderStudio() {
   const { user, userVideos, createVideos, token } = useContext(UserContext);
   const { login, logOut, dropDownMenu, setDropDownMenu } =
     useContext(UserContext);
+  const { hideModal, setHideModal } = useContext(ModalContext);
   const USER_ID = user.id;
   const navigate = useNavigate();
 
@@ -64,7 +66,7 @@ function HeaderStudio() {
             onClick={() => setOpenMenu(!openMenu)}
           />
         </ButtonContainer>
-        <YoutubeLogo onClick={() => navigate("/")} src={YTStudioLogo} />
+        <YoutubeLogo alt="" src={YTStudioLogo} />
       </LogoContainer>
       <SearchContainer>
         <SearchButton>
@@ -78,8 +80,8 @@ function HeaderStudio() {
         <ButtonContainer margin="0 10px 0 0">
           <ButtonIcon alt="" src={HelpIcon} />
         </ButtonContainer>
-        <CreateVideoContainer onClick={() => navigate("/login")}>
-          <ButtonIcon alt="" src={VideoIcon} />
+        <CreateVideoContainer onClick={() => setHideModal(!hideModal)}>
+          <ButtonIcon alt="" src={VideoCreateIcon} />
           <span>CREATE</span>
         </CreateVideoContainer>
         {login ? (
@@ -100,7 +102,7 @@ function HeaderStudio() {
               </ProfileContainer>
               <InnerDropDownContainer>
                 {menuFirstItems.map((dropDownItem) => (
-                  <DropDownItem>
+                  <DropDownItem onClick={() => navigate(dropDownItem.link)}>
                     <DropDownIcon alt="" src={dropDownItem.icon} />
                     <span>{dropDownItem.label}</span>
                     <ArrowIcon alt="" src={dropDownItem.arrow} />

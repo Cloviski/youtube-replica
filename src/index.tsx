@@ -5,6 +5,7 @@ import { MenuProvider } from "./contexts/menuContext";
 import { CategoryProvider } from "./contexts/categoryContext";
 import { SearchProvider } from "./contexts/searchContext";
 import App from "./App";
+import { ModalProvider } from "./contexts/modalContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,12 +13,14 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <IndexStyle />
-    <MenuProvider>
-      <SearchProvider>
-        <CategoryProvider>
-          <App />
-        </CategoryProvider>
-      </SearchProvider>
-    </MenuProvider>
+    <ModalProvider>
+      <MenuProvider>
+        <SearchProvider>
+          <CategoryProvider>
+            <App />
+          </CategoryProvider>
+        </SearchProvider>
+      </MenuProvider>
+    </ModalProvider>
   </React.StrictMode>
 );

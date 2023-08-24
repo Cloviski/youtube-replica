@@ -153,8 +153,7 @@ const video = [
         time: ' 2 weeks'
     }
 ]
-*/
-/*
+
           <ShortsContainer openMenu={openMenu}>
             <ShortsIconContainer>
               <ShortsIcon alt="" src={ShortsColored} />

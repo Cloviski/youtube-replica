@@ -1,4 +1,3 @@
-import React from "react";
 import { MainContainer, RoutesContainer } from "../../AppStyles";
 import HeaderStudio from "../../components/header-studio";
 import MenuStudio from "../../components/menu-studio";
@@ -7,17 +6,34 @@ import {
   FilterContainer,
   H1Title,
   Icon,
+  IconContainer,
   ImageBanner,
+  Modal,
+  ModalContent,
+  ModalHeader,
   NavContainer,
   SpanContainer,
   SpanVideoContainer,
   TableContentContainer,
   TableHeader,
   TableVideoContainer,
+  TitleTextBox,
   VisibilityContainer,
 } from "./styles";
 import FilterIcon from "../../assets/filter.png";
 import EyeIcon from "../../assets/view.png";
+import FeedbackIcon from "../../assets/chat.png";
+import CloseIcon from "../../assets/x.png";
+import { useContext } from "react";
+import { ModalContext } from "../../contexts/modalContext";
+
+interface Videos {
+  title: string;
+  video_id: string;
+  thumbnail: string;
+  description: string;
+  publishedAt: string;
+}
 
 const firstItems = [
   { label: "Videos" },
@@ -38,6 +54,8 @@ const tableItems = [
 ];
 
 function YourVideos() {
+  const { hideModal, setHideModal } = useContext(ModalContext);
+
   return (
     <>
       <HeaderStudio />
@@ -62,6 +80,25 @@ function YourVideos() {
               </div>
             ))}
           </TableHeader>
+          <Modal hideModal={hideModal}>
+            <ModalContent>
+              <ModalHeader>
+                <h3>Upload videos</h3>
+                <IconContainer>
+                  <Icon alt="" src={FeedbackIcon} />
+                  <Icon
+                    alt=""
+                    src={CloseIcon}
+                    onClick={() => setHideModal(!hideModal)}
+                  />
+                </IconContainer>
+              </ModalHeader>
+              <TitleTextBox
+                type="textbox"
+                placeholder="Add a title that describes your video"
+              />
+            </ModalContent>
+          </Modal>
           <TableContentContainer>
             <Checkbox type="checkbox" />
             <TableVideoContainer>
@@ -74,26 +111,26 @@ function YourVideos() {
                 <span>Add description</span>
               </SpanVideoContainer>
             </TableVideoContainer>
-              <VisibilityContainer>
-                <Icon alt="" src={EyeIcon} />
-                <span>Unlisted</span>
-              </VisibilityContainer>
-              <SpanContainer>
-                <span>None</span>
-              </SpanContainer>
-              <SpanContainer>
-                <span>May 21, 2023</span>
-                <span>Uploaded</span>
-              </SpanContainer>
-              <SpanContainer>
-                <span>0</span>
-              </SpanContainer>
-              <SpanContainer>
-                <span>0</span>
-              </SpanContainer>
-              <SpanContainer>
-                <span>-</span>
-              </SpanContainer>
+            <VisibilityContainer>
+              <Icon alt="" src={EyeIcon} />
+              <span>Unlisted</span>
+            </VisibilityContainer>
+            <SpanContainer>
+              <span>None</span>
+            </SpanContainer>
+            <SpanContainer>
+              <span>May 21, 2023</span>
+              <span>Uploaded</span>
+            </SpanContainer>
+            <SpanContainer>
+              <span>0</span>
+            </SpanContainer>
+            <SpanContainer>
+              <span>0</span>
+            </SpanContainer>
+            <SpanContainer>
+              <span>-</span>
+            </SpanContainer>
           </TableContentContainer>
         </RoutesContainer>
       </MainContainer>

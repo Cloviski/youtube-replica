@@ -27,7 +27,7 @@ import HamburgerIcon from "../../assets/hamburger.png";
 import Logo from "../../assets/youtube_logo.png";
 import SearchIcon from "../../assets/search.png";
 import MicIcon from "../../assets/microphone.png";
-import VideoIcon from "../../assets/video.png";
+import VideoIcon from "../../assets/video-camera.png";
 import NotificationIcon from "../../assets/bell.png";
 import SignInIcon from "../../assets/profile.png";
 import FeedbackIcon from "../../assets/chat.png";
@@ -47,9 +47,14 @@ import ManageProfileIcon from "../../assets/exchange.png";
 import RightArrowIcon from "../../assets/greater-than-symbol.png";
 
 const menuFirstItems = [
-  { label: "Your channel", icon: ProfileIcon },
-  { label: "YouTube Studio", icon: YTStudioLineIcon },
-  { label: "Switch account", icon: ManageProfileIcon, arrow: RightArrowIcon },
+  { label: "Your channel", icon: ProfileIcon, link: "your-videos" },
+  { label: "YouTube Studio", icon: YTStudioLineIcon, link: "your-videos" },
+  {
+    label: "Switch account",
+    icon: ManageProfileIcon,
+    arrow: RightArrowIcon,
+    link: "login",
+  },
 ];
 
 const menuSecondItems = [
@@ -123,7 +128,11 @@ function Header() {
       </SearchContainer>
       <HeaderButton>
         <ButtonContainer margin="0 10px 0 0">
-          <ButtonIcon alt="" src={VideoIcon} onClick={() => navigate("/your-videos")} />
+          <ButtonIcon
+            alt=""
+            src={VideoIcon}
+            onClick={() => navigate("/your-videos")}
+          />
         </ButtonContainer>
         <ButtonContainer margin="0 10px 0 0">
           <ButtonIcon alt="" src={NotificationIcon} />
@@ -146,7 +155,7 @@ function Header() {
               </ProfileContainer>
               <InnerDropDownContainer>
                 {menuFirstItems.map((dropDownItem) => (
-                  <DropDownItem>
+                  <DropDownItem onClick={() => navigate(dropDownItem.link)}>
                     <DropDownIcon alt="" src={dropDownItem.icon} />
                     <span>{dropDownItem.label}</span>
                     <ArrowIcon alt="" src={dropDownItem.arrow} />

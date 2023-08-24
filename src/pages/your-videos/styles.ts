@@ -41,6 +41,80 @@ export const Icon = styled.img`
   margin: 4px 24px 4px 20px;
 `;
 
+export const Modal = styled.div<{ hideModal?: boolean }>`
+  visibility: ${({ hideModal }) => (hideModal ? "hidden" : "visible")};
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.55);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ModalContent = styled.div`
+  width: 50vw;
+  height: 90vh;
+  background-color: white;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+`;
+
+export const ModalHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 0 24px;
+  width: 100%;
+  height: 64px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+
+  h3 {
+    color: #212121;
+  }
+
+  & ${Icon} {
+    margin: 0;
+    padding: 8;
+
+    :last-of-type {
+      cursor: pointer;
+    }
+  }
+`;
+
+export const TitleTextBox = styled.input`
+  height: 45px;
+  border-radius: 5px;
+  border-top: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  padding: 0 11px 11px 11px;
+
+  :focus {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+`;
+
+export const ModalFooter = styled.footer`
+
+`;
+
+export const IconContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const TableContentContainer = styled.div`
   display: flex;
   align-items: center;
