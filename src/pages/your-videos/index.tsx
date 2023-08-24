@@ -10,6 +10,7 @@ import {
   ImageBanner,
   NavContainer,
   SpanContainer,
+  SpanVideoContainer,
   TableContentContainer,
   TableHeader,
   TableVideoContainer,
@@ -68,10 +69,11 @@ function YourVideos() {
                 alt="thumbnail"
                 src="https://images3.alphacoders.com/567/567308.jpg"
               />
-              <SpanContainer>
+              <SpanVideoContainer>
                 <span>How I lost my sanity in Dubai...</span>
                 <span>Add description</span>
-              </SpanContainer>
+              </SpanVideoContainer>
+            </TableVideoContainer>
               <VisibilityContainer>
                 <Icon alt="" src={EyeIcon} />
                 <span>Unlisted</span>
@@ -92,7 +94,6 @@ function YourVideos() {
               <SpanContainer>
                 <span>-</span>
               </SpanContainer>
-            </TableVideoContainer>
           </TableContentContainer>
         </RoutesContainer>
       </MainContainer>
