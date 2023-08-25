@@ -99,7 +99,6 @@ function SignUp() {
         <EmailLoginContainer>
           <FormContainer>
             <FormInput
-              //Enter name
               type="text"
               placeholder="Name"
               value={userName}
@@ -111,8 +110,6 @@ function SignUp() {
               <span>Enter name</span>
             </MessageContainer>
             <FormInput
-              //Enter an email address
-              //Enter a valid email
               type="email"
               placeholder="Email address"
               value={userEmail}

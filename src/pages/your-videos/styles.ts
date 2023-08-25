@@ -93,23 +93,120 @@ export const ModalHeader = styled.div`
   }
 `;
 
-export const ModalContent = styled.div`
-  padding: 16px 100px 24px;
-`;
+export const MessageContainer = styled.div<{valid: boolean}>`
+  display: ${({valid}) => (valid? "none" : "flex" ) };
+  width: 100%;
+  align-items: center;
 
-export const TitleTextBox = styled.input`
-  height: 45px;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 15px;
-  padding: 0 11px 11px 11px;
-
-  :focus {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+  span {
+    font-size: 12px;
+    color: #F7053E
   }
 `;
 
-export const ModalFooter = styled.footer``;
+export const ModalFooter = styled.footer`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #555;
+  margin-top: auto;
+
+  span {
+    font-size: 12px;
+
+    :last-of-type {
+      margin-top: 10px;
+    }
+  }
+
+  a {
+    color: #1a75ff;
+  }
+`;
+
+export const SaveButton = styled.button`
+  width: 60px;
+  height: 36px;
+  color: #fff;
+  background-color: #1a73e8;
+  border: none;
+  font-family: "Google Sans", sans-serif;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+
+  :hover {
+    background-color: #1a5eea;
+  }
+`;
+
+export const ModalContent = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 100px 24px;
+  box-sizing: border-box;
+
+  label {
+    font-size: 14px;
+    color: #666;
+  }
+`;
+
+export const TitleTextBox = styled.input`
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  padding: 0 11px 11px 11px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+
+  :focus {
+    border-color: #1a75ff;
+    border-width: 2px;
+    outline: none;
+  }
+`;
+
+
+export const DescriptionTextBox = styled.input`
+  width: 100%;
+  height: 90px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  padding: 0 11px 50px 11px;
+  margin-bottom: 15px;
+  margin-top: 6px;
+
+  :focus {
+    border-color: #1a75ff;
+    border-width: 2px;
+    outline: none;
+  }
+`;
+
+export const ThumbnailTextBox = styled.input`
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  padding: 0 11px 0 11px;
+  margin-top: 6px;
+
+  :focus {
+    border-color: #1a75ff;
+    border-width: 2px;
+    outline: none;
+  }
+`;
 
 export const IconContainer = styled.div`
   display: flex;
