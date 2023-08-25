@@ -9,6 +9,7 @@ import {
   IconContainer,
   ImageBanner,
   Modal,
+  ModalContainer,
   ModalContent,
   ModalHeader,
   NavContainer,
@@ -81,7 +82,7 @@ function YourVideos() {
             ))}
           </TableHeader>
           <Modal hideModal={hideModal}>
-            <ModalContent>
+            <ModalContainer>
               <ModalHeader>
                 <h3>Upload videos</h3>
                 <IconContainer>
@@ -93,11 +94,13 @@ function YourVideos() {
                   />
                 </IconContainer>
               </ModalHeader>
-              <TitleTextBox
-                type="textbox"
-                placeholder="Add a title that describes your video"
-              />
-            </ModalContent>
+              <ModalContent>
+                <TitleTextBox
+                  type="textbox"
+                  placeholder="Title"
+                />
+              </ModalContent>
+            </ModalContainer>
           </Modal>
           <TableContentContainer>
             <Checkbox type="checkbox" />
@@ -139,3 +142,9 @@ function YourVideos() {
 }
 
 export default YourVideos;
+
+/*
+By submitting your videos to YouTube, you acknowledge that you agree to YouTube's Terms of Service and Community Guidelines.
+
+Please be sure not to violate others' copyright or privacy rights. Learn more
+*/

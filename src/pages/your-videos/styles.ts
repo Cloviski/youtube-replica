@@ -57,7 +57,7 @@ export const Modal = styled.div<{ hideModal?: boolean }>`
   justify-content: center;
 `;
 
-export const ModalContent = styled.div`
+export const ModalContainer = styled.div`
   width: 50vw;
   height: 90vh;
   background-color: white;
@@ -93,10 +93,13 @@ export const ModalHeader = styled.div`
   }
 `;
 
+export const ModalContent = styled.div`
+  padding: 16px 100px 24px;
+`;
+
 export const TitleTextBox = styled.input`
   height: 45px;
   border-radius: 5px;
-  border-top: none;
   border: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 15px;
   padding: 0 11px 11px 11px;
@@ -106,9 +109,7 @@ export const TitleTextBox = styled.input`
   }
 `;
 
-export const ModalFooter = styled.footer`
-
-`;
+export const ModalFooter = styled.footer``;
 
 export const IconContainer = styled.div`
   display: flex;
