@@ -16,6 +16,7 @@ import {
   DropDownItem,
   DropDownIcon,
   ArrowIcon,
+  AccountContainer,
 } from "./styles";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -79,7 +80,7 @@ const menuFifthItems = [
 
 function Header() {
   const { openMenu, setOpenMenu } = useContext(MenuContext);
-  const { login, logOut, dropDownMenu, setDropDownMenu } =
+  const { user, login, logOut, dropDownMenu, setDropDownMenu } =
     useContext(UserContext);
   const { setSearch } = useSearchContext();
   const [searchInput, setSearchInput] = useState("");
@@ -139,15 +140,23 @@ function Header() {
         </ButtonContainer>
         {login ? (
           <>
-            <ButtonContainer
+            <AccountContainer
               margin="0 0 0 10px"
               onClick={() => setDropDownMenu(!dropDownMenu)}
             >
-              MW
-            </ButtonContainer>
+              <span>
+                {user && user.name ? user.name.charAt(0).toUpperCase() : "?"}
+              </span>
+            </AccountContainer>
             <DropDownContainer dropDownMenu={dropDownMenu}>
               <ProfileContainer>
-                <ButtonContainer margin="0 16px 0 0">MW</ButtonContainer>
+                <AccountContainer margin="0 16px 0 0">
+                  <span>
+                    {user && user.name
+                      ? user.name.charAt(0).toUpperCase()
+                      : "?"}
+                  </span>
+                </AccountContainer>
                 <ProfileTextContainer>
                   <span>Claudio Ribeiro</span>
                   <span>Manage your Google Account</span>

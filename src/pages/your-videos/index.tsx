@@ -8,7 +8,6 @@ import {
   H1Title,
   Icon,
   IconContainer,
-  ImageBanner,
   MessageContainer,
   Modal,
   ModalContainer,
@@ -17,22 +16,17 @@ import {
   ModalHeader,
   NavContainer,
   SaveButton,
-  SpanContainer,
-  SpanVideoContainer,
-  TableContentContainer,
   TableHeader,
-  TableVideoContainer,
   ThumbnailTextBox,
   TitleTextBox,
-  VisibilityContainer,
 } from "./styles";
 import FilterIcon from "../../assets/filter.png";
-import EyeIcon from "../../assets/view.png";
 import FeedbackIcon from "../../assets/chat.png";
 import CloseIcon from "../../assets/x.png";
 import { useContext, useRef, useState } from "react";
 import { ModalContext } from "../../contexts/modalContext";
 import { UserContext } from "../../contexts/userContext";
+import YourVideosContainer from "../../components/your-videos-container";
 
 interface Videos {
   title: string;
@@ -139,6 +133,46 @@ function YourVideos() {
     }
   };
 
+  function getTimeDifference(publishedAt: string): string {
+    const difference = Date.now() - Date.parse(publishedAt);
+    const minute = 60 * 1000;
+    const hour = 60 * minute;
+    const day = 24 * hour;
+    const week = 7 * day;
+    const month = 30 * day;
+    const year = 12 * month;
+
+    if (difference < minute * 5) {
+      return "Now";
+    } else if (difference < hour) {
+      const minutes = Math.floor(difference / minute);
+      return `Há ${minutes} ${minutes < 2 ? "minute" : "minutes"}`;
+    } else if (difference < day) {
+      const hours = Math.floor(difference / hour);
+      return `Há ${hours} ${hours < 2 ? "hour" : "hours"}`;
+    } else if (difference < week) {
+      const days = Math.floor(difference / day);
+      return `Há ${days} ${days < 2 ? "day" : "days"}`;
+    } else if (difference < month) {
+      const weeks = Math.floor(difference / week);
+      return `Há ${weeks} ${weeks < 2 ? "week" : "weeks"}`;
+    } else if (difference < year) {
+      const months = Math.floor(difference / month);
+      return `Há ${months} ${months < 2 ? "month" : "months"}`;
+    } else {
+      const years = Math.floor(difference / year);
+      return `Há ${years} ${years < 2 ? "year" : "years"}`;
+    }
+  }
+
+  const closeModal = () => {
+    clearInputs();
+    setThumbnailValid(true);
+    setTitleValid(true);
+    setDescriptionValid(true);
+    setHideModal(true);
+  };
+
   return (
     <>
       <HeaderStudio />
@@ -182,6 +216,7 @@ function YourVideos() {
                   id="title"
                   type="textbox"
                   onChange={(e) => setTitle(e.target.value)}
+                  ref={titleRef}
                   maxLength={100}
                   placeholder="Add a title that describes your video"
                 />
@@ -193,23 +228,25 @@ function YourVideos() {
                   id="description"
                   type="textbox"
                   onChange={(e) => setDescription(e.target.value)}
+                  ref={descriptionRef}
                   maxLength={200}
                   placeholder="Tell viewers about your video"
                 />
                 <MessageContainer valid={descriptionValid}>
-                  <span>Your video needs a title</span>
+                  <span>Your video needs a description</span>
                 </MessageContainer>
                 <label htmlFor="thumbnail">Thumbnail</label>
                 <ThumbnailTextBox
                   id="thumbnail"
                   type="textbox"
                   onChange={(e) => setThumbnail(e.target.value)}
+                  ref={thumbnailRef}
                   placeholder="Place your URL picture that shows what's in your video."
                 />
                 <MessageContainer valid={thumbnailValid}>
-                  <span>Your video needs a title</span>
+                  <span>Your video needs a thumbnail</span>
                 </MessageContainer>
-                <SaveButton>SAVE</SaveButton>
+                <SaveButton onClick={() => sendVideo()}>SAVE</SaveButton>
                 <ModalFooter>
                   <span>
                     By submitting your videos to YouTube, you acknowledge that
@@ -218,45 +255,23 @@ function YourVideos() {
                   </span>
                   <span>
                     Please be sure not to violate others' copyright or privacy
-                    rights. <a>Learn more</a>
+                    rights. <a>Learn more</a>.
                   </span>
                 </ModalFooter>
               </ModalContent>
             </ModalContainer>
           </Modal>
-          <TableContentContainer>
-            <Checkbox type="checkbox" />
-            <TableVideoContainer>
-              <ImageBanner
-                alt="thumbnail"
-                src="https://images3.alphacoders.com/567/567308.jpg"
-              />
-              <SpanVideoContainer>
-                <span>How I lost my sanity in Dubai...</span>
-                <span>Add description</span>
-              </SpanVideoContainer>
-            </TableVideoContainer>
-            <VisibilityContainer>
-              <Icon alt="" src={EyeIcon} />
-              <span>Unlisted</span>
-            </VisibilityContainer>
-            <SpanContainer>
-              <span>None</span>
-            </SpanContainer>
-            <SpanContainer>
-              <span>May 21, 2023</span>
-              <span>Uploaded</span>
-            </SpanContainer>
-            <SpanContainer>
-              <span>0</span>
-            </SpanContainer>
-            <SpanContainer>
-              <span>0</span>
-            </SpanContainer>
-            <SpanContainer>
-              <span>-</span>
-            </SpanContainer>
-          </TableContentContainer>
+          {Array.isArray(userVideos)
+            ? userVideos.map((video: Videos) => (
+                <YourVideosContainer
+                  title={video.title}
+                  thumbnail={video.thumbnail}
+                  description={video.description}
+                  publishedAt={getTimeDifference(video.publishedAt)}
+                  key={video.video_id}
+                />
+              ))
+            : null}
         </RoutesContainer>
       </MainContainer>
     </>
@@ -265,8 +280,38 @@ function YourVideos() {
 
 export default YourVideos;
 
-/*
-By submitting your videos to YouTube, you acknowledge that you agree to YouTube's Terms of Service and Community Guidelines.
-
-Please be sure not to violate others' copyright or privacy rights. Learn more
-*/
+/*{Array.isArray(userVideos)
+  ? userVideos.map((video: Videos) => (
+      <TableContentContainer>
+        <Checkbox type="checkbox" />
+        <TableVideoContainer>
+          <ImageBanner alt="thumbnail" src={video.thumbnail} />
+          <SpanVideoContainer>
+            <span>{video.title}</span>
+            <span>{video.description}</span>
+          </SpanVideoContainer>
+        </TableVideoContainer>
+        <VisibilityContainer>
+          <Icon alt="" src={EyeIcon} />
+          <span>Unlisted</span>
+        </VisibilityContainer>
+        <SpanContainer>
+          <span>None</span>
+        </SpanContainer>
+        <SpanContainer>
+          <span>{getTimeDifference(video.publishedAt)}</span>
+          <span>Uploaded</span>
+        </SpanContainer>
+        <SpanContainer>
+          <span>0</span>
+        </SpanContainer>
+        <SpanContainer>
+          <span>0</span>
+        </SpanContainer>
+        <SpanContainer>
+          <span>-</span>
+        </SpanContainer>
+        key={video.video_id}
+      </TableContentContainer>
+    ))
+  : null}*/

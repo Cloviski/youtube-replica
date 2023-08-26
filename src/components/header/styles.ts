@@ -27,6 +27,26 @@ export const YoutubeLogo = styled.img`
 
 //style={{ cursor: 'pointer', width: '90px', padding: '6px' }}
 
+export const AccountContainer = styled.div<{ margin?: string }>`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: ${({ margin }) => (margin ? margin : 0)};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgb(200, 0, 0);
+
+  :hover {
+    background-color: rgb(165, 0, 0);
+  }
+
+  span {
+    color: #fff;
+  }
+`;
+
 export const ButtonContainer = styled.div<{ margin?: string }>`
   width: 40px;
   height: 40px;
@@ -36,6 +56,7 @@ export const ButtonContainer = styled.div<{ margin?: string }>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
   :hover {
     background-color: #f2f2f2;
   }
@@ -148,7 +169,7 @@ export const ProfileTextContainer = styled.div`
 
     :last-child {
       font-size: 14px;
-      color: #065Fd4;
+      color: #065fd4;
       cursor: pointer;
     }
   }
@@ -180,7 +201,6 @@ export const DropDownItem = styled.div`
   :hover {
     background-color: #f2f2f2;
   }
-
 `;
 
 export const DropDownIcon = styled.img`
@@ -191,4 +211,3 @@ export const DropDownIcon = styled.img`
 export const ArrowIcon = styled.img`
   width: 12px;
 `;
-

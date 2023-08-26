@@ -32,5 +32,3 @@ code {
   border-radius: 20px;
 }
 `;
-
-

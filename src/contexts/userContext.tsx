@@ -9,11 +9,25 @@ interface UserStoreProps {
 export const UserContext = createContext({} as any);
 
 export const UserStorage = ({ children }: UserStoreProps) => {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   const [user, setUser] = useState({});
+  const [userVideos, setUserVideos] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("token") as string);
   const [dropDownMenu, setDropDownMenu] = useState(false);
   const navigate = useNavigate();
+
+  const getVideos = (token: string, user_id: string) => {
+    api
+      .get(`/videos/get-videos?user_id=${user_id}`, {
+        headers: { Authorization: token },
+      })
+      .then(({ data }) => {
+        setUserVideos(data.videos);
+      })
+      .catch((error) => {
+        console.log("erro ao buscar vídeos", error);
+      });
+  };
 
   const getUser = (token: string) => {
     api
@@ -35,6 +49,30 @@ export const UserStorage = ({ children }: UserStoreProps) => {
     localStorage.removeItem("token");
     setLogin(false);
     setUser({});
+  };
+
+  const createVideos = (
+    token: string,
+    user_id: string,
+    title: string,
+    description: string,
+    thumbnail: string,
+    publishedAt: Date
+  ) => {
+    api
+      .post(
+        "/videos/create-video",
+        { user_id, title, description, thumbnail, publishedAt },
+        { headers: { Authorization: token } }
+      )
+      .then(() => {
+        alert("Video created!");
+        getUser(token);
+      })
+      .catch((error) => {
+        console.log("It wasn't to send the video", error);
+        alert("Video wasn't sended. Try again.");
+      });
   };
 
   const handleLogin = (email: string, password: string) => {
@@ -71,10 +109,13 @@ export const UserStorage = ({ children }: UserStoreProps) => {
         login,
         user,
         dropDownMenu,
+        userVideos,
+        getVideos,
         setDropDownMenu,
         handleLogin,
         handleCreateUser,
         logOut,
+        createVideos,
       }}
     >
       {children}

@@ -17,6 +17,8 @@ import {
   DropDownIcon,
   ArrowIcon,
   CreateVideoContainer,
+  AccountContainer,
+  AccountDropDown,
 } from "./styles";
 import HamburgerIcon from "../../assets/hamburger.png";
 import YTStudioLogo from "../../assets/yt_studio.png";
@@ -37,9 +39,14 @@ import { MenuContext } from "../../contexts/menuContext";
 import { ModalContext } from "../../contexts/modalContext";
 
 const menuFirstItems = [
-  { label: "Your channel", icon: ProfileIcon, link: "/your-videos"  },
+  { label: "Your channel", icon: ProfileIcon, link: "/your-videos" },
   { label: "YouTube", icon: YTStudioLineIcon, link: "/" },
-  { label: "Switch account", icon: ManageProfileIcon, arrow: RightArrowIcon, link: "/login"  },
+  {
+    label: "Switch account",
+    icon: ManageProfileIcon,
+    arrow: RightArrowIcon,
+    link: "/login",
+  },
 ];
 
 const menuSecondItems = [
@@ -49,11 +56,10 @@ const menuSecondItems = [
 
 function HeaderStudio() {
   const { openMenu, setOpenMenu } = useContext(MenuContext);
-  const { user, userVideos, createVideos, token } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { login, logOut, dropDownMenu, setDropDownMenu } =
     useContext(UserContext);
   const { hideModal, setHideModal } = useContext(ModalContext);
-  const USER_ID = user.id;
   const navigate = useNavigate();
 
   return (
@@ -86,17 +92,29 @@ function HeaderStudio() {
         </CreateVideoContainer>
         {login ? (
           <>
-            <ButtonContainer
+            <AccountContainer
               margin="0 0 0 10px"
               onClick={() => setDropDownMenu(!dropDownMenu)}
             >
-              MW
-            </ButtonContainer>
+              <span>
+                {user && user.name ? user.name.charAt(0).toUpperCase() : "?"}
+              </span>
+            </AccountContainer>
             <DropDownContainer dropDownMenu={dropDownMenu}>
               <ProfileContainer>
-                <ButtonContainer margin="0 16px 0 0">MW</ButtonContainer>
+                <AccountDropDown margin="0 16px 0 0">
+                  <span>
+                    {user && user.name
+                      ? user.name.charAt(0).toUpperCase()
+                      : "?"}
+                  </span>
+                </AccountDropDown>
                 <ProfileTextContainer>
-                  <span>Claudio Ribeiro</span>
+                  <span>
+                    {user && user.name
+                      ? user.name.charAt(0).toUpperCase()
+                      : "?"}
+                  </span>
                   <span>Manage your Google Account</span>
                 </ProfileTextContainer>
               </ProfileContainer>
