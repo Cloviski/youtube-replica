@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserStorage } from "./contexts/userContext";
-import Home from "./pages/home";
-import Login from "./pages/login";
-import SignUp from "./pages/signup";
-import Search from "./pages/search";
-import YourVideos from "./pages/your-videos";
+import Home from "./pages/home/home";
+import Login from "./pages/login/login";
+import SignUp from "./pages/signup/signup";
+import Search from "./pages/search/search";
+import YourVideos from "./pages/your-videos/yourVideos";
 
 function App() {
   return (

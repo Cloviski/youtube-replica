@@ -19,7 +19,7 @@ import {
   CreateVideoContainer,
   AccountContainer,
   AccountDropDown,
-} from "./styles";
+} from "./headerStudioStyles";
 import HamburgerIcon from "../../assets/hamburger.png";
 import YTStudioLogo from "../../assets/yt_studio.png";
 import SearchIcon from "../../assets/search.png";
@@ -33,31 +33,30 @@ import MoonIcon from "../../assets/moon.png";
 import ManageProfileIcon from "../../assets/exchange.png";
 import RightArrowIcon from "../../assets/greater-than-symbol.png";
 import { UserContext } from "../../contexts/userContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MenuContext } from "../../contexts/menuContext";
 import { ModalContext } from "../../contexts/modalContext";
 
-const menuFirstItems = [
-  { label: "Your channel", icon: ProfileIcon, link: "/your-videos" },
-  { label: "YouTube", icon: YTStudioLineIcon, link: "/" },
-  {
-    label: "Switch account",
-    icon: ManageProfileIcon,
-    arrow: RightArrowIcon,
-    link: "/login",
-  },
-];
-
-const menuSecondItems = [
-  { label: "Appearance: Light", icon: MoonIcon, arrow: RightArrowIcon },
-  { label: "Send feedback", icon: FeedbackIcon },
-];
-
 function HeaderStudio() {
+  const menuFirstItems = [
+    { label: "Your channel", icon: ProfileIcon, link: "/your-videos" },
+    { label: "YouTube", icon: YTStudioLineIcon, link: "/" },
+    {
+      label: "Switch account",
+      icon: ManageProfileIcon,
+      arrow: RightArrowIcon,
+      link: "/login",
+    },
+  ];
+
+  const menuSecondItems = [
+    { label: "Appearance: Light", icon: MoonIcon, arrow: RightArrowIcon },
+    { label: "Send feedback", icon: FeedbackIcon },
+  ];
+
   const { openMenu, setOpenMenu } = useContext(MenuContext);
-  const { user } = useContext(UserContext);
-  const { login, logOut, dropDownMenu, setDropDownMenu } =
+  const { login, user, logOut, dropDownMenu, setDropDownMenu } =
     useContext(UserContext);
   const { hideModal, setHideModal } = useContext(ModalContext);
   const navigate = useNavigate();
@@ -96,25 +95,17 @@ function HeaderStudio() {
               margin="0 0 0 10px"
               onClick={() => setDropDownMenu(!dropDownMenu)}
             >
-              <span>
-                {user && user.name ? user.name.charAt(0).toUpperCase() : "?"}
-              </span>
+              <span>{user.name ? user.name.charAt(0).toUpperCase() : "?"}</span>
             </AccountContainer>
             <DropDownContainer dropDownMenu={dropDownMenu}>
               <ProfileContainer>
                 <AccountDropDown margin="0 16px 0 0">
                   <span>
-                    {user && user.name
-                      ? user.name.charAt(0).toUpperCase()
-                      : "?"}
+                    {user.name ? user.name.charAt(0).toUpperCase() : "?"}
                   </span>
                 </AccountDropDown>
                 <ProfileTextContainer>
-                  <span>
-                    {user && user.name
-                      ? user.name.charAt(0).toUpperCase()
-                      : "?"}
-                  </span>
+                  <span>{user.name ? user.name : "?"}</span>
                   <span>Manage your Google Account</span>
                 </ProfileTextContainer>
               </ProfileContainer>

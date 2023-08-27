@@ -7,7 +7,7 @@ import {
   TableContentContainer,
   TableVideoContainer,
   VisibilityContainer,
-} from "./styles";
+} from "./yourVideosContainerStyles";
 import EyeIcon from "../../assets/view.png";
 
 interface Props {
@@ -18,6 +18,7 @@ interface Props {
 }
 
 function YourVideosContainer(props: Props) {
+
   return (
     <TableContentContainer>
       <Checkbox type="checkbox" />

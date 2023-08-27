@@ -7,7 +7,7 @@ import {
   TitleContainer,
   TextCard,
   ChannelName,
-} from "./styles";
+} from "./videoHomeStyles";
 import { useContext } from "react";
 import { MenuContext } from "../../contexts/menuContext";
 

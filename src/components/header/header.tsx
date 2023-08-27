@@ -17,13 +17,13 @@ import {
   DropDownIcon,
   ArrowIcon,
   AccountContainer,
-} from "./styles";
+} from "./headerStyles";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MenuContext } from "../../contexts/menuContext";
 import { UserContext } from "../../contexts/userContext";
 import { useSearchContext } from "../../contexts/searchContext";
-import { SignMenuContainer } from "./styles";
+import { SignMenuContainer } from "./headerStyles";
 import HamburgerIcon from "../../assets/hamburger.png";
 import Logo from "../../assets/youtube_logo.png";
 import SearchIcon from "../../assets/search.png";
@@ -47,38 +47,42 @@ import KeyboardIcon from "../../assets/keyboard.png";
 import ManageProfileIcon from "../../assets/exchange.png";
 import RightArrowIcon from "../../assets/greater-than-symbol.png";
 
-const menuFirstItems = [
-  { label: "Your channel", icon: ProfileIcon, link: "your-videos" },
-  { label: "YouTube Studio", icon: YTStudioLineIcon, link: "your-videos" },
-  {
-    label: "Switch account",
-    icon: ManageProfileIcon,
-    arrow: RightArrowIcon,
-    link: "login",
-  },
-];
-
-const menuSecondItems = [
-  { label: "Purchases and merberships", icon: PurchaseIcon },
-  { label: "Your data in YouTube", icon: ProfileShildIcon },
-];
-
-const menuThirdItems = [
-  { label: "Appearance: Light", icon: MoonIcon, arrow: RightArrowIcon },
-  { label: "Language: English", icon: LanguageIcon, arrow: RightArrowIcon },
-  { label: "Restricted Mode: Off", icon: ShildIcon, arrow: RightArrowIcon },
-  { label: "Location: United States", icon: GlobalIcon, arrow: RightArrowIcon },
-  { label: "Keyboard shortcuts", icon: KeyboardIcon },
-];
-
-const menuForthItems = [{ label: "Settings", icon: SettingsIcon }];
-
-const menuFifthItems = [
-  { label: "Help", icon: HelpIcon },
-  { label: "Send feedback", icon: FeedbackIcon },
-];
-
 function Header() {
+  const menuFirstItems = [
+    { label: "Your channel", icon: ProfileIcon, link: "your-videos" },
+    { label: "YouTube Studio", icon: YTStudioLineIcon, link: "your-videos" },
+    {
+      label: "Switch account",
+      icon: ManageProfileIcon,
+      arrow: RightArrowIcon,
+      link: "login",
+    },
+  ];
+
+  const menuSecondItems = [
+    { label: "Purchases and merberships", icon: PurchaseIcon },
+    { label: "Your data in YouTube", icon: ProfileShildIcon },
+  ];
+
+  const menuThirdItems = [
+    { label: "Appearance: Light", icon: MoonIcon, arrow: RightArrowIcon },
+    { label: "Language: English", icon: LanguageIcon, arrow: RightArrowIcon },
+    { label: "Restricted Mode: Off", icon: ShildIcon, arrow: RightArrowIcon },
+    {
+      label: "Location: United States",
+      icon: GlobalIcon,
+      arrow: RightArrowIcon,
+    },
+    { label: "Keyboard shortcuts", icon: KeyboardIcon },
+  ];
+
+  const menuForthItems = [{ label: "Settings", icon: SettingsIcon }];
+
+  const menuFifthItems = [
+    { label: "Help", icon: HelpIcon },
+    { label: "Send feedback", icon: FeedbackIcon },
+  ];
+
   const { openMenu, setOpenMenu } = useContext(MenuContext);
   const { user, login, logOut, dropDownMenu, setDropDownMenu } =
     useContext(UserContext);
@@ -144,21 +148,17 @@ function Header() {
               margin="0 0 0 10px"
               onClick={() => setDropDownMenu(!dropDownMenu)}
             >
-              <span>
-                {user && user.name ? user.name.charAt(0).toUpperCase() : "?"}
-              </span>
+              <span>{user.name ? user.name.charAt(0).toUpperCase() : "?"}</span>
             </AccountContainer>
             <DropDownContainer dropDownMenu={dropDownMenu}>
               <ProfileContainer>
                 <AccountContainer margin="0 16px 0 0">
                   <span>
-                    {user && user.name
-                      ? user.name.charAt(0).toUpperCase()
-                      : "?"}
+                    {user.name ? user.name.charAt(0).toUpperCase() : "?"}
                   </span>
                 </AccountContainer>
                 <ProfileTextContainer>
-                  <span>Claudio Ribeiro</span>
+                  <span>{user.name ? user.name : ""}</span>
                   <span>Manage your Google Account</span>
                 </ProfileTextContainer>
               </ProfileContainer>

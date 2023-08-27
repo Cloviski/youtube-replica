@@ -1,27 +1,27 @@
 import { useState, useEffect, useRef } from "react";
-import { Container, InnerContainer } from "./styles";
+import { Container, InnerContainer } from "./categoryStyles";
 import { useCategoryContext } from "../../contexts/categoryContext";
 import { motion } from "framer-motion";
 
-const categoryItems = [
-  { label: "All", id: "0" },
-  { label: "Gaming", id: "20" },
-  { label: "Music", id: "10" },
-  { label: "Film & Animation", id: "1" },
-  { label: "Pets & Animals", id: "15" },
-  { label: "People & Blogs", id: "22" },
-  { label: "Comedy", id: "23" },
-  { label: "Entertainment", id: "24" },
-  { label: "News & Politics", id: "25" },
-  { label: "Nonprofits & Activism", id: "29" },
-  { label: "Howto & Style", id: "26" },
-  { label: "Vehicles", id: "2" },
-  { label: "Sports", id: "17" },
-  { label: "Science & Technology", id: "28" },
-  { label: "Recently uploaded", id: "0" },
-];
-
 function Category() {
+  const categoryItems = [
+    { label: "All", id: "0" },
+    { label: "Gaming", id: "20" },
+    { label: "Music", id: "10" },
+    { label: "Film & Animation", id: "1" },
+    { label: "Pets & Animals", id: "15" },
+    { label: "People & Blogs", id: "22" },
+    { label: "Comedy", id: "23" },
+    { label: "Entertainment", id: "24" },
+    { label: "News & Politics", id: "25" },
+    { label: "Nonprofits & Activism", id: "29" },
+    { label: "Howto & Style", id: "26" },
+    { label: "Vehicles", id: "2" },
+    { label: "Sports", id: "17" },
+    { label: "Science & Technology", id: "28" },
+    { label: "Recently uploaded", id: "0" },
+  ];
+
   const carousel = useRef<HTMLDivElement>(null);
   const [carouselWidth, setCarouselWidth] = useState(0);
 
@@ -32,7 +32,7 @@ function Category() {
       );
     }
   }, []);
-  //1341
+
   const { setCategoryId } = useCategoryContext();
 
   function searchCategory(id: string) {

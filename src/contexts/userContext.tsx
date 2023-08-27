@@ -25,7 +25,7 @@ export const UserStorage = ({ children }: UserStoreProps) => {
         setUserVideos(data.videos);
       })
       .catch((error) => {
-        console.log("erro ao buscar vídeos", error);
+        console.log("Error finding videos", error);
       });
   };
 
@@ -70,7 +70,7 @@ export const UserStorage = ({ children }: UserStoreProps) => {
         getUser(token);
       })
       .catch((error) => {
-        console.log("It wasn't to send the video", error);
+        console.log("It wasn't possible to send the video", error);
         alert("Video wasn't sended. Try again.");
       });
   };
@@ -108,8 +108,8 @@ export const UserStorage = ({ children }: UserStoreProps) => {
       value={{
         login,
         user,
-        dropDownMenu,
         userVideos,
+        dropDownMenu,
         getVideos,
         setDropDownMenu,
         handleLogin,

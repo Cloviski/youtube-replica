@@ -3,7 +3,7 @@ import {
   FooterContainer,
   LanguageContainer,
   TermsContainer,
-} from "./styles";
+} from "./footerStyles";
 import DownArrow from "../../assets/down-filled-triangular-arrow.png";
 
 function Footer() {

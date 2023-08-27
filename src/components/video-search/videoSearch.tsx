@@ -9,7 +9,7 @@ import {
   TextContainer,
   Title,
   TitleContainer,
-} from "./styles";
+} from "./videoSearchStyles";
 
 interface Props {
   title: string;

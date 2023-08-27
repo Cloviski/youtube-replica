@@ -2,34 +2,34 @@ import { useState, useEffect, useContext } from "react";
 import { useSearchContext } from "../../contexts/searchContext";
 import { MenuContext } from "../../contexts/menuContext";
 import { MainContainer, RoutesContainer } from "../../AppStyles";
-import { VideoContainer } from "./styles";
-import Header from "../../components/header";
-import Menu from "../../components/menu";
-import VideoSearch from "../../components/video-search";
+import { VideoContainer } from "./searchStyles";
+import Header from "../../components/header/header";
+import Menu from "../../components/menu/menu";
+import VideoSearch from "../../components/video-search/videoSearch";
 import axios from "axios";
 import moment from "moment";
 
-interface Videos {
-  id: {
-    videoId: string;
-  };
-  snippet: {
-    title: string;
-    thumbnails: {
-      high: {
-        url: string;
-      };
-    };
-    channelTitle: string;
-    publishedAt: string;
-    description: string;
-  };
-  statistics: {
-    viewCount: string;
-  };
-}
-
 function Search() {
+  interface Videos {
+    id: {
+      videoId: string;
+    };
+    snippet: {
+      title: string;
+      thumbnails: {
+        high: {
+          url: string;
+        };
+      };
+      channelTitle: string;
+      publishedAt: string;
+      description: string;
+    };
+    statistics: {
+      viewCount: string;
+    };
+  }
+
   const { openMenu } = useContext(MenuContext);
   const { search } = useSearchContext();
 
@@ -101,7 +101,9 @@ function Search() {
                   .charAt(0)
                   .toUpperCase()}
                 channelName={video.snippet.channelTitle}
-                details={`0 views • ${getPublishedTime(video.snippet.publishedAt)}`}
+                details={`0 views • ${getPublishedTime(
+                  video.snippet.publishedAt
+                )}`}
                 description={video.snippet.description}
                 key={index}
               />

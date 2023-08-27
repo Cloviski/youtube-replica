@@ -1,6 +1,6 @@
 import { MainContainer, RoutesContainer } from "../../AppStyles";
-import HeaderStudio from "../../components/header-studio";
-import MenuStudio from "../../components/menu-studio";
+import HeaderStudio from "../../components/header-studio/headerStudio";
+import MenuStudio from "../../components/menu-studio/menuStudio";
 import {
   Checkbox,
   DescriptionTextBox,
@@ -19,42 +19,42 @@ import {
   TableHeader,
   ThumbnailTextBox,
   TitleTextBox,
-} from "./styles";
+} from "./yourVideosStyles";
 import FilterIcon from "../../assets/filter.png";
 import FeedbackIcon from "../../assets/chat.png";
 import CloseIcon from "../../assets/x.png";
 import { useContext, useRef, useState } from "react";
 import { ModalContext } from "../../contexts/modalContext";
 import { UserContext } from "../../contexts/userContext";
-import YourVideosContainer from "../../components/your-videos-container";
-
-interface Videos {
-  title: string;
-  video_id: string;
-  thumbnail: string;
-  description: string;
-  publishedAt: string;
-}
-
-const firstItems = [
-  { label: "Videos" },
-  { label: "Live" },
-  { label: "Playlists" },
-  { label: "Podcasts" },
-  { label: "Promotions" },
-];
-
-const tableItems = [
-  { label: "Video" },
-  { label: "Visibility" },
-  { label: "Restrictions" },
-  { label: "Date" },
-  { label: "Views" },
-  { label: "Comments" },
-  { label: "Likes (vs. dislikes)" },
-];
+import YourVideosContainer from "../../components/your-videos-container/yourVideosContainer";
 
 function YourVideos() {
+  interface Videos {
+    title: string;
+    video_id: string;
+    thumbnail: string;
+    description: string;
+    publishedAt: string;
+  }
+
+  const firstItems = [
+    { label: "Videos" },
+    { label: "Live" },
+    { label: "Playlists" },
+    { label: "Podcasts" },
+    { label: "Promotions" },
+  ];
+
+  const tableItems = [
+    { label: "Video" },
+    { label: "Visibility" },
+    { label: "Restrictions" },
+    { label: "Date" },
+    { label: "Views" },
+    { label: "Comments" },
+    { label: "Likes (vs. dislikes)" },
+  ];
+
   const { user, userVideos, createVideos, token } = useContext(UserContext);
   const { hideModal, setHideModal } = useContext(ModalContext);
 
@@ -165,14 +165,6 @@ function YourVideos() {
     }
   }
 
-  const closeModal = () => {
-    clearInputs();
-    setThumbnailValid(true);
-    setTitleValid(true);
-    setDescriptionValid(true);
-    setHideModal(true);
-  };
-
   return (
     <>
       <HeaderStudio />
@@ -211,12 +203,26 @@ function YourVideos() {
                 </IconContainer>
               </ModalHeader>
               <ModalContent>
+                <label htmlFor="thumbnail">Thumbnail</label>
+                <ThumbnailTextBox
+                  id="thumbnail"
+                  type="textbox"
+                  onChange={(e) => setThumbnail(e.target.value)}
+                  ref={thumbnailRef}
+                  valid={thumbnailValid}
+                  maxLength={200}
+                  placeholder="Place your URL picture that shows what's in your video."
+                />
+                <MessageContainer valid={thumbnailValid}>
+                  <span>Your video needs a thumbnail</span>
+                </MessageContainer>
                 <label htmlFor="title">Title</label>
                 <TitleTextBox
                   id="title"
                   type="textbox"
                   onChange={(e) => setTitle(e.target.value)}
                   ref={titleRef}
+                  valid={titleValid}
                   maxLength={100}
                   placeholder="Add a title that describes your video"
                 />
@@ -229,22 +235,12 @@ function YourVideos() {
                   type="textbox"
                   onChange={(e) => setDescription(e.target.value)}
                   ref={descriptionRef}
+                  valid={descriptionValid}
                   maxLength={200}
                   placeholder="Tell viewers about your video"
                 />
                 <MessageContainer valid={descriptionValid}>
                   <span>Your video needs a description</span>
-                </MessageContainer>
-                <label htmlFor="thumbnail">Thumbnail</label>
-                <ThumbnailTextBox
-                  id="thumbnail"
-                  type="textbox"
-                  onChange={(e) => setThumbnail(e.target.value)}
-                  ref={thumbnailRef}
-                  placeholder="Place your URL picture that shows what's in your video."
-                />
-                <MessageContainer valid={thumbnailValid}>
-                  <span>Your video needs a thumbnail</span>
                 </MessageContainer>
                 <SaveButton onClick={() => sendVideo()}>SAVE</SaveButton>
                 <ModalFooter>
@@ -261,17 +257,15 @@ function YourVideos() {
               </ModalContent>
             </ModalContainer>
           </Modal>
-          {Array.isArray(userVideos)
-            ? userVideos.map((video: Videos) => (
-                <YourVideosContainer
-                  title={video.title}
-                  thumbnail={video.thumbnail}
-                  description={video.description}
-                  publishedAt={getTimeDifference(video.publishedAt)}
-                  key={video.video_id}
-                />
-              ))
-            : null}
+          {userVideos.map((video: Videos) => (
+            <YourVideosContainer
+              title={video.title}
+              thumbnail={video.thumbnail}
+              description={video.description}
+              publishedAt={getTimeDifference(video.publishedAt)}
+              key={video.video_id}
+            />
+          ))}
         </RoutesContainer>
       </MainContainer>
     </>
@@ -285,10 +279,10 @@ export default YourVideos;
       <TableContentContainer>
         <Checkbox type="checkbox" />
         <TableVideoContainer>
-          <ImageBanner alt="thumbnail" src={video.thumbnail} />
+          <ImageBanner alt="thumbnail" src={"https://images3.alphacoders.com/567/567308.jpg"} />
           <SpanVideoContainer>
-            <span>{video.title}</span>
-            <span>{video.description}</span>
+            <span>How I lost my sanity in Dubai</span>
+            <span>damned 33rd</span>
           </SpanVideoContainer>
         </TableVideoContainer>
         <VisibilityContainer>
@@ -299,7 +293,7 @@ export default YourVideos;
           <span>None</span>
         </SpanContainer>
         <SpanContainer>
-          <span>{getTimeDifference(video.publishedAt)}</span>
+          <span>May 23, 2023</span>
           <span>Uploaded</span>
         </SpanContainer>
         <SpanContainer>
@@ -311,7 +305,6 @@ export default YourVideos;
         <SpanContainer>
           <span>-</span>
         </SpanContainer>
-        key={video.video_id}
       </TableContentContainer>
     ))
   : null}*/

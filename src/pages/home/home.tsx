@@ -6,42 +6,42 @@ import {
   ShortsInnerContainer,
   DownArrowContainer,
   DownArrow,
-} from "./styles";
+} from "./homeStyles";
 import { useContext, useEffect, useState } from "react";
 import { MainContainer, RoutesContainer } from "../../AppStyles";
 import { useCategoryContext } from "../../contexts/categoryContext";
 import { MenuContext } from "../../contexts/menuContext";
-import Category from "../../components/category";
-import Shorts from "../../components/shorts";
+import Category from "../../components/category/category";
+import Shorts from "../../components/shorts/shorts";
 import ShortsColored from "../../assets/youtube-shorts-colored.png";
 import DownArrowShorts from "../../assets/down-arrow.png";
-import Header from "../../components/header";
-import Menu from "../../components/menu";
+import Header from "../../components/header/header";
+import Menu from "../../components/menu/menu";
 import axios from "axios";
 import moment from "moment";
-import VideoHome from "../../components/video-home";
-
-interface VideosProps {
-  id: string;
-  snippet: {
-    title: string;
-    thumbnails: {
-      high: {
-        url: string;
-      };
-      maxres: {
-        url: string;
-      };
-    };
-    channelTitle: string;
-    publishedAt: string;
-  };
-  statistics: {
-    viewCount: string;
-  };
-}
+import VideoHome from "../../components/video-home/videoHome";
 
 function Home() {
+  interface VideosProps {
+    id: string;
+    snippet: {
+      title: string;
+      thumbnails: {
+        high: {
+          url: string;
+        };
+        maxres: {
+          url: string;
+        };
+      };
+      channelTitle: string;
+      publishedAt: string;
+    };
+    statistics: {
+      viewCount: string;
+    };
+  }
+
   const [videos, setVideos] = useState<VideosProps[]>([]);
   const { openMenu } = useContext(MenuContext);
   const { categoryId } = useCategoryContext();
@@ -50,7 +50,6 @@ function Home() {
     try {
       const response = await axios.get(url);
       setVideos(response.data.items);
-      console.log(videos);
     } catch (error) {
       console.log(error);
     }

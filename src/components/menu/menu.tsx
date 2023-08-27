@@ -9,11 +9,11 @@ import {
   PrimaryFooterMenu,
   SecondaryFooterMenu,
   Copyright,
-} from "./styles";
+} from "./menuStyles";
 import { useContext } from "react";
 import { MenuContext } from "../../contexts/menuContext";
 import { UserContext } from "../../contexts/userContext";
-import { ButtonIcon } from "../menu/styles";
+import { ButtonIcon } from "./menuStyles";
 import { useNavigate } from "react-router-dom";
 import HomeIcon from "../../assets/house.png";
 import ShortsIcon from "../../assets/shorts.png";
@@ -38,60 +38,60 @@ import HelpIcon from "../../assets/help.png";
 import FeedbackIcon from "../../assets/chat.png";
 import BrowseIcon from "../../assets/plus.png";
 
-const firstItems = [
-  { label: "Home", icon: HomeIcon, link: "/" },
-  { label: "Shorts", icon: ShortsIcon, link: "/" },
-  { label: "Subscriptions", icon: SubscriptionsIcon, link: "/" },
-];
-
-const secondItems = [
-  { label: "Library", icon: LibraryIcon },
-  { label: "History", icon: HistoryIcon },
-];
-
-const thirdItems = [
-  { label: "Trending", icon: TrendingIcon },
-  { label: "Music", icon: MusicIcon },
-  { label: "Movies & Shows", icon: MoviesIcon },
-  { label: "Live", icon: LiveIcon },
-  { label: "Gaming", icon: GamingIcon },
-  { label: "News", icon: NewsIcon },
-  { label: "Sports", icon: SportsIcon },
-  { label: "Learning", icon: LearningIcon },
-];
-
-const forthItems = [
-  { label: "Youtube Premium", icon: YTPremiumIcon },
-  { label: "Youtube Music", icon: YTMusicIcon },
-  { label: "Youtube Kids", icon: YTKidsIcon },
-];
-
-const fifthItems = [
-  { label: "Settings", icon: SettingsIcon },
-  { label: "Report history", icon: ReportIcon },
-  { label: "Help", icon: HelpIcon },
-  { label: "Send feedback", icon: FeedbackIcon },
-];
-
-const firstSpanItems = [
-  { label: "About" },
-  { label: "Press" },
-  { label: "Copyright" },
-  { label: "Contact us" },
-  { label: "Creators" },
-  { label: "Advertise" },
-  { label: "Developers" },
-];
-
-const secondSpanItems = [
-  { label: "Terms" },
-  { label: "Privacy" },
-  { label: "Policy & Safety" },
-  { label: "How YouTube works" },
-  { label: "Test new features" },
-];
-
 function Menu() {
+  const firstItems = [
+    { label: "Home", icon: HomeIcon, link: "/" },
+    { label: "Shorts", icon: ShortsIcon, link: "/" },
+    { label: "Subscriptions", icon: SubscriptionsIcon, link: "/" },
+  ];
+
+  const secondItems = [
+    { label: "Library", icon: LibraryIcon },
+    { label: "History", icon: HistoryIcon },
+  ];
+
+  const thirdItems = [
+    { label: "Trending", icon: TrendingIcon },
+    { label: "Music", icon: MusicIcon },
+    { label: "Movies & Shows", icon: MoviesIcon },
+    { label: "Live", icon: LiveIcon },
+    { label: "Gaming", icon: GamingIcon },
+    { label: "News", icon: NewsIcon },
+    { label: "Sports", icon: SportsIcon },
+    { label: "Learning", icon: LearningIcon },
+  ];
+
+  const forthItems = [
+    { label: "Youtube Premium", icon: YTPremiumIcon },
+    { label: "Youtube Music", icon: YTMusicIcon },
+    { label: "Youtube Kids", icon: YTKidsIcon },
+  ];
+
+  const fifthItems = [
+    { label: "Settings", icon: SettingsIcon },
+    { label: "Report history", icon: ReportIcon },
+    { label: "Help", icon: HelpIcon },
+    { label: "Send feedback", icon: FeedbackIcon },
+  ];
+
+  const firstSpanItems = [
+    { label: "About" },
+    { label: "Press" },
+    { label: "Copyright" },
+    { label: "Contact us" },
+    { label: "Creators" },
+    { label: "Advertise" },
+    { label: "Developers" },
+  ];
+
+  const secondSpanItems = [
+    { label: "Terms" },
+    { label: "Privacy" },
+    { label: "Policy & Safety" },
+    { label: "How YouTube works" },
+    { label: "Test new features" },
+  ];
+
   const navigate = useNavigate();
   const { openMenu } = useContext(MenuContext);
   const { login } = useContext(UserContext);

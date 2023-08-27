@@ -13,12 +13,12 @@ import {
   FormInput,
   SignUpButton,
   SpanContainer,
-} from "./styles";
+} from "./loginStyles";
 import { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../contexts/userContext";
 import { useNavigate } from "react-router-dom";
 import GoogleLogoIcon from "../../assets/google.png";
-import Footer from "../../components/footer";
+import Footer from "../../components/footer/footer";
 import WarningIcon from "../../assets/exclamation.png";
 
 function Login() {

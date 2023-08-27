@@ -93,14 +93,14 @@ export const ModalHeader = styled.div`
   }
 `;
 
-export const MessageContainer = styled.div<{valid: boolean}>`
-  display: ${({valid}) => (valid? "none" : "flex" ) };
+export const MessageContainer = styled.div<{ valid: boolean }>`
+  display: ${({ valid }) => (valid ? "none" : "flex")};
   width: 100%;
   align-items: center;
 
   span {
     font-size: 12px;
-    color: #F7053E
+    color: #f7053e;
   }
 `;
 
@@ -154,55 +154,58 @@ export const ModalContent = styled.div`
   }
 `;
 
-export const TitleTextBox = styled.input`
+export const TitleTextBox = styled.input<{ valid: boolean }>`
   width: 100%;
   height: 45px;
   border-radius: 5px;
   box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: ${({ valid }) =>
+    valid ? "1px solid rgba(0, 0, 0, 0.2)" : "1px solid red"};
   font-size: 15px;
   padding: 0 11px 11px 11px;
   margin-top: 6px;
   margin-bottom: 15px;
 
   :focus {
-    border-color: #1a75ff;
+    border-color: ${({valid}) => valid? "#1a75ff" : "red"};
     border-width: 2px;
     outline: none;
   }
 `;
 
-
-export const DescriptionTextBox = styled.input`
+export const DescriptionTextBox = styled.input<{ valid: boolean }>`
   width: 100%;
   height: 90px;
   border-radius: 5px;
   box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: ${({ valid }) =>
+    valid ? "1px solid rgba(0, 0, 0, 0.2)" : "1px solid red"};
   font-size: 15px;
   padding: 0 11px 50px 11px;
   margin-bottom: 15px;
   margin-top: 6px;
 
   :focus {
-    border-color: #1a75ff;
+    border-color: ${({valid}) => valid? "#1a75ff" : "red"};
     border-width: 2px;
     outline: none;
   }
 `;
 
-export const ThumbnailTextBox = styled.input`
+export const ThumbnailTextBox = styled.input<{ valid: boolean }>`
   width: 100%;
   height: 45px;
   border-radius: 5px;
   box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: ${({ valid }) =>
+    valid ? "1px solid rgba(0, 0, 0, 0.2)" : "1px solid red"};
   font-size: 15px;
   padding: 0 11px 0 11px;
   margin-top: 6px;
+  margin-bottom: 15px;
 
   :focus {
-    border-color: #1a75ff;
+    border-color: ${({valid}) => valid? "#1a75ff" : "red"};
     border-width: 2px;
     outline: none;
   }

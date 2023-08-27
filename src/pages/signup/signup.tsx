@@ -12,12 +12,12 @@ import {
   MessageContainer,
   NextButton,
   SignUpButton,
-} from "./styles";
+} from "./signupStyles";
 
 import { UserContext } from "../../contexts/userContext";
 import { useContext, useEffect, useRef, useState } from "react";
 import GoogleLogoIcon from "../../assets/google.png";
-import Footer from "../../components/footer";
+import Footer from "../../components/footer/footer";
 import WarningIcon from "../../assets/exclamation.png";
 
 function SignUp() {

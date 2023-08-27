@@ -5,7 +5,7 @@ import {
   TextContainer,
   TitleContainer,
   TextCard,
-} from "./styles";
+} from "./shortsStyles";
 import { useContext } from "react";
 import { MenuContext } from "../../contexts/menuContext";
 
