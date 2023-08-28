@@ -5,8 +5,20 @@ export const Container = styled.div<{ openMenu: boolean }>`
   max-width: ${({ openMenu }) => (openMenu ? "21.50rem" : "25.25rem")};
   width: 100%;
 
+  @media (max-width: 1900px) {
+    max-width: ${({ openMenu }) => (openMenu ? "50.80rem" : "25.25rem")};
+  }
+
   @media (max-width: 1366px) {
     max-width: ${({ openMenu }) => (openMenu ? "21.80rem" : "25.25rem")};
+  }
+
+  @media (max-width: 1200px) {
+    max-width: ${({ openMenu }) => (openMenu ? "28.00rem" : "33.00rem")};
+  }
+
+  @media (max-width: 900px) {
+    max-width: ${({ openMenu }) => (openMenu ? "40.00rem" : "33.00rem")};
   }
 `;
 

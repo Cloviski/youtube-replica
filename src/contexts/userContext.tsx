@@ -9,7 +9,7 @@ interface UserStoreProps {
 export const UserContext = createContext({} as any);
 
 export const UserStorage = ({ children }: UserStoreProps) => {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const [user, setUser] = useState({});
   const [userVideos, setUserVideos] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("token") as string);

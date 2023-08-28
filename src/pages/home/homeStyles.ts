@@ -9,9 +9,34 @@ export const VideoContainer = styled.div<{ openMenu: boolean }>`
   padding: 24px 24px 40px 24px;
   box-sizing: border-box;
 
+  @media (max-width: 1650px) {
+    width: ${({ openMenu }) => (openMenu ? "82vw" : "95vw")};
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   @media (max-width: 1366px) {
     width: ${({ openMenu }) => (openMenu ? "82vw" : "95vw")};
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 1200px) {
+    width: ${({ openMenu }) => (openMenu ? "80vw" : "95vw")};
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 1000px) {
+    width: ${({ openMenu }) => (openMenu ? "77vw" : "95vw")};
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 920px) {
+    width: ${({ openMenu }) => (openMenu ? "75vw" : "95vw")};
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 900px) {
+    width: ${({ openMenu }) => (openMenu ? "70vw" : "95vw")};
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
