@@ -9,48 +9,12 @@ interface UserStoreProps {
 export const UserContext = createContext({} as any);
 
 export const UserStorage = ({ children }: UserStoreProps) => {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const [user, setUser] = useState({});
   const [userVideos, setUserVideos] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("token") as string);
   const [dropDownMenu, setDropDownMenu] = useState(false);
   const navigate = useNavigate();
-
-  const getVideos = (token: string, user_id: string) => {
-    api
-      .get(`/videos/get-videos?user_id=${user_id}`, {
-        headers: { Authorization: token },
-      })
-      .then(({ data }) => {
-        setUserVideos(data.videos);
-      })
-      .catch((error) => {
-        console.log("Error finding videos", error);
-      });
-  };
-
-  const getUser = (token: string) => {
-    api
-      .get("/user/get-user", { headers: { Authorization: token } })
-      .then(({ data }) => {
-        setUser(data.user);
-        setLogin(true);
-        getVideos(token, data.user.id);
-      })
-      .catch((error) => {
-        console.log("User isn't authenticated", error);
-      });
-  };
-
-  useEffect(() => {
-    getUser(token);
-  }, [token]);
-
-  const logOut = () => {
-    localStorage.removeItem("token");
-    setLogin(false);
-    setUser({});
-  };
 
   const createVideos = (
     token: string,
@@ -74,7 +38,45 @@ export const UserStorage = ({ children }: UserStoreProps) => {
         console.log("It wasn't possible to send the video", error);
         alert("Video wasn't sended. Try again.");
       });
+  }; 
+  
+  const getVideos = (token: string, user_id: string) => {
+    api
+      .get(`/videos/get-videos?user_id=${user_id}`, {
+        headers: { Authorization: token },
+      })
+      .then(({ data }) => {
+        setUserVideos(data.videos);
+      })
+      .catch((error) => {
+        console.log("Error finding videos", error);
+      });
+    };
+    
+
+  const getUser = (token: string) => {
+    api
+      .get("/user/get-user", { headers: { Authorization: token } })
+      .then(({ data }) => {
+        setUser(data.user);
+        setLogin(true);
+        getVideos(token, data.user.id);
+      })
+      .catch((error) => {
+        console.log("User isn't authenticated", error);
+      });
+  }; 
+
+  useEffect(() => {
+    getUser(token);
+  }, [token]);
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+    setLogin(false);
+    setUser({});
   };
+
 
   const handleLogin = (email: string, password: string) => {
     api
@@ -109,10 +111,11 @@ export const UserStorage = ({ children }: UserStoreProps) => {
       value={{
         login,
         user,
+        token,
         userVideos,
         dropDownMenu,
-        getVideos,
         setDropDownMenu,
+        getVideos,
         handleLogin,
         handleCreateUser,
         logOut,
