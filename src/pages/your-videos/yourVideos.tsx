@@ -262,7 +262,7 @@ function YourVideos() {
               title={video.title}
               thumbnail={video.thumbnail}
               description={video.description}
-              publishedAt={getTimeDifference(video.publishedAt)}
+              publishedAt={video.publishedAt}
               key={video.video_id}
             />
           ))}

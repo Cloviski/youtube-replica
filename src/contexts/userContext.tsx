@@ -9,7 +9,7 @@ interface UserStoreProps {
 export const UserContext = createContext({} as any);
 
 export const UserStorage = ({ children }: UserStoreProps) => {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   const [user, setUser] = useState({});
   const [userVideos, setUserVideos] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("token") as string);
@@ -35,6 +35,7 @@ export const UserStorage = ({ children }: UserStoreProps) => {
       .then(({ data }) => {
         setUser(data.user);
         setLogin(true);
+        getVideos(token, data.user.id);
       })
       .catch((error) => {
         console.log("User isn't authenticated", error);
