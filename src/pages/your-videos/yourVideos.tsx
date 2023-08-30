@@ -262,7 +262,7 @@ function YourVideos() {
               title={video.title}
               thumbnail={video.thumbnail}
               description={video.description}
-              publishedAt={video.publishedAt}
+              publishedAt={getTimeDifference(video.publishedAt)}
               key={video.video_id}
             />
           ))}
@@ -281,7 +281,7 @@ export default YourVideos;
         <TableVideoContainer>
           <ImageBanner alt="thumbnail" src={"https://images3.alphacoders.com/567/567308.jpg"} />
           <SpanVideoContainer>
-            <span>How I lost my sanity in Dubai</span>
+            <span>How I lost my sanity in Dubai...</span>
             <span>damned 33rd</span>
           </SpanVideoContainer>
         </TableVideoContainer>
