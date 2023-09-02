@@ -117,19 +117,3 @@ export const ButtonContainer = styled.div<{ openMenu: boolean }>`
     font-size: ${({ openMenu }) => (openMenu ? "50px" : "20px")};
   }
 `;
-
-/*
-export const ButtonContainer = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  
-  :hover {
-    background-color: #f2f2f2;
-  }
-`;
-*/

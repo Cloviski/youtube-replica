@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Youtube Replica
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This YouTube replica project is powered by a modern tech stack, including React, TypeScript, React Hooks, and Framer Motion, ensuring a robust frontend with smooth animations. It seamlessly integrates the YouTube API for dynamic video content retrieval and utilizes styled-components for flexible styling. The application is fully responsive, accessible across various devices, and employs Axios for seamless communication between the frontend and a Node.js API, offering features like user authentication and video search.
 
-## Available Scripts
+### Technologies
 
-In the project directory, you can run:
+React, TypeScript, styled-components, React Hooks (useState, useEffect, useContext, useRef), React Router (useNavigate), Axios, YouTube API, Node.js API, MySQL.
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Before you begin, ensure you have met the following requirements:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js: Make sure you have Node.js installed on your system. You can download it [here](https://nodejs.org/).
 
-### `npm test`
+- Git: Make sure you have Git to clone my project. You can download it [here](https://git-scm.com/).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+To get started with the YouTube Replica project, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository to your local machine using the following command:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`https://github.com/Cloviski/youtube-replica.git`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install the project dependencies:
 
-### `npm run eject`
+`npm install`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Start the development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Open your web browser and visit http://localhost:4000 to access the YouTube Replica application.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Features 
 
-## Learn More
+- Video Search: You can search for videos using the search bar, and the application will fetch and display relevant results from YouTube.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- User Authentication: The application supports user authentication. You can sign up, log in using Nodejs API.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Category: When clicking on a category, the page you load the content based in this category.
 
-### Code Splitting
+- Your videos: You can send videos to your channel using thumbnail URL, title and description.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Feedback and Contributions
 
-### Analyzing the Bundle Size
+We welcome feedback, bug reports, and contributions. If you encounter any issues or have suggestions for improvement, please open an issue or submit a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## License
 
-### Making a Progressive Web App
+This project is licensed under the MIT License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -39,18 +39,3 @@ function VideoHome(props: Props) {
 
 export default VideoHome;
 
-/*
-<Container>
-            <ImageBanner alt="thumbnail" src="https://images3.alphacoders.com/567/567308.jpg" openMenu={openMenu}/>
-            <TitleContainer>
-                <ChannelImage>
-                    MW
-                </ChannelImage>
-                <TextContainer>
-                    <Title>How I lost my sanity in Dubai...</Title>
-                    <ChannelName>Martin Walker</ChannelName>
-                    <TextCard>33M views • 2 weeks ago</TextCard>
-                </TextContainer>
-            </TitleContainer>
-       </Container>
-*/

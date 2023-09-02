@@ -146,22 +146,22 @@ function YourVideos() {
       return "Now";
     } else if (difference < hour) {
       const minutes = Math.floor(difference / minute);
-      return `Há ${minutes} ${minutes < 2 ? "minute" : "minutes"}`;
+      return `${minutes} ${minutes < 2 ? "minute" : "minutes"} ago`;
     } else if (difference < day) {
       const hours = Math.floor(difference / hour);
-      return `Há ${hours} ${hours < 2 ? "hour" : "hours"}`;
+      return `${hours} ${hours < 2 ? "hour" : "hours"} ago`;
     } else if (difference < week) {
       const days = Math.floor(difference / day);
-      return `Há ${days} ${days < 2 ? "day" : "days"}`;
+      return `${days} ${days < 2 ? "day" : "days"} ago`;
     } else if (difference < month) {
       const weeks = Math.floor(difference / week);
-      return `Há ${weeks} ${weeks < 2 ? "week" : "weeks"}`;
+      return `${weeks} ${weeks < 2 ? "week" : "weeks"} ago`;
     } else if (difference < year) {
       const months = Math.floor(difference / month);
-      return `Há ${months} ${months < 2 ? "month" : "months"}`;
+      return `${months} ${months < 2 ? "month" : "months"} ago`;
     } else {
       const years = Math.floor(difference / year);
-      return `Há ${years} ${years < 2 ? "year" : "years"}`;
+      return `${years} ${years < 2 ? "year" : "years"} ago`;
     }
   }
 
@@ -273,38 +273,3 @@ function YourVideos() {
 }
 
 export default YourVideos;
-
-/*{Array.isArray(userVideos)
-  ? userVideos.map((video: Videos) => (
-      <TableContentContainer>
-        <Checkbox type="checkbox" />
-        <TableVideoContainer>
-          <ImageBanner alt="thumbnail" src={"https://images3.alphacoders.com/567/567308.jpg"} />
-          <SpanVideoContainer>
-            <span>How I lost my sanity in Dubai...</span>
-            <span>damned 33rd</span>
-          </SpanVideoContainer>
-        </TableVideoContainer>
-        <VisibilityContainer>
-          <Icon alt="" src={EyeIcon} />
-          <span>Unlisted</span>
-        </VisibilityContainer>
-        <SpanContainer>
-          <span>None</span>
-        </SpanContainer>
-        <SpanContainer>
-          <span>May 23, 2023</span>
-          <span>Uploaded</span>
-        </SpanContainer>
-        <SpanContainer>
-          <span>0</span>
-        </SpanContainer>
-        <SpanContainer>
-          <span>0</span>
-        </SpanContainer>
-        <SpanContainer>
-          <span>-</span>
-        </SpanContainer>
-      </TableContentContainer>
-    ))
-  : null}*/

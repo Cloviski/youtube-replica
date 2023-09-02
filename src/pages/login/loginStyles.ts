@@ -70,7 +70,6 @@ export const EmailInput = styled.input<{valid: boolean}>`
   width: 100%;
   border-radius: 4px;
   border: ${({valid}) => valid? '1px solid #dadce0' : '1px solid red'};
-  //border: 1px solid #dadce0;
   color: #202124;
   font-size: 16px;
   height: 56px;
@@ -129,7 +128,7 @@ export const SpanContainer = styled.div`
   }
 
   .guest-span {
-    color: #666666; //✞
+    color: #666666;
     font-weight: 500;
     letter-spacing: 0;
   }

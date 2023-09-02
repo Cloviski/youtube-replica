@@ -1,20 +1,11 @@
 import {
   VideoContainer,
-  ShortsContainer,
-  ShortsIconContainer,
-  ShortsIcon,
-  ShortsInnerContainer,
-  DownArrowContainer,
-  DownArrow,
 } from "./homeStyles";
 import { useContext, useEffect, useState } from "react";
 import { MainContainer, RoutesContainer } from "../../AppStyles";
 import { useCategoryContext } from "../../contexts/categoryContext";
 import { MenuContext } from "../../contexts/menuContext";
 import Category from "../../components/category/category";
-import Shorts from "../../components/shorts/shorts";
-import ShortsColored from "../../assets/youtube-shorts-colored.png";
-import DownArrowShorts from "../../assets/down-arrow.png";
 import Header from "../../components/header/header";
 import Menu from "../../components/menu/menu";
 import axios from "axios";
@@ -55,7 +46,6 @@ function Home() {
     }
   }
 
-  //const API_KEY = 'AIzaSyDLJCiB55monK9yAkvBEvcX4CjUMVNKRcg'
   const API_KEY = "AIzaSyAhMOB3BdU2G8PYMWcRphoY0qZ7mLlLJaY";
   const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&chart=mostPopular&hl=en_US&maxResults=15&regionCode=us&videoCategoryId=${categoryId}&key=${API_KEY}`;
 
@@ -141,34 +131,3 @@ function Home() {
 }
 
 export default Home;
-
-/*
-const video = [
-    { 
-        image: 'https://images3.alphacoders.com/567/567308.jpg', 
-        title: 'How I lost my sanity in Dubai...', 
-        channel: 'Martin Walker', 
-        views: '33M', 
-        time: ' 2 weeks'
-    }
-]
-
-          <ShortsContainer openMenu={openMenu}>
-            <ShortsIconContainer>
-              <ShortsIcon alt="" src={ShortsColored} />
-              <span>Shorts</span>
-            </ShortsIconContainer>
-            <ShortsInnerContainer openMenu={openMenu}>
-              <Shorts />
-              <Shorts />
-              <Shorts />
-              <Shorts />
-              <Shorts />
-              <Shorts />
-              {openMenu ? null : <Shorts />}
-            </ShortsInnerContainer>
-            <DownArrowContainer>
-              <DownArrow alt="" src={DownArrowShorts} />
-            </DownArrowContainer>
-          </ShortsContainer>
-*/

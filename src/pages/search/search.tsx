@@ -38,7 +38,6 @@ function Search() {
   }, [search]);
 
   const [videos, setVideosApi] = useState<Videos[]>([]);
-  //const API_KEY = "AIzaSyDLJCiB55monK9yAkvBEvcX4CjUMVNKRcg";
   const API_KEY = "AIzaSyAhMOB3BdU2G8PYMWcRphoY0qZ7mLlLJaY";
   const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${search}&maxResults=10&&key=${API_KEY}`;
 

@@ -69,37 +69,3 @@ function Category() {
 }
 
 export default Category;
-
-/*
-  return (
-    <Container ref={carousel}>
-      <CarouselContainer>
-        <ButtonIcon alt="" src={LeftArrow} onClick={handleLeftClick} />
-      </CarouselContainer>
-      <MotionInnerContainer
-        drag="x"
-        dragConstraints={{ right: 0, left: -carouselWidth }}
-      >
-        {categoryItems.map((categoryItem, index) => (
-          <span
-            onClick={() => searchCategory(categoryItem.id)}
-            key={index}
-            style={{
-              margin:
-                index === 0
-                  ? "12px 12px 12px 24px"
-                  : index === categoryItems.length - 1
-                  ? "12px 24px 12px 0"
-                  : "12px 12px 12px 0",
-            }}
-          >
-            {categoryItem.label}
-          </span>
-        ))}
-      </MotionInnerContainer>
-      <CarouselContainer>
-        <ButtonIcon alt="" src={RightArrow} onClick={handleRightClick} />
-      </CarouselContainer>
-    </Container>
-  );
-*/

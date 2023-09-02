@@ -91,7 +91,7 @@ export const SearchContainer = styled.div`
 `;
 
 export const SearchInputContainer = styled.div`
-  width: 48rem;
+  width: 40vw;
   height: 36px;
   border: 1px solid #d3d3d3;
   border-left: 0;

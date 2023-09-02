@@ -55,7 +55,7 @@ function Header() {
       label: "Switch account",
       icon: ManageProfileIcon,
       arrow: RightArrowIcon,
-      link: "login",
+      link: "/login",
     },
   ];
 
@@ -130,6 +130,9 @@ function Header() {
         >
           <ButtonIcon alt="" src={SearchIcon} />
         </SearchButton>
+        <ButtonContainer margin="0 0 0 10px">
+          <ButtonIcon alt="" src={MicIcon} />
+        </ButtonContainer>
       </SearchContainer>
       <HeaderButton>
         <ButtonContainer margin="0 10px 0 0">
@@ -222,5 +225,3 @@ function Header() {
 }
 
 export default Header;
-
-// line 63 make this part dynamic

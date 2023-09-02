@@ -33,7 +33,7 @@ import MoonIcon from "../../assets/moon.png";
 import ManageProfileIcon from "../../assets/exchange.png";
 import RightArrowIcon from "../../assets/greater-than-symbol.png";
 import { UserContext } from "../../contexts/userContext";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { MenuContext } from "../../contexts/menuContext";
 import { ModalContext } from "../../contexts/modalContext";

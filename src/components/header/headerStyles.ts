@@ -71,7 +71,7 @@ export const SearchContainer = styled.div`
 `;
 
 export const SearchInputContainer = styled.div`
-  width: 519px;
+  width: 25.5vw;
   height: 38px;
   margin-left: 67px;
   border: 1px solid #d3d3d3;

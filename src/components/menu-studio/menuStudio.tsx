@@ -8,7 +8,6 @@ import {
 import { useContext } from "react";
 import { MenuContext } from "../../contexts/menuContext";
 import { ButtonIcon } from "../menu/menuStyles";
-import { useNavigate } from "react-router-dom";
 import SettingsIcon from "../../assets/setting.png";
 import FeedbackIcon from "../../assets/chat.png";
 import LibraryIcon from "../../assets/library.png";
