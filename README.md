@@ -1,6 +1,6 @@
 # Youtube Replica
 
-This YouTube replica project is powered by a modern tech stack, including React, TypeScript, React Hooks, and Framer Motion, ensuring a robust frontend with smooth animations. It seamlessly integrates the YouTube API for dynamic video content retrieval and utilizes styled-components for flexible styling. The application is fully responsive, accessible across various devices, and employs Axios for seamless communication between the frontend and a Node.js API, offering features like user authentication and video search.
+This YouTube replica project is powered by a modern tech stack, including React, TypeScript, React Hooks, and Framer Motion, ensuring a robust frontend with smooth animations. It seamlessly integrates the YouTube API for dynamic video content retrieval and utilizes styled-components for flexible styling. The application is fully responsive, accessible across various devices, and employs Axios for seamless communication between the frontend and a Node.js API, offering features like user authentication and video search. My project is [here](https://lnkd.in/d4WN6X-t).
 
 ### Technologies
 
@@ -48,5 +48,5 @@ We welcome feedback, bug reports, and contributions. If you encounter any issues
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License.
 
