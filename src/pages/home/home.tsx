@@ -1,10 +1,9 @@
-import {
-  VideoContainer,
-} from "./homeStyles";
+import { VideoContainer } from "./homeStyles";
 import { useContext, useEffect, useState } from "react";
 import { MainContainer, RoutesContainer } from "../../AppStyles";
 import { useCategoryContext } from "../../contexts/categoryContext";
 import { MenuContext } from "../../contexts/menuContext";
+import useWindowResize from "../../contexts/resizeContext"
 import Category from "../../components/category/category";
 import Header from "../../components/header/header";
 import Menu from "../../components/menu/menu";
@@ -34,8 +33,10 @@ function Home() {
   }
 
   const [videos, setVideos] = useState<VideosProps[]>([]);
-  const { openMenu } = useContext(MenuContext);
   const { categoryId } = useCategoryContext();
+  const { openMenu } = useContext(MenuContext);
+
+  useWindowResize();
 
   async function load() {
     try {

@@ -27,6 +27,7 @@ import { useContext, useRef, useState } from "react";
 import { ModalContext } from "../../contexts/modalContext";
 import { UserContext } from "../../contexts/userContext";
 import YourVideosContainer from "../../components/your-videos-container/yourVideosContainer";
+import useWindowResize from "../../contexts/resizeContext";
 
 function YourVideos() {
   interface Videos {
@@ -57,6 +58,8 @@ function YourVideos() {
 
   const { user, userVideos, createVideos, token } = useContext(UserContext);
   const { hideModal, setHideModal } = useContext(ModalContext);
+
+  useWindowResize();
 
   const USER_ID = user.id;
 

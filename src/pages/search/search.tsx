@@ -8,6 +8,7 @@ import Menu from "../../components/menu/menu";
 import VideoSearch from "../../components/video-search/videoSearch";
 import axios from "axios";
 import moment from "moment";
+import useWindowResize from "../../contexts/resizeContext";
 
 function Search() {
   interface Videos {
@@ -32,6 +33,8 @@ function Search() {
 
   const { openMenu } = useContext(MenuContext);
   const { search } = useSearchContext();
+
+  useWindowResize();
 
   useEffect(() => {
     load();
