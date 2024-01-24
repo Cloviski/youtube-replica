@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { MainContainer, RoutesContainer } from "../../AppStyles";
 import { useCategoryContext } from "../../contexts/categoryContext";
 import { MenuContext } from "../../contexts/menuContext";
-import useWindowResize from "../../contexts/resizeContext"
+import useWindowResize from "../../contexts/resizeContext";
 import Category from "../../components/category/category";
 import Header from "../../components/header/header";
 import Menu from "../../components/menu/menu";
@@ -108,21 +108,27 @@ function Home() {
           <Category />
           <VideoContainer openMenu={openMenu}>
             {videos.map((video) => (
-              <VideoHome
-                title={video.snippet.title}
-                thumbnail={
-                  video.snippet.thumbnails.maxres?.url ||
-                  video.snippet.thumbnails.high?.url
-                }
-                channelImage={video.snippet.channelTitle
-                  .charAt(0)
-                  .toUpperCase()}
-                channelName={video.snippet.channelTitle}
-                details={`${formatViewCount(
-                  Number(video.statistics.viewCount)
-                )} • ${getPublishedTime(video.snippet.publishedAt)}`}
-                key={video.id}
-              />
+              <a
+                href={`https://www.youtube.com/watch?v=${video.id}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <VideoHome
+                  title={video.snippet.title}
+                  thumbnail={
+                    video.snippet.thumbnails.maxres?.url ||
+                    video.snippet.thumbnails.high?.url
+                  }
+                  channelImage={video.snippet.channelTitle
+                    .charAt(0)
+                    .toUpperCase()}
+                  channelName={video.snippet.channelTitle}
+                  details={`${formatViewCount(
+                    Number(video.statistics.viewCount)
+                  )} • ${getPublishedTime(video.snippet.publishedAt)}`}
+                  key={video.id}
+                />
+              </a>
             ))}
           </VideoContainer>
         </RoutesContainer>

@@ -38,6 +38,11 @@ export const VideoContainer = styled.div<{ openMenu: boolean }>`
     width: ${({ openMenu }) => (openMenu ? "70vw" : "95vw")};
     grid-template-columns: repeat(1, 1fr);
   }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 export const ShortsContainer = styled.div<{ openMenu: boolean }>`

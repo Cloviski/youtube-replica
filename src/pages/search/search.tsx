@@ -96,19 +96,25 @@ function Search() {
         <RoutesContainer>
           <VideoContainer openMenu={openMenu}>
             {videos.map((video, index) => (
-              <VideoSearch
-                title={video.snippet.title}
-                thumbnail={video.snippet.thumbnails.high?.url}
-                channelImage={video.snippet.channelTitle
-                  .charAt(0)
-                  .toUpperCase()}
-                channelName={video.snippet.channelTitle}
-                details={`0 views • ${getPublishedTime(
-                  video.snippet.publishedAt
-                )}`}
-                description={video.snippet.description}
-                key={index}
-              />
+              <a
+                href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <VideoSearch
+                  title={video.snippet.title}
+                  thumbnail={video.snippet.thumbnails.high?.url}
+                  channelImage={video.snippet.channelTitle
+                    .charAt(0)
+                    .toUpperCase()}
+                  channelName={video.snippet.channelTitle}
+                  details={`0 views • ${getPublishedTime(
+                    video.snippet.publishedAt
+                  )}`}
+                  description={video.snippet.description}
+                  key={index}
+                />
+              </a>
             ))}
           </VideoContainer>
         </RoutesContainer>

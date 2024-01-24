@@ -167,7 +167,7 @@ export const TitleTextBox = styled.input<{ valid: boolean }>`
   margin-bottom: 15px;
 
   :focus {
-    border-color: ${({valid}) => valid? "#1a75ff" : "red"};
+    border-color: ${({ valid }) => (valid ? "#1a75ff" : "red")};
     border-width: 2px;
     outline: none;
   }
@@ -186,7 +186,7 @@ export const DescriptionTextBox = styled.input<{ valid: boolean }>`
   margin-top: 6px;
 
   :focus {
-    border-color: ${({valid}) => valid? "#1a75ff" : "red"};
+    border-color: ${({ valid }) => (valid ? "#1a75ff" : "red")};
     border-width: 2px;
     outline: none;
   }
@@ -205,7 +205,7 @@ export const ThumbnailTextBox = styled.input<{ valid: boolean }>`
   margin-bottom: 15px;
 
   :focus {
-    border-color: ${({valid}) => valid? "#1a75ff" : "red"};
+    border-color: ${({ valid }) => (valid ? "#1a75ff" : "red")};
     border-width: 2px;
     outline: none;
   }
