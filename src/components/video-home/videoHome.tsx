@@ -38,4 +38,3 @@ function VideoHome(props: Props) {
 }
 
 export default VideoHome;
-

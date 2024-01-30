@@ -64,11 +64,10 @@ function HeaderStudio() {
   return (
     <Container>
       <LogoContainer>
-        <ButtonContainer margin="0 10px 0 0">
+        <ButtonContainer margin="0 10px 0 0" onClick={() => setOpenMenu(!openMenu)}>
           <ButtonIcon
             alt=""
             src={HamburgerIcon}
-            onClick={() => setOpenMenu(!openMenu)}
           />
         </ButtonContainer>
         <YoutubeLogo alt="" src={YTStudioLogo} />

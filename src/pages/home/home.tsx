@@ -24,6 +24,7 @@ function Home() {
           url: string;
         };
       };
+      channelId: string;
       channelTitle: string;
       publishedAt: string;
     };
@@ -48,7 +49,7 @@ function Home() {
   }
 
   const API_KEY = "AIzaSyAhMOB3BdU2G8PYMWcRphoY0qZ7mLlLJaY";
-  const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&chart=mostPopular&hl=en_US&maxResults=15&regionCode=us&videoCategoryId=${categoryId}&key=${API_KEY}`;
+  const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&chart=mostPopular&hl=en_US&maxResults=30&regionCode=us&videoCategoryId=${categoryId}&key=${API_KEY}`;
 
   useEffect(() => {
     load();
