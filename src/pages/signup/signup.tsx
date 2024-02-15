@@ -103,7 +103,7 @@ function SignUp() {
               placeholder="Name"
               value={userName}
               ref={nameRef}
-              onChange={(e) => setUserName(e.target.value)}
+              onChange={(e: any) => setUserName(e.target.value)}
             />
             <MessageContainer valid={UserNameValid}>
               <ButtonIcon alt="" src={WarningIcon} />
@@ -114,7 +114,7 @@ function SignUp() {
               placeholder="Email address"
               value={userEmail}
               ref={emailRef}
-              onChange={(e) => setUserEmail(e.target.value)}
+              onChange={(e: any) => setUserEmail(e.target.value)}
             />
             <MessageContainer valid={UserEmailValid}>
               <ButtonIcon alt="" src={WarningIcon} />
@@ -130,7 +130,7 @@ function SignUp() {
               placeholder="Password"
               value={userPassword}
               ref={passwordRef}
-              onChange={(e) => setUserPassword(e.target.value)}
+              onChange={(e: any) => setUserPassword(e.target.value)}
             />
             <CheckBoxContainer>
               <input

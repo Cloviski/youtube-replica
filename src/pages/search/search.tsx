@@ -7,84 +7,49 @@ import Header from "../../components/header/header";
 import Menu from "../../components/menu/menu";
 import VideoSearch from "../../components/video-search/videoSearch";
 import axios from "axios";
-import moment from "moment";
 import useWindowResize from "../../contexts/resizeContext";
+import getPublishedTime from "./searchScripts";
+
+interface Videos {
+  id: {
+    videoId: string;
+  };
+  snippet: {
+    title: string;
+    thumbnails: {
+      high: {
+        url: string;
+      };
+    };
+    channelTitle: string;
+    publishedAt: string;
+    description: string;
+  };
+  statistics: {
+    viewCount: string;
+  };
+}
 
 function Search() {
-  interface Videos {
-    id: {
-      videoId: string;
-    };
-    snippet: {
-      title: string;
-      thumbnails: {
-        high: {
-          url: string;
-        };
-      };
-      channelTitle: string;
-      publishedAt: string;
-      description: string;
-    };
-    statistics: {
-      viewCount: string;
-    };
-  }
 
+  const [videos, setVideosApi] = useState<Videos[]>([]);
   const { openMenu } = useContext(MenuContext);
   const { search } = useSearchContext();
-
+  
   useWindowResize();
-
+  
   useEffect(() => {
     load();
   }, [search]);
-
-  const [videos, setVideosApi] = useState<Videos[]>([]);
-  const API_KEY = "AIzaSyAhMOB3BdU2G8PYMWcRphoY0qZ7mLlLJaY";
-  const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${search}&maxResults=10&&key=${API_KEY}`;
+  
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${search}&maxResults=10&&key=${process.env.REACT_APP_API_KEY}`;
 
   async function load() {
     try {
-      const response = await axios.get(URL);
+      const response = await axios.get(url);
       setVideosApi(response.data.items);
     } catch (erro) {
       console.log(erro);
-    }
-  }
-
-  function getPublishedTime(publishedAt: string) {
-    const now = moment();
-    const publishedTime = moment(publishedAt);
-    const diffDays = now.diff(publishedTime, "days");
-
-    if (diffDays <= 0) {
-      return "today";
-    } else if (diffDays === 1) {
-      return "1 day ag";
-    } else if (diffDays <= 7) {
-      return `${diffDays} days ag`;
-    } else if (diffDays <= 30) {
-      const diffWeeks = Math.floor(diffDays / 7);
-      if (diffWeeks === 1) {
-        return "1 week ag";
-      } else {
-        return `${diffWeeks} weeks ag`;
-      }
-    } else if (diffDays <= 365) {
-      const diffMonths = Math.floor(diffDays / 30);
-      if (diffMonths === 1) {
-        return "1 month ag";
-      } else {
-        return `${diffMonths} months ag`;
-      }
-    } else {
-      const diffYears = Math.floor(diffDays / 365);
-      if (diffYears === 1) {
-        return "1 year ag";
-      } else {
-        return `${diffYears} years ag`;
-      }
     }
   }
 

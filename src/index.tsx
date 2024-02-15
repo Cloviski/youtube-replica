@@ -4,8 +4,8 @@ import { IndexStyle } from "./IndexStyle";
 import { MenuProvider } from "./contexts/menuContext";
 import { CategoryProvider } from "./contexts/categoryContext";
 import { SearchProvider } from "./contexts/searchContext";
-import App from "./App";
 import { ModalProvider } from "./contexts/modalContext";
+import App from "./App";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -20,23 +20,23 @@ import {
   AccountContainer,
   AccountDropDown,
 } from "./headerStudioStyles";
-import HamburgerIcon from "../../assets/hamburger.png";
-import YTStudioLogo from "../../assets/yt_studio.png";
-import SearchIcon from "../../assets/search.png";
-import VideoCreateIcon from "../../assets/video-create.png";
-import FeedbackIcon from "../../assets/chat.png";
-import HelpIcon from "../../assets/help.png";
-import ProfileIcon from "../../assets/profile_line.png";
-import YTStudioLineIcon from "../../assets/youtube.png";
-import SignOutIcon from "../../assets/logout.png";
-import MoonIcon from "../../assets/moon.png";
 import ManageProfileIcon from "../../assets/exchange.png";
+import YTStudioLineIcon from "../../assets/youtube.png";
+import VideoCreateIcon from "../../assets/video-create.png";
 import RightArrowIcon from "../../assets/greater-than-symbol.png";
+import HamburgerIcon from "../../assets/hamburger.png";
+import FeedbackIcon from "../../assets/chat.png";
+import ProfileIcon from "../../assets/profile_line.png";
+import SignOutIcon from "../../assets/logout.png";
+import SearchIcon from "../../assets/search.png";
+import HelpIcon from "../../assets/help.png";
+import MoonIcon from "../../assets/moon.png";
+import YTStudioLogo from "../../assets/yt_studio.png";
+import { ModalContext } from "../../contexts/modalContext";
 import { UserContext } from "../../contexts/userContext";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { MenuContext } from "../../contexts/menuContext";
-import { ModalContext } from "../../contexts/modalContext";
+import { useContext } from "react";
 
 function HeaderStudio() {
   const menuFirstItems = [
@@ -64,11 +64,11 @@ function HeaderStudio() {
   return (
     <Container>
       <LogoContainer>
-        <ButtonContainer margin="0 10px 0 0" onClick={() => setOpenMenu(!openMenu)}>
-          <ButtonIcon
-            alt=""
-            src={HamburgerIcon}
-          />
+        <ButtonContainer
+          margin="0 10px 0 0"
+          onClick={() => setOpenMenu(!openMenu)}
+        >
+          <ButtonIcon alt="" src={HamburgerIcon} />
         </ButtonContainer>
         <YoutubeLogo alt="" src={YTStudioLogo} />
       </LogoContainer>

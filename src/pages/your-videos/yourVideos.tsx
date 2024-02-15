@@ -28,6 +28,7 @@ import { ModalContext } from "../../contexts/modalContext";
 import { UserContext } from "../../contexts/userContext";
 import YourVideosContainer from "../../components/your-videos-container/yourVideosContainer";
 import useWindowResize from "../../contexts/resizeContext";
+import getTimeDifference from "./yourVideosScripts";
 
 function YourVideos() {
   interface Videos {
@@ -136,38 +137,6 @@ function YourVideos() {
     }
   };
 
-  function getTimeDifference(publishedAt: string): string {
-    const difference = Date.now() - Date.parse(publishedAt);
-    const minute = 60 * 1000;
-    const hour = 60 * minute;
-    const day = 24 * hour;
-    const week = 7 * day;
-    const month = 30 * day;
-    const year = 12 * month;
-
-    if (difference < minute * 5) {
-      return "Now";
-    } else if (difference < hour) {
-      const minutes = Math.floor(difference / minute);
-      return `${minutes} ${minutes < 2 ? "minute" : "minutes"} ago`;
-    } else if (difference < day) {
-      const hours = Math.floor(difference / hour);
-      return `${hours} ${hours < 2 ? "hour" : "hours"} ago`;
-    } else if (difference < week) {
-      const days = Math.floor(difference / day);
-      return `${days} ${days < 2 ? "day" : "days"} ago`;
-    } else if (difference < month) {
-      const weeks = Math.floor(difference / week);
-      return `${weeks} ${weeks < 2 ? "week" : "weeks"} ago`;
-    } else if (difference < year) {
-      const months = Math.floor(difference / month);
-      return `${months} ${months < 2 ? "month" : "months"} ago`;
-    } else {
-      const years = Math.floor(difference / year);
-      return `${years} ${years < 2 ? "year" : "years"} ago`;
-    }
-  }
-
   return (
     <>
       <HeaderStudio />
@@ -210,7 +179,7 @@ function YourVideos() {
                 <ThumbnailTextBox
                   id="thumbnail"
                   type="textbox"
-                  onChange={(e) => setThumbnail(e.target.value)}
+                  onChange={(e: any) => setThumbnail(e.target.value)}
                   ref={thumbnailRef}
                   valid={thumbnailValid}
                   maxLength={200}
@@ -223,7 +192,7 @@ function YourVideos() {
                 <TitleTextBox
                   id="title"
                   type="textbox"
-                  onChange={(e) => setTitle(e.target.value)}
+                  onChange={(e: any) => setTitle(e.target.value)}
                   ref={titleRef}
                   valid={titleValid}
                   maxLength={100}
@@ -236,7 +205,7 @@ function YourVideos() {
                 <DescriptionTextBox
                   id="description"
                   type="textbox"
-                  onChange={(e) => setDescription(e.target.value)}
+                  onChange={(e: any) => setDescription(e.target.value)}
                   ref={descriptionRef}
                   valid={descriptionValid}
                   maxLength={200}
