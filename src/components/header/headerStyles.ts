@@ -25,8 +25,6 @@ export const YoutubeLogo = styled.img`
   padding: 6px;
 `;
 
-//style={{ cursor: 'pointer', width: '90px', padding: '6px' }}
-
 export const AccountContainer = styled.div<{ margin?: string }>`
   width: 40px;
   height: 40px;

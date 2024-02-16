@@ -5,8 +5,9 @@ import {
   FixedItem,
   MenuItem,
 } from "./menuStudioStyles";
-import { useContext } from "react";
+import { UserContext } from "../../contexts/userContext";
 import { MenuContext } from "../../contexts/menuContext";
+import { useContext } from "react";
 import { ButtonIcon } from "../menu/menuStyles";
 import SettingsIcon from "../../assets/setting.png";
 import FeedbackIcon from "../../assets/chat.png";
@@ -19,7 +20,6 @@ import WandIcon from "../../assets/magic-wand.png";
 import AudioIcon from "../../assets/audio-book.png";
 import SubtitleIcon from "../../assets/subtitles.png";
 import DashboardIcon from "../../assets/dashboard.png";
-import { UserContext } from "../../contexts/userContext";
 
 function MenuStudio() {
   const menuItems = [

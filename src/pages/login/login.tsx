@@ -86,8 +86,8 @@ function Login() {
               ref={emailRef}
               placeholder="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onKeyDown={(e) => {
+              onChange={(e: any) => setEmail(e.target.value)}
+              onKeyDown={(e: any) => {
                 if (e.key === "Enter") {
                   userLogin();
                 }
@@ -103,8 +103,8 @@ function Login() {
               ref={passwordRef}
               placeholder="Enter your password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onKeyDown={(e) => {
+              onChange={(e: any) => setPassword(e.target.value)}
+              onKeyDown={(e: any) => {
                 if (e.key === "Enter") {
                   userLogin();
                 }

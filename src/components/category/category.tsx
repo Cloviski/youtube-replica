@@ -24,6 +24,9 @@ function Category() {
 
   const carousel = useRef<HTMLDivElement>(null);
   const [carouselWidth, setCarouselWidth] = useState(0);
+  const { setCategoryId } = useCategoryContext();
+  const searchCategory = (id: string) => setCategoryId(id);
+  const MotionInnerContainer = motion(InnerContainer);
 
   useEffect(() => {
     if (carousel.current) {
@@ -32,14 +35,6 @@ function Category() {
       );
     }
   }, []);
-
-  const { setCategoryId } = useCategoryContext();
-
-  function searchCategory(id: string) {
-    setCategoryId(id);
-  }
-
-  const MotionInnerContainer = motion(InnerContainer);
 
   return (
     <Container ref={carousel}>

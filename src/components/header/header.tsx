@@ -83,17 +83,13 @@ function Header() {
     { label: "Send feedback", icon: FeedbackIcon },
   ];
 
+  const handleSearch = (searchInput: string) => setSearchInput(searchInput);
+  const navigate = useNavigate();
+  const [searchInput, setSearchInput] = useState("");
+  const { setSearch } = useSearchContext();
   const { openMenu, setOpenMenu } = useContext(MenuContext);
   const { user, login, logOut, dropDownMenu, setDropDownMenu } =
     useContext(UserContext);
-  const { setSearch } = useSearchContext();
-  const [searchInput, setSearchInput] = useState("");
-
-  const navigate = useNavigate();
-
-  function handleSearch(searchInput: string) {
-    setSearchInput(searchInput);
-  }
 
   return (
     <Container>
