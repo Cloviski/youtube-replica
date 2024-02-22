@@ -47,7 +47,7 @@ import KeyboardIcon from "../../assets/keyboard.png";
 import ManageProfileIcon from "../../assets/exchange.png";
 import RightArrowIcon from "../../assets/greater-than-symbol.png";
 
-const Header = () => {
+const Header: React.FC = () => {
   const menuFirstItems = [
     { label: "Your channel", icon: ProfileIcon, link: "your-videos" },
     { label: "YouTube Studio", icon: YTStudioLineIcon, link: "your-videos" },

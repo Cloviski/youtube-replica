@@ -30,7 +30,7 @@ interface Videos {
   };
 }
 
-const Search = () => {
+const Search: React.FC = () => {
   const [videos, setVideosApi] = useState<Videos[]>([]);
   const { openMenu } = useContext(MenuContext);
   const { search } = useSearchContext();

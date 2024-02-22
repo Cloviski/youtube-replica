@@ -21,7 +21,7 @@ import AudioIcon from "../../assets/audio-book.png";
 import SubtitleIcon from "../../assets/subtitles.png";
 import DashboardIcon from "../../assets/dashboard.png";
 
-const MenuStudio = () => {
+const MenuStudio: React.FC = () => {
   const menuItems = [
     { label: "Dashboard", icon: DashboardIcon },
     { label: "Content", icon: LibraryIcon },

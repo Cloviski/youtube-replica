@@ -30,15 +30,15 @@ import { getTimeDifference } from "./yourVideosScripts";
 import { useWindowResize } from "../../contexts/resizeContext";
 import YourVideosContainer from "../../components/your-videos-container/yourVideosContainer";
 
-const YourVideos = () => {
-  interface Videos {
-    title: string;
-    video_id: string;
-    thumbnail: string;
-    description: string;
-    publishedAt: string;
-  }
+interface Videos {
+  title: string;
+  video_id: string;
+  thumbnail: string;
+  description: string;
+  publishedAt: string;
+}
 
+const YourVideos: React.FC = () => {
   const firstItems = [
     { label: "Videos" },
     { label: "Live" },

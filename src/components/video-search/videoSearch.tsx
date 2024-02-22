@@ -12,15 +12,15 @@ import {
 } from "./videoSearchStyles";
 
 interface Props {
-  title: string;
   thumbnail: string;
+  title: string;
+  details: string;
   channelImage: string;
   channelName: string;
-  details: string;
   description: string;
 }
 
-const VideoSearch = (props: Props) => (
+const VideoSearch: React.FC<Props> = (props) => (
   <Container>
     <ImageBanner style={{ backgroundImage: `url(${props.thumbnail})` }} />
     <TitleContainer>

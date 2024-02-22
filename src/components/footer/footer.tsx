@@ -6,7 +6,7 @@ import {
 } from "./footerStyles";
 import DownArrow from "../../assets/down-filled-triangular-arrow.png";
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <FooterContainer>
     <LanguageContainer>
       <span>English (United States)</span>

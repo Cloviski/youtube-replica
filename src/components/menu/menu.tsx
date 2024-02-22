@@ -38,7 +38,7 @@ import HelpIcon from "../../assets/help.png";
 import FeedbackIcon from "../../assets/chat.png";
 import BrowseIcon from "../../assets/plus.png";
 
-const Menu = () => {
+const Menu: React.FC = () => {
   const firstItems = [
     { label: "Home", icon: HomeIcon, link: "/" },
     { label: "Shorts", icon: ShortsIcon, link: "/" },

@@ -8,7 +8,7 @@ export const useWindowResize = (): void => {
     const handleResize = () => {
       if (window.innerWidth <= 1312 && openMenu) {
         setOpenMenu(false);
-      }
+      } 
     };
 
     window.addEventListener("resize", handleResize);

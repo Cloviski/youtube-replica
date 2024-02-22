@@ -12,14 +12,14 @@ import { useContext } from "react";
 import { MenuContext } from "../../contexts/menuContext";
 
 interface Props {
-  title: string;
   thumbnail: string;
   channelImage: string;
+  title: string;
   channelName: string;
   details: string;
 }
 
-const VideoHome = (props: Props) => {
+const VideoHome: React.FC<Props> = (props) => {
   const { openMenu } = useContext(MenuContext);
 
   return (

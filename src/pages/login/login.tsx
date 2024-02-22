@@ -21,7 +21,7 @@ import GoogleLogoIcon from "../../assets/google.png";
 import Footer from "../../components/footer/footer";
 import WarningIcon from "../../assets/exclamation.png";
 
-const Login = () => {
+const Login: React.FC = () => {
   const { handleLogin } = useContext(UserContext);
   const navigate = useNavigate();
 

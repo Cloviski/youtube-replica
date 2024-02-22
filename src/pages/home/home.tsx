@@ -32,13 +32,13 @@ interface VideosProps {
   };
 }
 
-function Home() {
+const Home: React.FC = () => {
   const [videos, setVideos] = useState<VideosProps[]>([]);
   const { categoryId } = useCategoryContext();
   const { openMenu } = useContext(MenuContext);
 
   useWindowResize();
-  /*
+
   async function load() {
     try {
       const response = await axios.get(url);
@@ -53,7 +53,7 @@ function Home() {
   useEffect(() => {
     load();
   }, [categoryId]);
-*/
+
   return (
     <>
       <Header />
