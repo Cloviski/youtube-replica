@@ -3,12 +3,12 @@ import { useSearchContext } from "../../contexts/searchContext";
 import { MenuContext } from "../../contexts/menuContext";
 import { MainContainer, RoutesContainer } from "../../AppStyles";
 import { VideoContainer } from "./searchStyles";
+import { getPublishedTime } from "./searchScripts";
 import Header from "../../components/header/header";
 import Menu from "../../components/menu/menu";
 import VideoSearch from "../../components/video-search/videoSearch";
 import axios from "axios";
-import useWindowResize from "../../contexts/resizeContext";
-import getPublishedTime from "./searchScripts";
+import { useWindowResize } from "../../contexts/resizeContext";
 
 interface Videos {
   id: {
@@ -30,18 +30,17 @@ interface Videos {
   };
 }
 
-function Search() {
-
+const Search = () => {
   const [videos, setVideosApi] = useState<Videos[]>([]);
   const { openMenu } = useContext(MenuContext);
   const { search } = useSearchContext();
-  
+
   useWindowResize();
-  
+
   useEffect(() => {
     load();
   }, [search]);
-  
+
   const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${search}&maxResults=10&&key=${process.env.REACT_APP_API_KEY}`;
 
   async function load() {
@@ -86,6 +85,6 @@ function Search() {
       </MainContainer>
     </>
   );
-}
+};
 
 export default Search;

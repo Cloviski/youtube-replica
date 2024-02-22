@@ -47,7 +47,7 @@ import KeyboardIcon from "../../assets/keyboard.png";
 import ManageProfileIcon from "../../assets/exchange.png";
 import RightArrowIcon from "../../assets/greater-than-symbol.png";
 
-function Header() {
+const Header = () => {
   const menuFirstItems = [
     { label: "Your channel", icon: ProfileIcon, link: "your-videos" },
     { label: "YouTube Studio", icon: YTStudioLineIcon, link: "your-videos" },

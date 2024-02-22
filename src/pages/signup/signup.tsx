@@ -20,7 +20,7 @@ import GoogleLogoIcon from "../../assets/google.png";
 import Footer from "../../components/footer/footer";
 import WarningIcon from "../../assets/exclamation.png";
 
-function SignUp() {
+const SignUp = () => {
   const { handleCreateUser } = useContext(UserContext);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");

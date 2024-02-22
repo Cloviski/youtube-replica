@@ -38,7 +38,7 @@ import HelpIcon from "../../assets/help.png";
 import FeedbackIcon from "../../assets/chat.png";
 import BrowseIcon from "../../assets/plus.png";
 
-function Menu() {
+const Menu = () => {
   const firstItems = [
     { label: "Home", icon: HomeIcon, link: "/" },
     { label: "Shorts", icon: ShortsIcon, link: "/" },
@@ -176,6 +176,6 @@ function Menu() {
       </Copyright>
     </Container>
   );
-}
+};
 
 export default Menu;

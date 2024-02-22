@@ -19,7 +19,7 @@ interface Props {
   details: string;
 }
 
-function VideoHome(props: Props) {
+const VideoHome = (props: Props) => {
   const { openMenu } = useContext(MenuContext);
 
   return (

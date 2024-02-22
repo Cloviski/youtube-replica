@@ -6,20 +6,18 @@ import SignUp from "./pages/signup/signup";
 import Search from "./pages/search/search";
 import YourVideos from "./pages/your-videos/yourVideos";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <UserStorage>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/your-videos" element={<YourVideos />} />
-        </Routes>
-      </UserStorage>
-    </BrowserRouter>
-  );
-}
+const App: React.FC = () => (
+  <BrowserRouter>
+    <UserStorage>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/your-videos" element={<YourVideos />} />
+      </Routes>
+    </UserStorage>
+  </BrowserRouter>
+);
 
 export default App;

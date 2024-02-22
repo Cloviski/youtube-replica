@@ -4,7 +4,7 @@ import { MainContainer, RoutesContainer } from "../../AppStyles";
 import { useCategoryContext } from "../../contexts/categoryContext";
 import { MenuContext } from "../../contexts/menuContext";
 import { formatViewCount, getPublishedTime } from "./homeScripts";
-import useWindowResize from "../../contexts/resizeContext";
+import { useWindowResize } from "../../contexts/resizeContext";
 import Category from "../../components/category/category";
 import Header from "../../components/header/header";
 import Menu from "../../components/menu/menu";
@@ -38,7 +38,7 @@ function Home() {
   const { openMenu } = useContext(MenuContext);
 
   useWindowResize();
-
+  /*
   async function load() {
     try {
       const response = await axios.get(url);
@@ -53,7 +53,7 @@ function Home() {
   useEffect(() => {
     load();
   }, [categoryId]);
-
+*/
   return (
     <>
       <Header />

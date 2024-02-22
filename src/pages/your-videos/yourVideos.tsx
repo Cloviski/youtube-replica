@@ -26,11 +26,11 @@ import CloseIcon from "../../assets/x.png";
 import { useContext, useRef, useState } from "react";
 import { ModalContext } from "../../contexts/modalContext";
 import { UserContext } from "../../contexts/userContext";
+import { getTimeDifference } from "./yourVideosScripts";
+import { useWindowResize } from "../../contexts/resizeContext";
 import YourVideosContainer from "../../components/your-videos-container/yourVideosContainer";
-import useWindowResize from "../../contexts/resizeContext";
-import getTimeDifference from "./yourVideosScripts";
 
-function YourVideos() {
+const YourVideos = () => {
   interface Videos {
     title: string;
     video_id: string;
@@ -242,6 +242,6 @@ function YourVideos() {
       </MainContainer>
     </>
   );
-}
+};
 
 export default YourVideos;

@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { MenuContext } from "./menuContext";
 
-const useWindowResize = (): void => {
+export const useWindowResize = (): void => {
   const { openMenu, setOpenMenu } = useContext(MenuContext);
   // Close menu when the window is resized if it's currently opened.
   useEffect(() => {
@@ -19,4 +19,4 @@ const useWindowResize = (): void => {
   }, [openMenu, setOpenMenu]);
 };
 
-export default useWindowResize;
+

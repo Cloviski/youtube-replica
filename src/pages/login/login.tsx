@@ -21,7 +21,7 @@ import GoogleLogoIcon from "../../assets/google.png";
 import Footer from "../../components/footer/footer";
 import WarningIcon from "../../assets/exclamation.png";
 
-function Login() {
+const Login = () => {
   const { handleLogin } = useContext(UserContext);
   const navigate = useNavigate();
 

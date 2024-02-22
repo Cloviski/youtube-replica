@@ -38,7 +38,7 @@ import { useNavigate } from "react-router-dom";
 import { MenuContext } from "../../contexts/menuContext";
 import { useContext } from "react";
 
-function HeaderStudio() {
+const HeaderStudio = () => {
   const menuFirstItems = [
     { label: "Your channel", icon: ProfileIcon, link: "/your-videos" },
     { label: "YouTube", icon: YTStudioLineIcon, link: "/" },
