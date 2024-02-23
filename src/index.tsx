@@ -8,7 +8,6 @@ import { ModalProvider } from "./contexts/modalContext";
 import App from "./App";
 
 const IndexStyle = createGlobalStyle`
-
   body {
     margin: 0;
     font-family: 'Roboto', 'Arial', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',

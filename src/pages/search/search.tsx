@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { useSearchContext } from "../../contexts/searchContext";
 import { MenuContext } from "../../contexts/menuContext";
-import { MainContainer, RoutesContainer } from "../../AppStyles";
+import { MainContainer, RoutesContainer } from "../../styles/AppStyles";
 import { VideoContainer } from "./searchStyles";
-import { getPublishedTime } from "./searchScripts";
+import { getPublishedTime } from "../../scripts/searchScripts";
 import Header from "../../components/header/header";
 import Menu from "../../components/menu/menu";
 import VideoSearch from "../../components/video-search/videoSearch";

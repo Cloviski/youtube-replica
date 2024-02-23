@@ -1,4 +1,4 @@
-import { MainContainer, RoutesContainer } from "../../AppStyles";
+import { MainContainer, RoutesContainer } from "../../styles/AppStyles";
 import HeaderStudio from "../../components/header-studio/headerStudio";
 import MenuStudio from "../../components/menu-studio/menuStudio";
 import {
@@ -26,7 +26,7 @@ import CloseIcon from "../../assets/x.png";
 import { useContext, useRef, useState } from "react";
 import { ModalContext } from "../../contexts/modalContext";
 import { UserContext } from "../../contexts/userContext";
-import { getTimeDifference } from "./yourVideosScripts";
+import { getTimeDifference } from "../../scripts/yourVideosScripts";
 import { useWindowResize } from "../../contexts/resizeContext";
 import YourVideosContainer from "../../components/your-videos-container/yourVideosContainer";
 

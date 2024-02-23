@@ -1,9 +1,9 @@
 import { VideoContainer } from "./homeStyles";
 import { useContext, useEffect, useState } from "react";
-import { MainContainer, RoutesContainer } from "../../AppStyles";
+import { MainContainer, RoutesContainer } from "../../styles/AppStyles";
 import { useCategoryContext } from "../../contexts/categoryContext";
 import { MenuContext } from "../../contexts/menuContext";
-import { formatViewCount, getPublishedTime } from "./homeScripts";
+import { formatViewCount, getPublishedTime } from "../../scripts/homeScripts";
 import { useWindowResize } from "../../contexts/resizeContext";
 import Category from "../../components/category/category";
 import Header from "../../components/header/header";
