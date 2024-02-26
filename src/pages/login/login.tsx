@@ -21,7 +21,7 @@ import GoogleLogoIcon from "../../assets/google.png";
 import Footer from "../../components/footer/footer";
 import WarningIcon from "../../assets/exclamation.png";
 
-function Login() {
+const Login: React.FC = () => {
   const { handleLogin } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -42,32 +42,34 @@ function Login() {
   }, []);
 
   const userLogin = () => {
-    if (email.trim() !== "") {
-      setValidEmail(true);
-    }
-    if (password.trim() !== "") {
-      setValidPassword(true);
-    }
-    if (email.trim() === "" && password.trim() === "") {
-      setValidEmail(false);
-      setValidPassword(false);
-      if (emailRef.current) {
-        emailRef.current.focus();
-      }
-    } else if (email.trim() === "") {
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+
+    if (!trimmedEmail) {
       setValidEmail(false);
       if (emailRef.current) {
         emailRef.current.focus();
       }
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(trimmedEmail)) {
       setValidEmailFormat(false);
       setValidEmail(false);
       if (emailRef.current) {
         emailRef.current.focus();
       }
-    } else {
-      handleLogin(email, password);
+      return;
     }
+
+    if (!trimmedPassword) {
+      setValidPassword(false);
+      return;
+    }
+
+    setValidEmail(true);
+    setValidPassword(true);
+    handleLogin(trimmedEmail, trimmedPassword);
   };
 
   return (
@@ -86,6 +88,7 @@ function Login() {
               ref={emailRef}
               placeholder="Email"
               value={email}
+              data-cy="email-field"
               onChange={(e: any) => setEmail(e.target.value)}
               onKeyDown={(e: any) => {
                 if (e.key === "Enter") {
@@ -93,7 +96,7 @@ function Login() {
                 }
               }}
             />
-            <MessageContainer valid={validEmail}>
+            <MessageContainer data-cy="error" valid={validEmail}>
               <ButtonIcon alt="" src={WarningIcon} />
               <span>Couldn't find your Google Account</span>
             </MessageContainer>
@@ -103,6 +106,7 @@ function Login() {
               ref={passwordRef}
               placeholder="Enter your password"
               value={password}
+              data-cy="password-field"
               onChange={(e: any) => setPassword(e.target.value)}
               onKeyDown={(e: any) => {
                 if (e.key === "Enter") {
@@ -116,6 +120,7 @@ function Login() {
               type="checkbox"
               id="show-password"
               checked={showPassword}
+              data-cy="show-password"
               onClick={() => setShowPassword(!showPassword)}
             />
             <label htmlFor="show-password">Show password</label>
@@ -129,14 +134,18 @@ function Login() {
         </SpanContainer>
         <AccountContainer>
           <SignUpButton>
-            <span onClick={() => navigate("/sign-up")}>Create account</span>
+            <span data-cy="sign-up" onClick={() => navigate("/sign-up")}>
+              Create account
+            </span>
           </SignUpButton>
-          <NextButton onClick={() => userLogin()}>Next</NextButton>
+          <NextButton data-cy="login-button" onClick={() => userLogin()}>
+            Next
+          </NextButton>
         </AccountContainer>
       </InnerLoginContainer>
       <Footer />
     </MainLoginContainer>
   );
-}
+};
 
 export default Login;

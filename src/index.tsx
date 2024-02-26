@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { IndexStyle } from "./IndexStyle";
 import { MenuProvider } from "./contexts/menuContext";
 import { CategoryProvider } from "./contexts/categoryContext";
 import { SearchProvider } from "./contexts/searchContext";
 import { ModalProvider } from "./contexts/modalContext";
+import { IndexStyle } from "./styles/IndexStyles";
 import App from "./App";
 
 const root = ReactDOM.createRoot(

@@ -3,7 +3,7 @@ import { Container, InnerContainer } from "./categoryStyles";
 import { useCategoryContext } from "../../contexts/categoryContext";
 import { motion } from "framer-motion";
 
-function Category() {
+const Category: React.FC = () => {
   const categoryItems = [
     { label: "All", id: "0" },
     { label: "Gaming", id: "20" },
@@ -61,6 +61,6 @@ function Category() {
       </MotionInnerContainer>
     </Container>
   );
-}
+};
 
 export default Category;

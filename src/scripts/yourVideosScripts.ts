@@ -1,4 +1,4 @@
-function getTimeDifference(publishedAt: string): string {
+export const getTimeDifference = (publishedAt: string): string => {
   const difference = Date.now() - Date.parse(publishedAt);
   const intervals = [
     { value: 0, unit: "Now" },
@@ -21,6 +21,4 @@ function getTimeDifference(publishedAt: string): string {
 
   const years = Math.floor(difference / (12 * 30 * 24 * 60 * 60 * 1000));
   return `${years} ${years < 2 ? "year" : "years"} ago`;
-}
-
-export default getTimeDifference;
+};

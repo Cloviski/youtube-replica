@@ -22,7 +22,3 @@ export const SearchProvider: React.FC<SearchContextProps> = ({ children }) => {
     </SearchContext.Provider>
   );
 };
-
-
-
-

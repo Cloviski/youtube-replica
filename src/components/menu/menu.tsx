@@ -38,7 +38,7 @@ import HelpIcon from "../../assets/help.png";
 import FeedbackIcon from "../../assets/chat.png";
 import BrowseIcon from "../../assets/plus.png";
 
-function Menu() {
+const Menu: React.FC = () => {
   const firstItems = [
     { label: "Home", icon: HomeIcon, link: "/" },
     { label: "Shorts", icon: ShortsIcon, link: "/" },
@@ -122,7 +122,10 @@ function Menu() {
         <TextInnerContainer openMenu={openMenu}>
           <TextMenuItem openMenu={openMenu}>
             <span>Sign in to like videos, comment, and subscribe.</span>
-            <SignMenuContainer onClick={() => navigate("/login")}>
+            <SignMenuContainer
+
+              onClick={() => navigate("/login")}
+            >
               <ButtonIcon alt="" src={SignInIcon} />
               <span>Sign in</span>
             </SignMenuContainer>
@@ -176,6 +179,6 @@ function Menu() {
       </Copyright>
     </Container>
   );
-}
+};
 
 export default Menu;

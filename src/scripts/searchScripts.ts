@@ -1,6 +1,6 @@
 import moment from "moment";
 
-function getPublishedTime(publishedAt: string): string {
+export const getPublishedTime = (publishedAt: string): string => {
   const now = moment();
   const publishedTime = moment(publishedAt);
   const diffDays = now.diff(publishedTime, "days");
@@ -21,6 +21,4 @@ function getPublishedTime(publishedAt: string): string {
     const diffYears = Math.floor(diffDays / 365);
     return `${diffYears} year${diffYears === 1 ? "" : "s"} ag`;
   }
-}
-
-export default getPublishedTime;
+};

@@ -1,4 +1,4 @@
-import { MainContainer, RoutesContainer } from "../../AppStyles";
+import { MainContainer, RoutesContainer } from "../../styles/AppStyles";
 import HeaderStudio from "../../components/header-studio/headerStudio";
 import MenuStudio from "../../components/menu-studio/menuStudio";
 import {
@@ -26,19 +26,19 @@ import CloseIcon from "../../assets/x.png";
 import { useContext, useRef, useState } from "react";
 import { ModalContext } from "../../contexts/modalContext";
 import { UserContext } from "../../contexts/userContext";
+import { getTimeDifference } from "../../scripts/yourVideosScripts";
+import { useWindowResize } from "../../contexts/resizeContext";
 import YourVideosContainer from "../../components/your-videos-container/yourVideosContainer";
-import useWindowResize from "../../contexts/resizeContext";
-import getTimeDifference from "./yourVideosScripts";
 
-function YourVideos() {
-  interface Videos {
-    title: string;
-    video_id: string;
-    thumbnail: string;
-    description: string;
-    publishedAt: string;
-  }
+interface Videos {
+  title: string;
+  video_id: string;
+  thumbnail: string;
+  description: string;
+  publishedAt: string;
+}
 
+const YourVideos: React.FC = () => {
   const firstItems = [
     { label: "Videos" },
     { label: "Live" },
@@ -77,41 +77,26 @@ function YourVideos() {
   const descriptionRef = useRef<HTMLInputElement>(null);
 
   const sendVideo = () => {
-    const date: Date = new Date();
+    const date = new Date();
 
-    if (thumbnail.trim() !== "") {
-      setThumbnailValid(true);
-    }
-    if (title.trim() !== "") {
-      setTitleValid(true);
-    }
-    if (description.trim() !== "") {
-      setDescriptionValid(true);
-    }
-    if (
-      thumbnail.trim() === "" &&
-      title.trim() === "" &&
-      description.trim() === ""
-    ) {
-      setThumbnailValid(false);
-      setTitleValid(false);
-      setDescriptionValid(false);
-      if (thumbnailRef.current) {
+    const isThumbnailValid = thumbnail.trim() !== "";
+    const isTitleValid = title.trim() !== "";
+    const isDescriptionValid = description.trim() !== "";
+
+    setThumbnailValid(isThumbnailValid);
+    setTitleValid(isTitleValid);
+    setDescriptionValid(isDescriptionValid);
+
+    if (!isThumbnailValid || !isTitleValid || !isDescriptionValid) {
+      setThumbnailValid(!isThumbnailValid);
+      setTitleValid(!isTitleValid);
+      setDescriptionValid(!isDescriptionValid);
+
+      if (!isThumbnailValid && thumbnailRef.current) {
         thumbnailRef.current.focus();
-      }
-    } else if (thumbnail.trim() === "") {
-      setThumbnailValid(false);
-      if (thumbnailRef.current) {
-        thumbnailRef.current.focus();
-      }
-    } else if (title.trim() === "") {
-      setTitleValid(false);
-      if (titleRef.current) {
+      } else if (!isTitleValid && titleRef.current) {
         titleRef.current.focus();
-      }
-    } else if (description.trim() === "") {
-      setDescriptionValid(false);
-      if (descriptionRef.current) {
+      } else if (!isDescriptionValid && descriptionRef.current) {
         descriptionRef.current.focus();
       }
     } else {
@@ -242,6 +227,6 @@ function YourVideos() {
       </MainContainer>
     </>
   );
-}
+};
 
 export default YourVideos;

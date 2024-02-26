@@ -1,10 +1,10 @@
 import { VideoContainer } from "./homeStyles";
 import { useContext, useEffect, useState } from "react";
-import { MainContainer, RoutesContainer } from "../../AppStyles";
+import { MainContainer, RoutesContainer } from "../../styles/AppStyles";
 import { useCategoryContext } from "../../contexts/categoryContext";
 import { MenuContext } from "../../contexts/menuContext";
-import { formatViewCount, getPublishedTime } from "./homeScripts";
-import useWindowResize from "../../contexts/resizeContext";
+import { formatViewCount, getPublishedTime } from "../../scripts/homeScripts";
+import { useWindowResize } from "../../contexts/resizeContext";
 import Category from "../../components/category/category";
 import Header from "../../components/header/header";
 import Menu from "../../components/menu/menu";
@@ -32,7 +32,7 @@ interface VideosProps {
   };
 }
 
-function Home() {
+const Home: React.FC = () => {
   const [videos, setVideos] = useState<VideosProps[]>([]);
   const { categoryId } = useCategoryContext();
   const { openMenu } = useContext(MenuContext);
@@ -61,7 +61,7 @@ function Home() {
         <Menu />
         <RoutesContainer>
           <Category />
-          <VideoContainer openMenu={openMenu}>
+          <VideoContainer openMenu={openMenu} data-cy="video-home">
             {videos.map((video) => (
               <a
                 href={`https://www.youtube.com/watch?v=${video.id}`}
@@ -90,6 +90,6 @@ function Home() {
       </MainContainer>
     </>
   );
-}
+};
 
 export default Home;

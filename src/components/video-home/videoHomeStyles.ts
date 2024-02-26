@@ -26,6 +26,23 @@ export const ImageBanner = styled.img<{ openMenu: boolean }>`
   width: 100%;
   border-radius: 12px;
   cursor: pointer;
+  max-height: ${({ openMenu }) => (openMenu ? "175px" : "205px")};
+
+  @media (max-width: 1366px) {
+    max-height: ${({ openMenu }) => (openMenu ? "195px" : "227px")};
+  }
+
+  @media (max-width: 1310px) {
+    max-height: ${({ openMenu }) => (openMenu ? "186px" : "291px")};
+  }
+
+  @media (max-width: 1200px) {
+    max-height: ${({ openMenu }) => (openMenu ? "252px" : "297px")};
+  }
+
+  @media (max-width: 900px) {
+    max-height: ${({ openMenu }) => (openMenu ? "297px" : "327px")};
+  }
 
   :hover {
     border-radius: 0;

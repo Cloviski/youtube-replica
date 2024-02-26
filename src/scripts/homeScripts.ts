@@ -1,15 +1,15 @@
 import moment from "moment";
 
-function formatViewCount(viewCount: number): string {
+export const formatViewCount = (viewCount: number): string => {
   const suffix = viewCount >= 1000000 ? "M" : viewCount >= 1000 ? "K" : "";
   return suffix
     ? `${(viewCount / (suffix === "M" ? 1000000 : 1000)).toFixed(
         0
       )}${suffix} views`
     : `${viewCount} views`;
-}
+};
 
-function getPublishedTime(publishedAt: string) {
+export const getPublishedTime = (publishedAt: string) => {
   const now = moment();
   const publishedTime = moment(publishedAt);
   const diffDays = now.diff(publishedTime, "days");
@@ -29,6 +29,4 @@ function getPublishedTime(publishedAt: string) {
       diffDays <= 730 ? "" : "s"
     } ago`;
   }
-}
-
-export { formatViewCount, getPublishedTime };
+};

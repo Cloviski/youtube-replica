@@ -47,7 +47,7 @@ import KeyboardIcon from "../../assets/keyboard.png";
 import ManageProfileIcon from "../../assets/exchange.png";
 import RightArrowIcon from "../../assets/greater-than-symbol.png";
 
-function Header() {
+const Header: React.FC = () => {
   const menuFirstItems = [
     { label: "Your channel", icon: ProfileIcon, link: "your-videos" },
     { label: "YouTube Studio", icon: YTStudioLineIcon, link: "your-videos" },
@@ -100,13 +100,18 @@ function Header() {
         >
           <ButtonIcon alt="" src={HamburgerIcon} />
         </ButtonContainer>
-        <YoutubeLogo onClick={() => navigate("/")} src={Logo} />
+        <YoutubeLogo
+          data-cy="youtube-logo"
+          onClick={() => navigate("/")}
+          src={Logo}
+        />
       </LogoContainer>
       <SearchContainer>
         <SearchInputContainer>
           <SearchInput
             placeholder="Search"
             value={searchInput}
+            data-cy="search-input"
             onChange={(e) => {
               handleSearch(e.target.value);
             }}
@@ -119,6 +124,7 @@ function Header() {
           />
         </SearchInputContainer>
         <SearchButton
+          data-cy="search-button"
           onClick={() => {
             setSearch(searchInput);
             navigate("/search");
@@ -210,7 +216,10 @@ function Header() {
             </DropDownContainer>
           </>
         ) : (
-          <SignMenuContainer onClick={() => navigate("/login")}>
+          <SignMenuContainer
+            data-cy="sign-in-button"
+            onClick={() => navigate("/login")}
+          >
             <ButtonIcon alt="" src={SignInIcon} />
             <span>Sign in</span>
           </SignMenuContainer>
@@ -218,6 +227,6 @@ function Header() {
       </HeaderButton>
     </Container>
   );
-}
+};
 
 export default Header;
