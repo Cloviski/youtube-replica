@@ -4,7 +4,7 @@ This YouTube replica project is powered by a modern tech stack, including React,
 
 ### Technologies
 
-React, TypeScript, styled-components, React Hooks (useState, useEffect, useContext, useRef), React Router (useNavigate), Axios, YouTube API, Node.js API, MySQL.
+React, TypeScript, styled-components, React Hooks (useState, useEffect, useContext, useRef), React Router (useNavigate), Cypress, Axios, YouTube API, Node.js API, MySQL.
 
 ## Prerequisites
 
