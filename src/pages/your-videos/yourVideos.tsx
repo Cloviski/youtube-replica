@@ -77,41 +77,26 @@ const YourVideos: React.FC = () => {
   const descriptionRef = useRef<HTMLInputElement>(null);
 
   const sendVideo = () => {
-    const date: Date = new Date();
+    const date = new Date();
 
-    if (thumbnail.trim() !== "") {
-      setThumbnailValid(true);
-    }
-    if (title.trim() !== "") {
-      setTitleValid(true);
-    }
-    if (description.trim() !== "") {
-      setDescriptionValid(true);
-    }
-    if (
-      thumbnail.trim() === "" &&
-      title.trim() === "" &&
-      description.trim() === ""
-    ) {
-      setThumbnailValid(false);
-      setTitleValid(false);
-      setDescriptionValid(false);
-      if (thumbnailRef.current) {
+    const isThumbnailValid = thumbnail.trim() !== "";
+    const isTitleValid = title.trim() !== "";
+    const isDescriptionValid = description.trim() !== "";
+
+    setThumbnailValid(isThumbnailValid);
+    setTitleValid(isTitleValid);
+    setDescriptionValid(isDescriptionValid);
+
+    if (!isThumbnailValid || !isTitleValid || !isDescriptionValid) {
+      setThumbnailValid(!isThumbnailValid);
+      setTitleValid(!isTitleValid);
+      setDescriptionValid(!isDescriptionValid);
+
+      if (!isThumbnailValid && thumbnailRef.current) {
         thumbnailRef.current.focus();
-      }
-    } else if (thumbnail.trim() === "") {
-      setThumbnailValid(false);
-      if (thumbnailRef.current) {
-        thumbnailRef.current.focus();
-      }
-    } else if (title.trim() === "") {
-      setTitleValid(false);
-      if (titleRef.current) {
+      } else if (!isTitleValid && titleRef.current) {
         titleRef.current.focus();
-      }
-    } else if (description.trim() === "") {
-      setDescriptionValid(false);
-      if (descriptionRef.current) {
+      } else if (!isDescriptionValid && descriptionRef.current) {
         descriptionRef.current.focus();
       }
     } else {

@@ -61,6 +61,6 @@ const Category: React.FC = () => {
       </MotionInnerContainer>
     </Container>
   );
-}
+};
 
 export default Category;

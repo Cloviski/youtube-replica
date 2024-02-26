@@ -35,6 +35,6 @@ const VideoHome: React.FC<Props> = (props) => {
       </TitleContainer>
     </Container>
   );
-}
+};
 
 export default VideoHome;

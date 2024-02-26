@@ -100,13 +100,18 @@ const Header: React.FC = () => {
         >
           <ButtonIcon alt="" src={HamburgerIcon} />
         </ButtonContainer>
-        <YoutubeLogo onClick={() => navigate("/")} src={Logo} />
+        <YoutubeLogo
+          data-cy="youtube-logo"
+          onClick={() => navigate("/")}
+          src={Logo}
+        />
       </LogoContainer>
       <SearchContainer>
         <SearchInputContainer>
           <SearchInput
             placeholder="Search"
             value={searchInput}
+            data-cy="search-input"
             onChange={(e) => {
               handleSearch(e.target.value);
             }}
@@ -119,6 +124,7 @@ const Header: React.FC = () => {
           />
         </SearchInputContainer>
         <SearchButton
+          data-cy="search-button"
           onClick={() => {
             setSearch(searchInput);
             navigate("/search");
@@ -210,7 +216,10 @@ const Header: React.FC = () => {
             </DropDownContainer>
           </>
         ) : (
-          <SignMenuContainer onClick={() => navigate("/login")}>
+          <SignMenuContainer
+            data-cy="sign-in-button"
+            onClick={() => navigate("/login")}
+          >
             <ButtonIcon alt="" src={SignInIcon} />
             <span>Sign in</span>
           </SignMenuContainer>
@@ -218,6 +227,6 @@ const Header: React.FC = () => {
       </HeaderButton>
     </Container>
   );
-}
+};
 
 export default Header;

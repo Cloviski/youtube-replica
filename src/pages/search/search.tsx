@@ -58,7 +58,7 @@ const Search: React.FC = () => {
       <MainContainer>
         <Menu />
         <RoutesContainer>
-          <VideoContainer openMenu={openMenu}>
+          <VideoContainer openMenu={openMenu} data-cy="video-search">
             {videos.map((video, index) => (
               <a
                 href={`https://www.youtube.com/watch?v=${video.id.videoId}`}

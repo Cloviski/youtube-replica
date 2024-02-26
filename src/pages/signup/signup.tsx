@@ -25,11 +25,11 @@ const SignUp: React.FC = () => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [UserNameValid, setUserValidName] = useState(true);
   const [UserEmailValid, setUserValidEmail] = useState(true);
   const [UserPasswordValid, setUserValidPassword] = useState(true);
   const [formatEmailValid, setFormatEmailValid] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
 
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -42,52 +42,30 @@ const SignUp: React.FC = () => {
   }, []);
 
   const createUser = () => {
-    if (userName.trim() !== "") {
-      setUserValidName(true);
+    const trimmedName = userName.trim();
+    const trimmedEmail = userEmail.trim();
+    const trimmedPassword = userPassword.trim();
+
+    if (!trimmedName || !trimmedEmail || !trimmedPassword) {
+      setUserValidName(!!trimmedName);
+      setUserValidEmail(!!trimmedEmail);
+      setUserValidPassword(!!trimmedPassword);
+      if (!trimmedName) {
+        nameRef.current?.focus();
+      } else if (!trimmedEmail || !/\S+@\S+\.\S+/.test(trimmedEmail)) {
+        setFormatEmailValid(
+          !trimmedEmail || !/\S+@\S+\.\S+/.test(trimmedEmail)
+        );
+        emailRef.current?.focus();
+      } else {
+        passwordRef.current?.focus();
+      }
+      return;
     }
-    if (userEmail.trim() !== "") {
-      setUserValidEmail(true);
-    }
-    if (userPassword.trim() !== "") {
-      setUserValidPassword(true);
-    }
-    if (
-      userName.trim() === "" &&
-      userEmail.trim() === "" &&
-      userPassword.trim() === ""
-    ) {
-      setUserValidName(false);
-      setUserValidEmail(false);
-      setUserValidPassword(false);
-      if (nameRef.current) {
-        nameRef.current.focus();
-      }
-    } else if (userName.trim() === "") {
-      setUserValidName(false);
-      if (nameRef.current) {
-        nameRef.current.focus();
-      }
-    } else if (userEmail.trim() === "") {
-      setUserValidEmail(false);
-      setFormatEmailValid(true);
-      if (emailRef.current) {
-        emailRef.current.focus();
-      }
-    } else if (!/\S+@\S+\.\S+/.test(userEmail)) {
-      setFormatEmailValid(false);
-      setUserValidEmail(false);
-      if (emailRef.current) {
-        emailRef.current.focus();
-      }
-    } else if (userPassword.trim() === "") {
-      setUserValidPassword(false);
-      if (passwordRef.current) {
-        passwordRef.current.focus();
-      }
-    } else {
-      handleCreateUser(userName, userEmail, userPassword);
-    }
+
+    handleCreateUser(trimmedName, trimmedEmail, trimmedPassword);
   };
+
   return (
     <MainLoginContainer>
       <InnerLoginContainer>
@@ -103,9 +81,10 @@ const SignUp: React.FC = () => {
               placeholder="Name"
               value={userName}
               ref={nameRef}
+              data-cy="name-input"
               onChange={(e: any) => setUserName(e.target.value)}
             />
-            <MessageContainer valid={UserNameValid}>
+            <MessageContainer data-cy="name-error" valid={UserNameValid}>
               <ButtonIcon alt="" src={WarningIcon} />
               <span>Enter name</span>
             </MessageContainer>
@@ -114,9 +93,10 @@ const SignUp: React.FC = () => {
               placeholder="Email address"
               value={userEmail}
               ref={emailRef}
+              data-cy="email-input"
               onChange={(e: any) => setUserEmail(e.target.value)}
             />
-            <MessageContainer valid={UserEmailValid}>
+            <MessageContainer data-cy="email-error" valid={UserEmailValid}>
               <ButtonIcon alt="" src={WarningIcon} />
               <span>
                 {formatEmailValid
@@ -130,6 +110,7 @@ const SignUp: React.FC = () => {
               placeholder="Password"
               value={userPassword}
               ref={passwordRef}
+              data-cy="password-input"
               onChange={(e: any) => setUserPassword(e.target.value)}
             />
             <CheckBoxContainer>
@@ -137,6 +118,7 @@ const SignUp: React.FC = () => {
                 type="checkbox"
                 id="show-password"
                 checked={showPassword}
+                data-cy="show-password"
                 onClick={() => setShowPassword(!showPassword)}
               />
               <label htmlFor="show-password">Show password</label>
@@ -147,12 +129,14 @@ const SignUp: React.FC = () => {
           <SignUpButton>
             <span>Create account</span>
           </SignUpButton>
-          <NextButton onClick={() => createUser()}>Next</NextButton>
+          <NextButton data-cy="create-user" onClick={() => createUser()}>
+            Next
+          </NextButton>
         </AccountContainer>
       </InnerLoginContainer>
       <Footer />
     </MainLoginContainer>
   );
-}
+};
 
 export default SignUp;

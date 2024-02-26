@@ -61,7 +61,7 @@ const Home: React.FC = () => {
         <Menu />
         <RoutesContainer>
           <Category />
-          <VideoContainer openMenu={openMenu}>
+          <VideoContainer openMenu={openMenu} data-cy="video-home">
             {videos.map((video) => (
               <a
                 href={`https://www.youtube.com/watch?v=${video.id}`}
@@ -90,6 +90,6 @@ const Home: React.FC = () => {
       </MainContainer>
     </>
   );
-}
+};
 
 export default Home;

@@ -122,7 +122,10 @@ const Menu: React.FC = () => {
         <TextInnerContainer openMenu={openMenu}>
           <TextMenuItem openMenu={openMenu}>
             <span>Sign in to like videos, comment, and subscribe.</span>
-            <SignMenuContainer onClick={() => navigate("/login")}>
+            <SignMenuContainer
+
+              onClick={() => navigate("/login")}
+            >
               <ButtonIcon alt="" src={SignInIcon} />
               <span>Sign in</span>
             </SignMenuContainer>
