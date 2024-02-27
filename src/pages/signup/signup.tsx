@@ -26,9 +26,10 @@ const SignUp: React.FC = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [UserNameValid, setUserValidName] = useState(true);
-  const [UserEmailValid, setUserValidEmail] = useState(true);
-  const [UserPasswordValid, setUserValidPassword] = useState(true);
+  const [UserValidName, setUserValidName] = useState(true);
+  const [UserValidEmail, setUserValidEmail] = useState(true);
+  const [UserEmptyEmail, setUserEmptyEmail] = useState(true);
+  const [UserEmptyPassword, setUserEmptyPassword] = useState(true);
   const [formatEmailValid, setFormatEmailValid] = useState(true);
 
   const nameRef = useRef<HTMLInputElement>(null);
@@ -48,16 +49,18 @@ const SignUp: React.FC = () => {
 
     if (!trimmedName || !trimmedEmail || !trimmedPassword) {
       setUserValidName(!!trimmedName);
-      setUserValidEmail(!!trimmedEmail);
-      setUserValidPassword(!!trimmedPassword);
+      setUserEmptyEmail(!!trimmedEmail);
+      setUserEmptyPassword(!!trimmedPassword);
+
       if (!trimmedName) {
         nameRef.current?.focus();
-      } else if (!trimmedEmail || !/\S+@\S+\.\S+/.test(trimmedEmail)) {
-        setFormatEmailValid(
-          !trimmedEmail || !/\S+@\S+\.\S+/.test(trimmedEmail)
-        );
+      } else if (!trimmedEmail) {
+        setUserValidEmail(!!trimmedEmail);
+      } else if (!/\S+@\S+\.\S+/.test(trimmedEmail)) {
+        setFormatEmailValid(!/\S+@\S+\.\S+/.test(trimmedEmail));
         emailRef.current?.focus();
-      } else {
+      } else if (!trimmedPassword) {
+        setUserEmptyPassword(false);
         passwordRef.current?.focus();
       }
       return;
@@ -77,6 +80,7 @@ const SignUp: React.FC = () => {
         <EmailLoginContainer>
           <FormContainer>
             <FormInput
+              valid={UserEmptyEmail}
               type="text"
               placeholder="Name"
               value={userName}
@@ -84,11 +88,12 @@ const SignUp: React.FC = () => {
               data-cy="name-input"
               onChange={(e: any) => setUserName(e.target.value)}
             />
-            <MessageContainer data-cy="name-error" valid={UserNameValid}>
+            <MessageContainer data-cy="name-error" valid={UserValidName}>
               <ButtonIcon alt="" src={WarningIcon} />
               <span>Enter name</span>
             </MessageContainer>
             <FormInput
+              valid={UserEmptyEmail}
               type="email"
               placeholder="Email address"
               value={userEmail}
@@ -96,7 +101,11 @@ const SignUp: React.FC = () => {
               data-cy="email-input"
               onChange={(e: any) => setUserEmail(e.target.value)}
             />
-            <MessageContainer data-cy="email-error" valid={UserEmailValid}>
+            <MessageContainer data-cy="email-error" valid={UserEmptyEmail}>
+              <ButtonIcon alt="" src={WarningIcon} />
+              <span>Enter an email address</span>
+            </MessageContainer>
+            <MessageContainer data-cy="email-error" valid={UserValidEmail}>
               <ButtonIcon alt="" src={WarningIcon} />
               <span>
                 {formatEmailValid
@@ -105,7 +114,7 @@ const SignUp: React.FC = () => {
               </span>
             </MessageContainer>
             <FormInput
-              //Enter password
+              valid={UserEmptyEmail}
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={userPassword}
@@ -113,6 +122,13 @@ const SignUp: React.FC = () => {
               data-cy="password-input"
               onChange={(e: any) => setUserPassword(e.target.value)}
             />
+            <MessageContainer
+              data-cy="password-error"
+              valid={UserEmptyPassword}
+            >
+              <ButtonIcon alt="" src={WarningIcon} />
+              <span>Enter password</span>
+            </MessageContainer>
             <CheckBoxContainer>
               <input
                 type="checkbox"
