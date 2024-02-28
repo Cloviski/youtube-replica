@@ -23,13 +23,17 @@ export const TableVideoContainer = styled.div`
 export const SpanVideoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
   padding: 16px 0 0 16px;
 
   span {
     :nth-of-type(2) {
       font-size: 12px;
       color: #888;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
   }
 `;
@@ -114,4 +118,3 @@ export const ImageBanner = styled.img`
 export const Checkbox = styled.input`
   margin-left: 30px;
 `;
-

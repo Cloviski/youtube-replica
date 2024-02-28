@@ -66,10 +66,10 @@ export const FormContainer = styled.form`
   row-gap: 8px;
 `;
 
-export const EmailInput = styled.input<{valid: boolean}>`
+export const EmailInput = styled.input<{ valid: boolean }>`
   width: 100%;
   border-radius: 4px;
-  border: ${({valid}) => valid? '1px solid #dadce0' : '1px solid red'};
+  border: ${({ valid }) => (valid ? "1px solid #dadce0" : "1px solid red")};
   color: #202124;
   font-size: 16px;
   height: 56px;
@@ -78,16 +78,16 @@ export const EmailInput = styled.input<{valid: boolean}>`
   box-sizing: border-box;
 
   :focus {
-    border-color: ${({valid}) => valid? '#1a75ff' : 'red'};
+    border-color: ${({ valid }) => (valid ? "#1a75ff" : "red")};
     border-width: 2px;
     outline: none;
   }
 `;
 
-export const FormInput = styled.input<{valid: boolean}>`
+export const FormInput = styled.input<{ valid: boolean }>`
   width: 100%;
   border-radius: 4px;
-  border: ${({valid}) => valid ? '1px solid #dadce0' : '1px solid red'};
+  border: ${({ valid }) => (valid ? "1px solid #dadce0" : "1px solid red")};
   color: #202124;
   font-size: 16px;
   height: 56px;
@@ -96,7 +96,7 @@ export const FormInput = styled.input<{valid: boolean}>`
   box-sizing: border-box;
 
   &:focus {
-    border-color: ${({valid}) => valid? '#1a75ff' : 'red'};
+    border-color: ${({ valid }) => (valid ? "#1a75ff" : "red")};
     border-width: 2px;
     outline: none;
   }
@@ -134,14 +134,14 @@ export const SpanContainer = styled.div`
   }
 `;
 
-export const MessageContainer = styled.div<{valid: boolean}>`
-  display: ${({valid}) => (valid? "none" : "flex" ) };
+export const MessageContainer = styled.div<{ valid: boolean }>`
+  display: ${({ valid }) => (valid ? "none" : "flex")};
   width: 100%;
   align-items: center;
 
   span {
     font-size: 12px;
-    color: #F7053E
+    color: #f7053e;
   }
 `;
 

@@ -27,7 +27,6 @@ const SignUp: React.FC = () => {
   const [userPassword, setUserPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [UserValidName, setUserValidName] = useState(true);
-  const [UserValidEmail, setUserValidEmail] = useState(true);
   const [UserEmptyEmail, setUserEmptyEmail] = useState(true);
   const [UserEmptyPassword, setUserEmptyPassword] = useState(true);
   const [formatEmailValid, setFormatEmailValid] = useState(true);
@@ -47,26 +46,18 @@ const SignUp: React.FC = () => {
     const trimmedEmail = userEmail.trim();
     const trimmedPassword = userPassword.trim();
 
-    if (!trimmedName || !trimmedEmail || !trimmedPassword) {
-      setUserValidName(!!trimmedName);
-      setUserEmptyEmail(!!trimmedEmail);
-      setUserEmptyPassword(!!trimmedPassword);
+    setUserValidName(!!trimmedName);
+    setUserEmptyEmail(!!trimmedEmail);
+    setUserEmptyPassword(!!trimmedPassword);
 
-      if (!trimmedName) {
-        nameRef.current?.focus();
-      } else if (!trimmedEmail) {
-        setUserValidEmail(!!trimmedEmail);
-      } else if (!/\S+@\S+\.\S+/.test(trimmedEmail)) {
-        setFormatEmailValid(!/\S+@\S+\.\S+/.test(trimmedEmail));
-        emailRef.current?.focus();
-      } else if (!trimmedPassword) {
-        setUserEmptyPassword(false);
-        passwordRef.current?.focus();
-      }
+    if (!/\S+@\S+\.\S+/.test(trimmedEmail)) {
+      setFormatEmailValid(false);
       return;
     }
 
-    handleCreateUser(trimmedName, trimmedEmail, trimmedPassword);
+    if (trimmedName && trimmedEmail && trimmedPassword) {
+      handleCreateUser(trimmedName, trimmedEmail, trimmedPassword);
+    }
   };
 
   return (
@@ -105,13 +96,9 @@ const SignUp: React.FC = () => {
               <ButtonIcon alt="" src={WarningIcon} />
               <span>Enter an email address</span>
             </MessageContainer>
-            <MessageContainer data-cy="email-error" valid={UserValidEmail}>
+            <MessageContainer data-cy="email-error" valid={formatEmailValid}>
               <ButtonIcon alt="" src={WarningIcon} />
-              <span>
-                {formatEmailValid
-                  ? "Enter an email address"
-                  : "Email format invalid"}
-              </span>
+              <span>Enter an valid email address</span>
             </MessageContainer>
             <FormInput
               valid={UserEmptyEmail}
