@@ -84,7 +84,7 @@ const HeaderStudio: React.FC = () => {
         <ButtonContainer margin="0 10px 0 0">
           <ButtonIcon alt="" src={HelpIcon} />
         </ButtonContainer>
-        <CreateVideoContainer onClick={() => setHideModal(!hideModal)}>
+        <CreateVideoContainer data-cy="create-video-modal" onClick={() => setHideModal(!hideModal)}>
           <ButtonIcon alt="" src={VideoCreateIcon} />
           <span>CREATE</span>
         </CreateVideoContainer>
@@ -135,6 +135,6 @@ const HeaderStudio: React.FC = () => {
       </HeaderButton>
     </Container>
   );
-}
+};
 
 export default HeaderStudio;
