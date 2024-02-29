@@ -67,11 +67,9 @@ const YourVideos: React.FC = () => {
   const [thumbnail, setThumbnail] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
   const [thumbnailValid, setThumbnailValid] = useState(true);
   const [titleValid, setTitleValid] = useState(true);
   const [descriptionValid, setDescriptionValid] = useState(true);
-
   const thumbnailRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLInputElement>(null);
@@ -162,6 +160,7 @@ const YourVideos: React.FC = () => {
               <ModalContent>
                 <label htmlFor="thumbnail">Thumbnail</label>
                 <ThumbnailTextBox
+                  data-cy="video-thumbnail-input"
                   id="thumbnail"
                   type="textbox"
                   onChange={(e: any) => setThumbnail(e.target.value)}
@@ -175,6 +174,7 @@ const YourVideos: React.FC = () => {
                 </MessageContainer>
                 <label htmlFor="title">Title</label>
                 <TitleTextBox
+                  data-cy="video-title-input"
                   id="title"
                   type="textbox"
                   onChange={(e: any) => setTitle(e.target.value)}
@@ -188,6 +188,7 @@ const YourVideos: React.FC = () => {
                 </MessageContainer>
                 <label htmlFor="description">Description</label>
                 <DescriptionTextBox
+                  data-cy="video-description-input"
                   id="description"
                   type="textbox"
                   onChange={(e: any) => setDescription(e.target.value)}
@@ -199,7 +200,9 @@ const YourVideos: React.FC = () => {
                 <MessageContainer valid={descriptionValid}>
                   <span>Your video needs a description</span>
                 </MessageContainer>
-                <SaveButton onClick={() => sendVideo()}>SAVE</SaveButton>
+                <SaveButton data-cy="create-video" onClick={() => sendVideo()}>
+                  SAVE
+                </SaveButton>
                 <ModalFooter>
                   <span>
                     By submitting your videos to YouTube, you acknowledge that
@@ -214,15 +217,17 @@ const YourVideos: React.FC = () => {
               </ModalContent>
             </ModalContainer>
           </Modal>
-          {userVideos.map((video: Videos) => (
-            <YourVideosContainer
-              title={video.title}
-              thumbnail={video.thumbnail}
-              description={video.description}
-              publishedAt={getTimeDifference(video.publishedAt)}
-              key={video.video_id}
-            />
-          ))}
+          <div data-cy="video-container">
+            {userVideos.map((video: Videos) => (
+              <YourVideosContainer
+                title={video.title}
+                thumbnail={video.thumbnail}
+                description={video.description}
+                publishedAt={getTimeDifference(video.publishedAt)}
+                key={video.video_id}
+              />
+            ))}
+          </div>
         </RoutesContainer>
       </MainContainer>
     </>

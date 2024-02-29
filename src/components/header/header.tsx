@@ -137,7 +137,7 @@ const Header: React.FC = () => {
         </ButtonContainer>
       </SearchContainer>
       <HeaderButton>
-        <ButtonContainer margin="0 10px 0 0">
+        <ButtonContainer data-cy="your-videos" margin="0 10px 0 0">
           <ButtonIcon
             alt=""
             src={VideoIcon}

@@ -45,25 +45,18 @@ const Login: React.FC = () => {
     const trimmedEmail = email.trim();
     const trimmedPassword = password.trim();
 
-    if (!trimmedEmail) {
-      setValidEmail(false);
-      if (emailRef.current) {
-        emailRef.current.focus();
-      }
-      return;
+    if (!trimmedEmail || !trimmedPassword) {
+      setValidEmail(!!trimmedEmail);
+      setValidPassword(!!trimmedPassword);
     }
-
-    if (!/\S+@\S+\.\S+/.test(trimmedEmail)) {
+    if (!trimmedEmail || !/\S+@\S+\.\S+/.test(trimmedEmail)) {
+      setValidEmail(false);
       setValidEmailFormat(false);
-      setValidEmail(false);
-      if (emailRef.current) {
-        emailRef.current.focus();
-      }
+      emailRef.current?.focus();
       return;
-    }
-
-    if (!trimmedPassword) {
+    } else if (!trimmedPassword) {
       setValidPassword(false);
+      passwordRef.current?.focus();
       return;
     }
 
@@ -96,7 +89,10 @@ const Login: React.FC = () => {
                 }
               }}
             />
-            <MessageContainer data-cy="error" valid={validEmail}>
+            <MessageContainer
+              data-cy="error"
+              valid={validEmail || validEmailFormat}
+            >
               <ButtonIcon alt="" src={WarningIcon} />
               <span>Couldn't find your Google Account</span>
             </MessageContainer>
@@ -115,6 +111,16 @@ const Login: React.FC = () => {
               }}
             />
           </FormContainer>
+          <MessageContainer data-cy="error" valid={validPassword}>
+            <ButtonIcon alt="" src={WarningIcon} />
+            <span
+              style={{
+                padding: "8px 0",
+              }}
+            >
+              Enter password
+            </span>
+          </MessageContainer>
           <CheckBoxContainer>
             <input
               type="checkbox"
