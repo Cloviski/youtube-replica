@@ -6,6 +6,31 @@ export const Container = styled.div`
   flex-direction: row;
 `;
 
+export const ContainerChannelContent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  max-height: 136px;
+  height: 136px;
+`;
+
+export const ContainerChannelBanner = styled.div`
+  display: flex;
+  justify-content: center;
+  max-width: 360px;
+  width: 100%;
+  min-height: 12.625rem;
+  cursor: pointer;
+  `;
+
+export const ChannelBanner = styled.div`
+  max-height: 136px;
+  max-width: 136px;
+  width: 100%;
+  border-radius: 50%;
+  background-size: cover;
+`;
+
 export const ImageBanner = styled.div`
   max-width: 360px;
   min-width: 343px;
