@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const VideoContainer = styled.div<{ openMenu: boolean }>`
   display: grid;
-  width: ${({ openMenu }) => (openMenu ? "87vw" : "95vw")};
   grid-template-columns: repeat(5, 1fr);
   column-gap: 16px;
   row-gap: 40px;
@@ -10,32 +9,26 @@ export const VideoContainer = styled.div<{ openMenu: boolean }>`
   box-sizing: border-box;
 
   @media (max-width: 1650px) {
-    width: ${({ openMenu }) => (openMenu ? "82vw" : "95vw")};
     grid-template-columns: repeat(4, 1fr);
   }
 
   @media (max-width: 1366px) {
-    width: ${({ openMenu }) => (openMenu ? "82vw" : "95vw")};
     grid-template-columns: repeat(3, 1fr);
   }
 
   @media (max-width: 1200px) {
-    width: ${({ openMenu }) => (openMenu ? "80vw" : "95vw")};
     grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 1000px) {
-    width: ${({ openMenu }) => (openMenu ? "77vw" : "95vw")};
     grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 920px) {
-    width: ${({ openMenu }) => (openMenu ? "75vw" : "95vw")};
     grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 900px) {
-    width: ${({ openMenu }) => (openMenu ? "70vw" : "95vw")};
     grid-template-columns: repeat(1, 1fr);
   }
 
