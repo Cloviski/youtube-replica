@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+
+  restful_api:
+    image: node:20.11.1
+    environment:
+      SECRET: ${SECRET}
+      USER_DATABASE: ${USER_DATABASE}
+      PASSWORD_DATABASE: ${PASSWORD_DATABASE}
+      DATABASE: ${DATABASE}
+      HOST_DATABASE: 'host.docker.internal'
+      PORT_DATABASE: ${PORT_DATABASE}
+    working_dir: /app/api
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"
+    command: >
+      sh -c "
+        apk add --no-cache make gcc g++ python
+        npm install 
+        npm rebuild bcrypt --build-from-source
+        apk del make gcc g++ python
+        npm run start:server
+      "
+
+  react_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      REACT_APP_API_KEY: ${REACT_APP_API_KEY}
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+
+    
+
