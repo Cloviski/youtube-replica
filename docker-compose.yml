@@ -26,9 +26,7 @@ services:
       "
 
   react_app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     environment:
       REACT_APP_API_KEY: ${REACT_APP_API_KEY}
     ports:
@@ -36,5 +34,12 @@ services:
     stdin_open: true
     tty: true
 
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
     
 
