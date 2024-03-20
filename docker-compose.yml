@@ -4,6 +4,9 @@ services:
 
   restful_api:
     image: node:20.11.1
+    container_name: restful-api
+    networks:
+      - app
     environment:
       SECRET: ${SECRET}
       USER_DATABASE: ${USER_DATABASE}
@@ -26,7 +29,12 @@ services:
       "
 
   react_app:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile.react
+    container_name: react-app
+    networks:
+      - app
     environment:
       REACT_APP_API_KEY: ${REACT_APP_API_KEY}
     ports:
@@ -35,11 +43,41 @@ services:
     tty: true
 
   jenkins:
-    image: jenkins/jenkins:lts
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
+    container_name: jenkins-blueocean
+    restart: on-failure
+    environment:
+      DOCKER_HOST: tcp://docker:2376
+      DOCKER_CERT_PATH: /certs/client
+      DOCKER_TLS_VERIFY: "1"
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - jenkins-docker-certs:/certs/client:ro
     ports:
       - "8080:8080"
       - "50000:50000"
-    volumes:
-      - ./jenkins_home:/var/jenkins_home
-    
+    networks:
+      - jenkins
 
+  socat:
+    image: alpine/socat
+    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+    networks:
+      - jenkins
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "127.0.0.1:2376:2375"
+    restart: always
+
+volumes:
+  jenkins-data:
+  jenkins-docker-certs:
+
+networks:
+  jenkins:
+    driver: bridge
+  app:
+    driver: bridge
