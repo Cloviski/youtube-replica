@@ -2,18 +2,16 @@ pipeline {
     agent { 
         node {
             label 'docker-agent'
-            }
+        }
       }
     triggers {
-        pollSCM '*/5 * * * *'
+        pollSCM '*/10 * * * *'
     }
     stages {
         stage('Build') {
             steps {
-                echo "Building.."
-                sh '''
-                echo "doing build stuff.."
-                '''
+                sh 'docker compose up -d'
+                sh 'docker compose ps'
             }
         }
         stage('Test') {
@@ -24,7 +22,7 @@ pipeline {
                 '''
             }
         }
-        stage('Deliver') {
+        stage('Deploy') {
             steps {
                 echo 'Deliver....'
                 sh '''
