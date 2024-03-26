@@ -1,8 +1,6 @@
 const apiKey = Cypress.env("api_key");
 
 describe("Youtube API video receiving", () => {
-  const [name, email, password] = ["Joe Drops", "test@gmail.com", "123456789"];
-
   beforeEach(() => {
     cy.visit("/");
   });
