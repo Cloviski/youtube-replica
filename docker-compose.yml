@@ -59,6 +59,7 @@ services:
       context: .
       dockerfile: Dockerfile.jenkins
     container_name: jenkins-blueocean
+    privileged: true
     restart: on-failure
     environment:
       DOCKER_HOST: tcp://docker:2376

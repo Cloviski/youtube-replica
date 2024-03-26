@@ -1,15 +1,12 @@
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent'
-        }
-      }
+    agent any
     triggers {
         pollSCM '*/10 * * * *'
     }
     stages {
         stage('Build') {
             steps {
+                sh 'docker --version'
                 sh 'docker compose build'
                 sh 'docker compose ps'
             }
