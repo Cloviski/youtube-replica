@@ -6,9 +6,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker --version'
-                sh 'docker compose build'
-                sh 'docker compose ps'
+                sh '''
+                    docker info
+                    docker version
+                    docker compose version
+                '''
             }
         }
         stage('Test') {
