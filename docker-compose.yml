@@ -55,20 +55,21 @@ services:
       - react_app
 
   jenkins:
-    build:
+    build: 
       context: .
       dockerfile: Dockerfile.jenkins
-    container_name: jenkins-blueocean
+    container_name: jenkins
     privileged: true
     restart: on-failure
     environment:
       DOCKER_HOST: tcp://docker:2376
       DOCKER_CERT_PATH: /certs/client
-      DOCKER_TLS_VERIFY: "1"
-      DOCKER_TLS_CERTDIR: /certs/client
+      DOCKER_TLS_VERIFY: 0
+      DOCKER_TLS_CERTDIR: /certs
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "8080:8080"
       - "50000:50000"
