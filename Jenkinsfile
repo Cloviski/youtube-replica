@@ -1,8 +1,6 @@
 pipeline {
     agent {
-        node {
-            label 'docker-agent'
-        }
+        image 'node:latest'
     }
     triggers {
         pollSCM '*/10 * * * *'
