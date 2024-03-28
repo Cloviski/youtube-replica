@@ -10,27 +10,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '''
-                    docker info
-                    docker version
-                    docker compose version
-                '''
+                echo "Building React frontend"
+                sh 'npm install'
+                sh 'npm run build'
+
+                echo "Starting RESTful API server"
+                sh 'npm run start:server &'
             }
         }
         stage('Test') {
             steps {
-                echo "Testing.."
-                sh '''
-                echo "doing test stuff.."
-                '''
+                echo "Running Cypress tests"
+                sh 'npm run cypress'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deliver....'
-                sh '''
-                echo "doing delivery stuff.."
-                '''
+                echo "Deploying React frontend and RESTful API"
             }
         }
     }
