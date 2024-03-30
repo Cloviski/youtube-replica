@@ -1,7 +1,7 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:latest'
+    agent { 
+        node {
+            label 'docker-agent'
         }
     }
     triggers {
@@ -11,6 +11,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building React frontend"
+                sh 'npm -v'
+                sh 'node -v'
                 sh 'npm install'
                 sh 'npm run build'
 
