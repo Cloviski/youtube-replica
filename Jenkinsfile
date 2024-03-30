@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         docker {
-            image 'node:latest'
+            image 'node:20.11.1'
         }
     }
     triggers {
