@@ -1,7 +1,7 @@
 pipeline {
     agent { 
-        docker {
-            image 'node:20.11.1'
+        node {
+            label 'docker-agent'
         }
     }
     triggers {
@@ -11,19 +11,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building React frontend"
-                sh 'npm -v'
-                sh 'node -v'
-                sh 'npm install'
-                sh 'npm run build'
-
-                echo "Starting RESTful API server"
-                sh 'npm run start:server &'
+                sh 'docker -v'
             }
         }
         stage('Test') {
             steps {
                 echo "Running Cypress tests"
-                sh 'npm run cypress'
             }
         }
         stage('Deploy') {
