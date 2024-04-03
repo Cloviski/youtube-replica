@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { MainContainer, RoutesContainer } from "../../styles/AppStyles";
 import HeaderStudio from "../../components/header-studio/headerStudio";
 import MenuStudio from "../../components/menu-studio/menuStudio";

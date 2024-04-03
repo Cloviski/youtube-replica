@@ -25,6 +25,7 @@
   },
 
   "scripts": {
+    "cypress": "cypress run",
     "start": "react-scripts start",
     "start:server": "node ./api/dist/server.js",
     "build": "react-scripts build",

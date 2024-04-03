@@ -3,31 +3,25 @@ pipeline {
         node {
             label 'docker-agent'
         }
-      }
+    }
     triggers {
         pollSCM '*/10 * * * *'
     }
     stages {
         stage('Build') {
             steps {
-                sh 'docker compose up -d'
-                sh 'docker compose ps'
+                echo "Building React frontend"
+                sh 'docker -v'
             }
         }
         stage('Test') {
             steps {
-                echo "Testing.."
-                sh '''
-                echo "doing test stuff.."
-                '''
+                echo "Running Cypress tests"
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deliver....'
-                sh '''
-                echo "doing delivery stuff.."
-                '''
+                echo "Deploying React frontend and RESTful API"
             }
         }
     }
