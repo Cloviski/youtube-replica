@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
 
@@ -65,7 +65,7 @@ services:
       DOCKER_HOST: tcp://docker:2376
       DOCKER_CERT_PATH: /certs/client
       DOCKER_TLS_VERIFY: 1
-      DOCKER_TLS_CERTDIR: /certs
+      DOCKER_TLS_CERTDIR: /certs/client
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
@@ -78,14 +78,14 @@ services:
 
   socat:
     image: alpine/socat
-    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
     networks:
       - jenkins
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "127.0.0.1:2376:2375"
-    restart: always
+    restart: on-failure
+    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
 
 volumes:
   jenkins-data:
