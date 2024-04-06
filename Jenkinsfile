@@ -5,6 +5,11 @@ pipeline {
         }
     }
     stages {
+        stage('Setup') {
+            steps {
+                sh 'apt-get update && apt-get install -y docker.io npm'
+            }
+        }
         stage('Build') {
             steps {
                 echo "Building React frontend"
