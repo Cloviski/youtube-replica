@@ -1,12 +1,13 @@
 pipeline {
     agent { 
-        docker { image 'node:20.11.1' }
+        node {
+            label 'docker-agent'
+        }
     }
     stages {
         stage('Build') {
             steps {
                 echo "Building React frontend"
-                sh 'npm -v'
                 sh 'docker -v'
             }
         }
