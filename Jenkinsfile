@@ -1,16 +1,6 @@
 pipeline {
-    agent {
-        docker {
-            image 'docker:dind'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
     stages {
-        stage('Setup') {
-            steps {
-                sh 'apt-get update && apt-get install -y docker.io npm'
-            }
-        }
         stage('Build') {
             steps {
                 echo "Building React frontend"

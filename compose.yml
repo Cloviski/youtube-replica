@@ -1,7 +1,6 @@
-version: '3.9'
+version: "3.9"
 
 services:
-
   restful_api:
     image: node:20.11.1
     container_name: restful-api
@@ -12,7 +11,7 @@ services:
       USER_DATABASE: ${USER_DATABASE}
       PASSWORD_DATABASE: ${PASSWORD_DATABASE}
       DATABASE: ${DATABASE}
-      HOST_DATABASE: 'host.docker.internal'
+      HOST_DATABASE: "host.docker.internal"
       PORT_DATABASE: ${PORT_DATABASE}
     working_dir: /app/api
     volumes:
@@ -22,14 +21,14 @@ services:
     command: >
       sh -c "
         apk add --no-cache make gcc g++ python
-        npm install 
+        npm install
         npm rebuild bcrypt --build-from-source
         apk del make gcc g++ python
         npm run start:server
       "
 
   react_app:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.react
     container_name: react-app
@@ -54,8 +53,20 @@ services:
     depends_on:
       - react_app
 
+  jenkins-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    privileged: true
+    environment:
+      - JENKINS_URL=http://localhost:8080
+      - AGENT_NAME=docker-node
+      - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
+    networks:
+      - jenkins
+
   jenkins:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.jenkins
     container_name: jenkins
