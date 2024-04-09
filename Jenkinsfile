@@ -5,7 +5,8 @@ pipeline {
             steps {
                 echo "Building React frontend"
                 sh 'docker -v'
-                sh 'docker compose up'
+                sh 'npm -v'
+                sh 'npm install'
             }
         }
         stage('Test') {
