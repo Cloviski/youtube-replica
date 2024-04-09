@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 
 services:
   restful_api:
@@ -11,13 +11,13 @@ services:
       USER_DATABASE: ${USER_DATABASE}
       PASSWORD_DATABASE: ${PASSWORD_DATABASE}
       DATABASE: ${DATABASE}
-      HOST_DATABASE: "host.docker.internal"
+      HOST_DATABASE: 'host.docker.internal'
       PORT_DATABASE: ${PORT_DATABASE}
     working_dir: /app/api
     volumes:
       - .:/app
     ports:
-      - "4000:4000"
+      - '4000:4000'
     command: >
       sh -c "
         apk add --no-cache make gcc g++ python
@@ -37,7 +37,7 @@ services:
     environment:
       REACT_APP_API_KEY: ${REACT_APP_API_KEY}
     ports:
-      - "3000:3000"
+      - '3000:3000'
     stdin_open: true
     tty: true
 
@@ -46,7 +46,7 @@ services:
     networks:
       - app
     environment:
-      CYPRESS_baseUrl: "http://localhost:3000"
+      CYPRESS_baseUrl: 'http://localhost:3000'
       api_key: ${REACT_APP_API_KEY}
     volumes:
       - .:/app
@@ -58,7 +58,6 @@ services:
       context: .
       dockerfile: Dockerfile.agent
     privileged: true
-    user: root
     environment:
       - JENKINS_URL=http://localhost:8080
       - AGENT_NAME=docker-node
@@ -72,7 +71,7 @@ services:
       dockerfile: Dockerfile.jenkins
     container_name: jenkins
     privileged: true
-    restart: on-failure
+    restart: always
     environment:
       DOCKER_HOST: tcp://docker:2376
       DOCKER_CERT_PATH: /certs/client
@@ -80,10 +79,11 @@ services:
       DOCKER_TLS_CERTDIR: /certs/client
     volumes:
       - jenkins-data:/var/jenkins_home
+      - jenkins-docker-certs:/certs/client:ro
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "8080:8080"
-      - "50000:50000"
+      - '8080:8080'
+      - '50000:50000'
     networks:
       - jenkins
 
@@ -94,12 +94,13 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "127.0.0.1:2376:2375"
+      - '127.0.0.1:2376:2375'
     restart: on-failure
     command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
 
 volumes:
   jenkins-data:
+  jenkins-docker-certs:
 
 networks:
   jenkins:

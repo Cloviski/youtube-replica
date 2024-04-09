@@ -1,15 +1,13 @@
 pipeline {
     agent any
+    tools { 
+        nodejs '20.11.1'
+    }
     stages {
         stage('Build') {
             steps {
                 echo "Building React frontend"
-                sh '''
-                    docker info
-                    docker -v
-                    docker compose version
-                    curl --version
-                '''
+                sh 'npm -v'
             }
         }
         stage('Test') {
