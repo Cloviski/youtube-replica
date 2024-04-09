@@ -58,6 +58,7 @@ services:
       context: .
       dockerfile: Dockerfile.agent
     privileged: true
+    user: root
     environment:
       - JENKINS_URL=http://localhost:8080
       - AGENT_NAME=docker-node
@@ -79,7 +80,6 @@ services:
       DOCKER_TLS_CERTDIR: /certs/client
     volumes:
       - jenkins-data:/var/jenkins_home
-      - jenkins-docker-certs:/certs/client:ro
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "8080:8080"
@@ -100,7 +100,6 @@ services:
 
 volumes:
   jenkins-data:
-  jenkins-docker-certs:
 
 networks:
   jenkins:

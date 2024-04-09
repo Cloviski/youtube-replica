@@ -4,9 +4,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building React frontend"
-                sh 'docker -v'
-                sh 'npm -v'
-                sh 'npm install'
+                sh '''
+                    docker info
+                    docker -v
+                    docker compose version
+                    curl --version
+                '''
             }
         }
         stage('Test') {
