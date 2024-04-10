@@ -42,14 +42,15 @@ services:
     tty: true
 
   cypress:
-    image: cypress/included:13.6.4
+    image: cypress/included:13.7.1
+    working_dir: /e2e
     networks:
       - app
     environment:
       CYPRESS_baseUrl: 'http://localhost:3000'
       api_key: ${REACT_APP_API_KEY}
     volumes:
-      - .:/app
+      - .:/e2e
     depends_on:
       - react_app
 
@@ -59,16 +60,14 @@ services:
       dockerfile: Dockerfile.agent
     privileged: true
     environment:
-      - JENKINS_URL=http://localhost:8080
-      - AGENT_NAME=docker-node
-      - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
+      JENKINS_URL: http://localhost:8080
+      AGENT_NAME: docker-node
+      JENKINS_AGENT_WORKDIR: /home/jenkins/agent
     networks:
       - jenkins
 
   jenkins:
-    build:
-      context: .
-      dockerfile: Dockerfile.jenkins
+    image: jenkins/jenkins:lts
     container_name: jenkins
     privileged: true
     restart: always
@@ -107,3 +106,5 @@ networks:
     driver: bridge
   app:
     driver: bridge
+
+

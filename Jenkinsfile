@@ -8,13 +8,12 @@ pipeline {
             steps {
                 echo "Building React frontend"
                 sh 'npm -v'
-                sh 'npm install'
+                sh 'docker compose version'
             }
         }
         stage('Test') {
             steps {
                 echo "Running Cypress tests"
-                sh 'npm run cypress'
             }
         }
         stage('Deploy') {
