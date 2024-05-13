@@ -22,5 +22,5 @@ export { login };
 
 // Line 2 - It'll try to do a thing if it can't do something
 // Line 8 - Will appear our token uncrypted
-// Line 10 - To continue, in this code is verify if the token is valid
+// Line 10 - To continue,verify if the token is valid
 // This file it'll verify if the user token is correct

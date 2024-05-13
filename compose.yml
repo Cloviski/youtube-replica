@@ -1,7 +1,6 @@
-version: '3.8'
+version: '3.9'
 
 services:
-
   restful_api:
     image: node:20.11.1
     container_name: restful-api
@@ -18,18 +17,18 @@ services:
     volumes:
       - .:/app
     ports:
-      - "4000:4000"
+      - '4000:4000'
     command: >
       sh -c "
         apk add --no-cache make gcc g++ python
-        npm install 
+        npm install
         npm rebuild bcrypt --build-from-source
         apk del make gcc g++ python
         npm run start:server
       "
 
   react_app:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.react
     container_name: react-app
@@ -38,54 +37,62 @@ services:
     environment:
       REACT_APP_API_KEY: ${REACT_APP_API_KEY}
     ports:
-      - "3000:3000"
+      - '3000:3000'
     stdin_open: true
     tty: true
 
   cypress:
-    image: cypress/included:13.6.4
+    image: cypress/included:13.7.1
+    working_dir: /e2e
     networks:
       - app
     environment:
-      CYPRESS_baseUrl: "http://localhost:3000"
+      CYPRESS_baseUrl: 'http://localhost:3000'
       api_key: ${REACT_APP_API_KEY}
     volumes:
-      - .:/app
+      - .:/e2e
     depends_on:
       - react_app
 
-  jenkins:
-    build: 
+  jenkins-agent:
+    build:
       context: .
-      dockerfile: Dockerfile.jenkins
+      dockerfile: Dockerfile.agent
+    privileged: true
+    labels:
+      - jenkins-agent-label=docker-node
+    environment:
+      JENKINS_URL: http://localhost:8080
+      AGENT_NAME: docker-node
+      JENKINS_AGENT_WORKDIR: /home/jenkins/agent
+    networks:
+      - jenkins
+
+  jenkins:
+    image: jenkins/jenkins:lts
     container_name: jenkins
     privileged: true
-    restart: on-failure
-    environment:
-      DOCKER_HOST: tcp://docker:2376
-      DOCKER_CERT_PATH: /certs/client
-      DOCKER_TLS_VERIFY: 1
-      DOCKER_TLS_CERTDIR: /certs
+    restart: always
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "8080:8080"
-      - "50000:50000"
+      - '8080:8080'
+      - '50000:50000'
     networks:
       - jenkins
 
   socat:
     image: alpine/socat
-    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
     networks:
       - jenkins
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "127.0.0.1:2376:2375"
-    restart: always
+      - '127.0.0.1:2376:2375'
+    restart: on-failure
+    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
 
 volumes:
   jenkins-data:
@@ -96,3 +103,5 @@ networks:
     driver: bridge
   app:
     driver: bridge
+
+
