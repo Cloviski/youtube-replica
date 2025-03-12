@@ -1,11 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
+
+const API_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:4000'
+    : 'https://xr6vvv2l-4000.brs.devtunnels.ms/';
 
 const api = axios.create({
-  baseURL: "http://localhost:4000",
+  baseURL: API_URL,
   headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Context-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
+
+console.log('Using API URL:', API_URL);
 
 export default api;

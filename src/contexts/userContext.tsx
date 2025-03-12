@@ -80,7 +80,9 @@ export const UserStorage = ({ children }: UserStoreProps) => {
 
   const handleLogin = (email: string, password: string) => {
     api
-      .post("/user/sign-in", { email, password })
+    .post("/user/sign-in", { email, password }, {
+      headers: { "Content-Type": "application/json" }
+    })
       .then(({ data }) => {
         setLogin(true);
         localStorage.setItem("token", data.token);
