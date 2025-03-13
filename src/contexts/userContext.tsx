@@ -75,6 +75,7 @@ export const UserStorage = ({ children }: UserStoreProps) => {
     localStorage.removeItem("token");
     setLogin(false);
     setUser({});
+    navigate("/")
   };
 
 
